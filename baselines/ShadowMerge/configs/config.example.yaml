@@ -1,0 +1,30 @@
+model:
+  reasoning_model: "replace-with-model"
+  extraction_model: "replace-with-model"
+  judge_model: "replace-with-model"
+
+api:
+  openai_env_var: "OPENAI_API_KEY"
+  anthropic_env_var: "ANTHROPIC_API_KEY"
+  google_env_var: "GOOGLE_API_KEY"
+
+memory:
+  backend: "mock_graph_memory"
+  retrieval_top_k: 10
+  graph_only: true
+
+evaluation:
+  seed: 42
+  num_background_writes: 2
+  num_victim_queries: 2
+  num_benign_queries: 2
+  output_dir: "outputs/evaluation_run"
+  datasets:
+    - "data/samples/pubmedqa_samples.jsonl"
+    - "data/samples/webshop_samples.jsonl"
+    - "data/samples/toolemu_samples.jsonl"
+  baseline: "shadowmerge"
+
+safety:
+  release_payload_generation_prompts: false
+  release_full_case_payloads: false
