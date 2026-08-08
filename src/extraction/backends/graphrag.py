@@ -188,6 +188,7 @@ Requirements:
                 max_tokens=int(os.getenv("AGEA_QUERY_MAX_TOKENS", "1024")),
                 temperature=0.2,
                 top_p=1.0,
+                **_RUNNER.agent_completion_options(deployment),
             )
             generated = (response.choices[0].message.content or "").strip().strip('"')
             if not generated:

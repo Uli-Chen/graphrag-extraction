@@ -144,3 +144,25 @@ def resolve_agent_model(role_env: str, fallback: str) -> str:
     raw_model = _env(role_env, "AGEA_CHAT_MODEL", "GRAPHRAG_CHAT_MODEL") or fallback
     model = raw_model.split("#", 1)[0].strip()
     return _MODEL_ALIASES.get(model.casefold(), model)
+
+
+def agent_completion_options(model: str) -> dict:
+    """Return provider options that keep agent calls in chat/output mode.
+
+    DeepSeek-V4 reasoning can consume the entire completion budget before
+    emitting the structured query or KEEP/DISCARD decisions that AGEA needs.
+    The provider exposes ``enable_thinking=false`` for the corresponding chat
+    behavior, which matches the non-reasoning agent models used by AGEA's
+    original experiment.
+    """
+
+    if "deepseek-v4" in model.casefold():
+        return {
+            "reasoning_effort": "none",
+            "extra_body": {
+                "enable_thinking": False,
+                "chat_template_kwargs": {"enable_thinking": False},
+                "thinking": {"type": "disabled"},
+            },
+        }
+    return {}

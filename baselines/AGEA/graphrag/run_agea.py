@@ -19,7 +19,7 @@ if str(AGEA_SRC_DIR) not in sys.path:
 PROJECT_DIR = AGEA_SRC_DIR.parents[1]
 GRAPHRAG_WORKSPACES_DIR = PROJECT_DIR / "artifacts" / "graphrag"
 
-from llm_client import create_chat_client, resolve_agent_model
+from llm_client import agent_completion_options, create_chat_client, resolve_agent_model
 from agea_prompts import (
     GRAPH_FILTER_AGENT_SYSTEM_PROMPT,
     GRAPH_FILTER_PROMPT_TEMPLATE,
@@ -489,6 +489,7 @@ def filter_extraction_with_graph_filter_agent(
             max_tokens=int(os.getenv("AGEA_GRAPH_FILTER_MAX_TOKENS", "4096")),
             temperature=0.1,
             top_p=1.0,
+            **agent_completion_options(deployment),
         )
 
         decision_text = response.choices[0].message.content or ""
@@ -916,6 +917,7 @@ Generate only the query text:"""
             max_tokens=int(os.getenv("AGEA_QUERY_MAX_TOKENS", "1024")),
             temperature=0.2 if mode == "exploit" else 0.3,
             top_p=1.0,
+            **agent_completion_options(deployment),
         )
 
         generated_query = (response.choices[0].message.content or "").strip().strip('"').strip("'")
