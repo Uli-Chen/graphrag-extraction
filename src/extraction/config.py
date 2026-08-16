@@ -37,6 +37,8 @@ class ExperimentConfig:
     random_seed: int = 42
     fewa_delta: float = 0.05
     fewa_max_arms: int = 20
+    anchor_sampling_policy: str = "ts_pl_fewa"
+    agea_bnrr_candidate_k: int = 6
     reward_normalizer: int = 512
     query_generator_model: str = "gpt-4o-mini"
     query_generation_retries: int = 3
@@ -130,6 +132,12 @@ class ExperimentConfig:
                 raise ValueError(f"{name} must be non-negative")
         if self.fewa_max_arms <= 0:
             raise ValueError("fewa_max_arms must be positive")
+        if self.anchor_sampling_policy not in {"ts_pl_fewa", "agea_bnrr"}:
+            raise ValueError(
+                "anchor_sampling_policy must be 'ts_pl_fewa' or 'agea_bnrr'"
+            )
+        if self.agea_bnrr_candidate_k <= 0:
+            raise ValueError("agea_bnrr_candidate_k must be positive")
         for required in (self.graph_root, self.data_dir):
             if not Path(required).exists():
                 raise FileNotFoundError(required)

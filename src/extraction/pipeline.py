@@ -16,6 +16,7 @@ from .backends.graphrag import AgeaGraphRagAdapter, append_extraction_command
 from .config import ExperimentConfig
 from .control.controllers import (
     AdaptiveModeController,
+    AgeaBnrrAnchorController,
     EpochFewaController,
     rotting_diagnostics,
 )
@@ -56,11 +57,17 @@ class MedicalExtractionPipeline:
             max_consecutive_failed_explore=config.max_consecutive_failed_explore,
             seed=config.random_seed,
         )
-        self.fewa = EpochFewaController(
-            delta=config.fewa_delta,
-            max_arms=config.fewa_max_arms,
-            seed=config.random_seed,
-        )
+        if config.anchor_sampling_policy == "agea_bnrr":
+            self.arm_controller = AgeaBnrrAnchorController(
+                candidate_k=config.agea_bnrr_candidate_k,
+                seed=config.random_seed,
+            )
+        else:
+            self.arm_controller = EpochFewaController(
+                delta=config.fewa_delta,
+                max_arms=config.fewa_max_arms,
+                seed=config.random_seed,
+            )
         self.adapter = AgeaGraphRagAdapter(
             graph_root=config.graph_root,
             data_dir=config.data_dir,
@@ -73,14 +80,18 @@ class MedicalExtractionPipeline:
         self.query_history: list[dict[str, Any]] = []
         self.exploit_pulls = 0
 
-    def _available_arms(self) -> tuple[list[str], dict[str, float]]:
+    def _available_arms(
+        self,
+    ) -> tuple[list[str], dict[str, float], dict[str, float], dict[str, int]]:
         scores = compute_node_scores(self.graph)
         priors = {
             node: score.sensitivity
             for node, score in scores.items()
             if score.sensitivity > 0.0
         }
-        return list(priors), priors
+        bnrr = {node: score.bnrr for node, score in scores.items() if score.bnrr > 0.0}
+        degrees = {node: score.degree for node, score in scores.items()}
+        return list(priors), priors, bnrr, degrees
 
     def _seed_query_text(self) -> str:
         """Build the fixed first-turn query used by the formal protocol."""
@@ -234,7 +245,7 @@ class MedicalExtractionPipeline:
         meaningful_gain_history: list[bool] = []
 
         for turn in range(1, self.config.turns + 1):
-            arms, priors = self._available_arms()
+            arms, priors, bnrr, degrees = self._available_arms()
             decision = self.mode_controller.choose(
                 turn,
                 arms,
@@ -243,8 +254,11 @@ class MedicalExtractionPipeline:
                 meaningful_gain_history=meaningful_gain_history,
             )
             mode = decision.mode
+            controller_policy = str(
+                self.arm_controller.state_dict().get("policy", "unknown")
+            )
             arm_decision: dict[str, Any] = {
-                "policy": "topology_pl_fewa",
+                "policy": controller_policy,
                 "selected_arm": None,
                 "reason": "mode_explore",
                 "eligible_arm_count": len(arms),
@@ -252,25 +266,41 @@ class MedicalExtractionPipeline:
             }
             anchor: str | None = None
             if mode == "exploit":
-                anchor = self.fewa.select(arms, self.exploit_pulls + 1, priors)
+                if self.config.anchor_sampling_policy == "agea_bnrr":
+                    recently_discovered = {
+                        str(entity)
+                        for entry in self.query_history[-2:]
+                        for entity in entry.get("newly_discovered_entity_names", [])
+                    }
+                    anchor = self.arm_controller.select(
+                        arms,
+                        self.exploit_pulls + 1,
+                        bnrr,
+                        degrees=degrees,
+                        recently_discovered=recently_discovered,
+                    )
+                else:
+                    anchor = self.arm_controller.select(
+                        arms, self.exploit_pulls + 1, priors
+                    )
                 selection = (
-                    self.fewa.selection_history[-1]
-                    if self.fewa.selection_history
+                    self.arm_controller.selection_history[-1]
+                    if self.arm_controller.selection_history
                     else {}
                 )
                 arm_decision = {
-                    "policy": "topology_pl_fewa",
+                    "policy": controller_policy,
                     "selected_arm": anchor,
                     "reason": selection.get("reason", "unknown"),
                     "eligible_arm_count": len(arms),
-                    "active_arms": list(self.fewa.active_arms),
-                    "epoch_id": self.fewa.epoch_id,
+                    "active_arms": list(self.arm_controller.active_arms),
+                    "epoch_id": self.arm_controller.epoch_id,
                     "epoch_refreshed": bool(selection.get("epoch_refreshed")),
                     "selection": selection,
                     "admission": (
-                        self.fewa.admission_history[-1]
+                        self.arm_controller.admission_history[-1]
                         if selection.get("epoch_refreshed")
-                        and self.fewa.admission_history
+                        and self.arm_controller.admission_history
                         else None
                     ),
                 }
@@ -279,7 +309,7 @@ class MedicalExtractionPipeline:
                 decision = replace(
                     decision,
                     mode=mode,
-                    reason="fewa_returned_no_anchor",
+                    reason="arm_controller_returned_no_anchor",
                     explore_suppressed=False,
                 )
                 arm_decision["reason"] = "no_anchor_fallback_to_explore"
@@ -311,7 +341,7 @@ class MedicalExtractionPipeline:
                 raw_batch_reward=raw_batch_reward,
                 anchor_diagnostics=anchor_diagnostics,
             )
-            self.fewa.observe(anchor, effective_fewa_reward or 0.0)
+            self.arm_controller.observe(anchor, effective_fewa_reward or 0.0)
             # A batch has a meaningful historical score only when the pre-turn
             # graph contains at least one non-isolated arm.  In particular, do
             # not feed the mandated cold-start zero back into the controller.
@@ -403,7 +433,7 @@ class MedicalExtractionPipeline:
                 "mode_decisions": [
                     record.get("mode_decision", {}) for record in self.turn_records
                 ],
-                "arm_controller": self.fewa.state_dict(),
+                "arm_controller": self.arm_controller.state_dict(),
             },
         )
         _write_json(
@@ -419,7 +449,7 @@ class MedicalExtractionPipeline:
         query_diagnostics = _query_diagnostics(self.query_history, self.turn_records)
         mode_diagnostics = _mode_diagnostics(self.turn_records)
         anchor_diagnostics = _aggregate_anchor_diagnostics(self.turn_records)
-        arm_diagnostics = _arm_diagnostics(self.fewa.state_dict())
+        arm_diagnostics = _arm_diagnostics(self.arm_controller.state_dict())
         formal_acceptance = {
             "query_unique_rate": {
                 "value": query_diagnostics["query_unique_rate"],
@@ -488,7 +518,7 @@ class MedicalExtractionPipeline:
             "mean_retrospective_gain": _mean(
                 item["retrospective_gain"] for item in batches
             ),
-            "rotting_diagnostics": rotting_diagnostics(self.fewa.rewards),
+            "rotting_diagnostics": rotting_diagnostics(self.arm_controller.rewards),
             "arm_diagnostics": arm_diagnostics,
             "query_diagnostics": query_diagnostics,
             "mode_diagnostics": mode_diagnostics,
