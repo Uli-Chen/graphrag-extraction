@@ -1,10 +1,11 @@
 dataset: medical
-run_id: medical_ts_pl_fewa_50turn_v2
+run_id: medical_uniform_fresh_50turn_seed42
 turns: 50
 query_method: local
 
-# Formal long-horizon run: HTSN chooses mode automatically; TS-PL refreshes
-# exploit candidates at realized K-arm epoch boundaries.
+# Default controller: retain positive online BNRR as a binary eligibility gate,
+# then sample uniformly from globally unqueried anchors. No PL epoch, FEWA
+# filtering, topology-magnitude ranking, or reward-driven revisit is used.
 enable_graph_filter: false
 initial_epsilon: 0.30
 epsilon_decay: 0.98
@@ -18,7 +19,10 @@ explore_success_threshold: 0.20
 max_consecutive_failed_explore: 2
 
 random_seed: 42
-anchor_sampling_policy: ts_pl_fewa
+anchor_sampling_policy: uniform_fresh
+
+# Retained for the common reward audit and legacy TS-PL-FEWA compatibility;
+# uniform_fresh does not use FEWA rewards to select anchors.
 fewa_delta: 0.05
 fewa_max_arms: 3
 reward_normalizer: 512

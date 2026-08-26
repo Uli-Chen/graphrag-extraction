@@ -23,4 +23,5 @@ artifacts/*
 tmp/*
 paper/*
 tests/*
+!tests/test_uniform_fresh_controller.py
 docs/*

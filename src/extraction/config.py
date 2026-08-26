@@ -19,7 +19,7 @@ class ExperimentConfig:
     graph_root: str = str(PROJECT_DIR / "artifacts" / "graphrag" / "medical")
     data_dir: str = str(PROJECT_DIR / "artifacts" / "graphrag" / "medical" / "output")
     output_root: str = str(PROJECT_DIR / "artifacts" / "runs" / "mematk")
-    run_id: str = "medical_ts_pl_fewa_50turn"
+    run_id: str = "medical_uniform_fresh_50turn"
     turns: int = 50
     query_method: str = "local"
     disable_api_thinking: bool = False
@@ -40,7 +40,7 @@ class ExperimentConfig:
     random_seed: int = 42
     fewa_delta: float = 0.05
     fewa_max_arms: int = 20
-    anchor_sampling_policy: str = "ts_pl_fewa"
+    anchor_sampling_policy: str = "uniform_fresh"
     reward_normalizer: int = 512
     query_generator_model: str = "gpt-4o-mini"
     query_generation_retries: int = 3
@@ -137,8 +137,12 @@ class ExperimentConfig:
                 raise ValueError(f"{name} must be non-negative")
         if self.fewa_max_arms <= 0:
             raise ValueError("fewa_max_arms must be positive")
-        if self.anchor_sampling_policy != "ts_pl_fewa":
-            raise ValueError("anchor_sampling_policy must be 'ts_pl_fewa'")
+        valid_policies = {"uniform_fresh", "ts_pl_fewa"}
+        if self.anchor_sampling_policy not in valid_policies:
+            raise ValueError(
+                "anchor_sampling_policy must be one of "
+                f"{sorted(valid_policies)}"
+            )
         for required in (self.graph_root, self.data_dir):
             if not Path(required).exists():
                 raise FileNotFoundError(required)

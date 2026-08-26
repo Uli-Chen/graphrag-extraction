@@ -7,7 +7,7 @@ import random
 from dataclasses import dataclass, field
 from typing import Iterable, Mapping
 
-from .admission import TopologyPlackettLuceAdmission
+from .admission import TopologyPlackettLuceAdmission, is_valid_arm
 
 
 @dataclass
@@ -192,6 +192,122 @@ class EpochFewaController:
         }
 
 
+@dataclass
+class FreshAnchorController:
+    """Uniformly sweep the positive-topology global frontier without repeats.
+
+    BNRR sensitivity is used only as a binary eligibility gate.  Its magnitude,
+    observed rewards, and epoch state do not affect selection while a globally
+    fresh eligible anchor exists.  Once that frontier is exhausted, selection
+    falls back to the globally least-pulled eligible anchors.
+    """
+
+    seed: int = 42
+    rewards: dict[str, list[float]] = field(default_factory=dict)
+    active_arms: tuple[str, ...] = ()
+    active_priors: dict[str, float] = field(default_factory=dict)
+    epoch_end_turn: int = 0
+    epoch_id: int = 0
+    admission_history: list[dict[str, object]] = field(default_factory=list)
+    selection_history: list[dict[str, object]] = field(default_factory=list)
+    _rng: random.Random = field(init=False, repr=False)
+
+    def __post_init__(self) -> None:
+        self._rng = random.Random(self.seed)
+
+    def select(
+        self,
+        available: Iterable[str],
+        turn: int,
+        priors: Mapping[str, float] | None = None,
+    ) -> str | None:
+        priors = priors or {}
+        eligible = [
+            arm
+            for arm in sorted(set(str(item) for item in available))
+            if is_valid_arm(arm) and float(priors.get(arm, 0.0)) > 0.0
+        ]
+        self.epoch_id += 1
+        fresh = [arm for arm in eligible if not self.rewards.get(arm)]
+        pool = fresh
+        if fresh:
+            reason = "uniform_fresh"
+        elif eligible:
+            minimum_pulls = min(len(self.rewards.get(arm, [])) for arm in eligible)
+            pool = [
+                arm
+                for arm in eligible
+                if len(self.rewards.get(arm, [])) == minimum_pulls
+            ]
+            reason = "uniform_least_pulled"
+        else:
+            reason = "no_active_arm"
+
+        selected = self._rng.choice(pool) if pool else None
+        self.active_arms = (selected,) if selected else ()
+        self.active_priors = (
+            {selected: float(priors.get(selected, 0.0))} if selected else {}
+        )
+        self.epoch_end_turn = turn
+        self.admission_history.append(
+            {
+                "policy": "uniform_global_fresh",
+                "epoch_id": self.epoch_id,
+                "eligible_arm_count": len(eligible),
+                "eligibility_gate": "bnrr_sensitivity>0",
+                "active_arms": list(self.active_arms),
+                "candidates": [
+                    {
+                        "arm": arm,
+                        "sensitivity": float(priors.get(arm, 0.0)),
+                        "pull_count": len(self.rewards.get(arm, [])),
+                    }
+                    for arm in eligible
+                ],
+                "draws": [],
+                "fallback_reason": "none",
+                "exploit_pull_start": turn,
+                "exploit_pull_end": turn,
+            }
+        )
+        self.selection_history.append(
+            {
+                "exploit_pull": turn,
+                "epoch_id": self.epoch_id,
+                "epoch_refreshed": True,
+                "selected_arm": selected,
+                "reason": reason,
+                "active_arms": list(self.active_arms),
+                "fresh_arm_count": len(fresh),
+                "filter_windows": [],
+            }
+        )
+        if selected is not None:
+            self.rewards.setdefault(selected, [])
+        return selected
+
+    def observe(self, arm: str | None, reward: float) -> None:
+        if arm is not None:
+            self.rewards.setdefault(arm, []).append(float(reward))
+
+    def state_dict(self) -> dict[str, object]:
+        return {
+            "policy": "uniform_fresh",
+            "selection_policy": "uniform",
+            "eligibility_gate": "bnrr_sensitivity>0",
+            "freshness_scope": "global",
+            "reward_used_for_selection": False,
+            "seed": self.seed,
+            "active_arms": list(self.active_arms),
+            "active_priors": self.active_priors,
+            "epoch_end_turn": self.epoch_end_turn,
+            "epoch_id": self.epoch_id,
+            "rewards": self.rewards,
+            "admission_history": self.admission_history,
+            "selection_history": self.selection_history,
+        }
+
+
 @dataclass(frozen=True)
 class ModeDecision:
     """Auditable state for one explore/exploit decision."""
@@ -348,7 +464,7 @@ class AdaptiveModeController:
             )
         return decision(
             "exploit",
-            f"fewa({epsilon:.4f})",
+            f"epsilon_complement({epsilon:.4f})",
             success_rate=success_rate,
         )
 

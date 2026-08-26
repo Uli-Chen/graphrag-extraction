@@ -9,7 +9,7 @@ MemATK 面向黑盒 GraphRAG 的预算受限图抽取。给定只能通过自然
 1. **BNRR 结构评分**：在简单无向投影上，用节点度与邻域内部连边数构造平衡非冗余触达数；
 2. **历史锚定的拓扑敏感新颖度（HTSN）**：只用查询前已经存在的图为本轮新元素赋权，避免同一批新节点相互抬高分数；
 3. **自适应探索—利用控制**：结合衰减随机探索、HTSN、近期探索成功率和连续失败保护，自动选择查询模式；
-4. **TS-PL-FEWA 锚点调度**：先按拓扑先验和查询次数采样候选集，再根据可归因的历史产出在候选集中分配利用预算。
+4. **正拓扑门槛与全局 fresh 均匀调度**：BNRR 中秩只用于排除零结构候选；在其余全局未查询实体中均匀抽取锚点，直到 fresh frontier 耗尽才允许最少次数重访。
 
 下文以当前代码为规范来源。旧设计中出现但未进入当前实现的语义敏感度、关系类型权重、可学习风险分类器和一般次模效用，不属于这里描述的主方法。
 
@@ -524,7 +524,7 @@ Y_t^{\mathrm{HA}}>0
 
 因此正式方法没有固定 explore/exploit 比例；比例由观测轨迹自动产生。
 
-## 8. TS-PL 候选集构造
+## 8. 锚点候选与默认 uniform-fresh 调度
 
 ### 8.1 合法候选
 
@@ -534,7 +534,27 @@ Y_t^{\mathrm{HA}}>0
 - 标签长度至少为 2；
 - 不是解析器标题、列表标记或 `SUMMARY`、`ENTITY`、`UNKNOWN` 等通用占位词。
 
-### 8.2 拓扑—欠采样权重
+### 8.2 全局 fresh 均匀选择
+
+默认 `uniform_fresh` controller 每个 exploit pull 都重新计算当前合法候选池。令 $n_t(a)$ 为锚点 $a$ 此前被选择的次数，优先使用
+
+\[
+\mathcal F_t=\{a:s_t^V(a)>0,\ n_t(a)=0\}.
+\]
+
+若 $\mathcal F_t$ 非空，则在按规范化字符串排序后的集合上使用 run seed 驱动的伪随机数生成器均匀选择一个锚点。BNRR 的连续数值不进入抽样概率。若 fresh pool 已耗尽，则只在全局 pull count 最小的合法候选中均匀选择。
+
+因此默认控制器满足：
+
+- 正 BNRR/sensitivity 只是二值结构资格门槛；
+- fresh 候选存在时不重复锚点；
+- 不维护固定候选 epoch；
+- 不使用 reward、FEWA filtering 或即时 revisit ticket 做选择；
+- reward 仍保留在日志中，用于共同审计和旧控制器兼容。
+
+### 8.3 兼容模式：拓扑—欠采样权重
+
+以下 TS-PL 定义仅在配置显式指定 `anchor_sampling_policy: ts_pl_fewa` 时启用，不是默认 controller。
 
 在 exploit epoch $e$ 开始时冻结当前敏感度。令 $n_e(a)$ 为此前对 arm $a$ 记录的 exploit 奖励次数，候选权重为
 
@@ -545,7 +565,7 @@ w_e(a)=\frac{s_e^V(a)}{\sqrt{1+n_e(a)}}.
 
 该式只使用拓扑先验和历史拉取次数，不使用已观测奖励，因此把“进入候选集”和“候选集内基于收益分配预算”分离开来。
 
-### 8.3 有序 Plackett--Luce 无放回采样
+### 8.4 兼容模式：有序 Plackett--Luce 无放回采样
 
 令尚未选中的候选集合为 $\mathcal C_{e,j}$。第 $j$ 次抽取 arm $a$ 的条件概率为
 
@@ -583,7 +603,9 @@ L_e=K_e
 
 次 **exploit pull** 内冻结。Explore 轮不消耗 epoch 长度。
 
-## 9. FEWA 风格的衰减收益调度
+## 9. 兼容的 FEWA 风格衰减收益调度
+
+本节只描述保留用于复现实验的 `ts_pl_fewa` controller。默认 `uniform_fresh` 会记录同一有界、可归因 reward，但不会用它改变 anchor selection。
 
 ### 9.1 可归因有界奖励
 
@@ -731,16 +753,16 @@ J(q_i,q_j)=
 
 给定预算 $B$、候选上界 $M$ 和随机种子，当前实现逐轮执行：
 
-1. 从 $G_{t-1}$ 计算 BNRR 与中秩敏感度，形成合法 arm 及 TS-PL 先验；
+1. 从 $G_{t-1}$ 计算 BNRR 与中秩敏感度，形成正 sensitivity 的合法 anchor pool；
 2. 按第 7 节规则自动选择 explore 或 exploit；
-3. 若 exploit，则刷新或复用 epoch 候选集，并由 FEWA 选择唯一锚点；若无可用锚点则回退为 explore；
+3. 若 exploit，则在全局未查询合法 anchor 中均匀选择；fresh pool 为空时在全局最少拉取候选中均匀选择；若无可用锚点则回退为 explore；
 4. 生成满足锚点和相似度约束的动态查询；
 5. 调用 GraphRAG local search，并保存主响应和检索上下文；
 6. 解析、规范化并在批次内去重实体与关系；
 7. 在 $G_{t-1}$ 上计算到达 BNRR、$Y_t^{\mathrm{HA}}$ 与 HTSN；
 8. 检查候选原子数不超过 $M$，计算锚点归因奖励；
 9. 合并批次得到 $G_t$，计算 RTSN 和冻结真值评测；
-10. 更新 FEWA、模式历史和所有审计日志；
+10. 更新 anchor pull 记录、模式历史、reward 审计和所有日志；
 11. 覆盖保存最新图、查询历史、控制器状态和逐轮指标。
 
 ## 12. 离线评价协议
@@ -854,16 +876,17 @@ s_\star^E(u,v)=\max\{s_\star^V(u),s_\star^V(v)\},
 | 最小探索样本          |    2 | 启用低成功率保护的样本数         |
 | $p_{\min}$            | 0.20 | 探索成功率阈值                   |
 | 连续失败 explore 上限 |    2 | 防锁死保护                       |
-| $K$                   |    3 | 每个 epoch 最大 arm 数           |
-| $\delta$              | 0.05 | FEWA 过滤置信项                  |
+| anchor 资格           | $s_t^V>0$ | 排除零结构/孤立候选          |
+| fresh 范围            | 全局 | fresh 候选存在时禁止重复         |
+| fresh 内选择          | 均匀 | 不使用 BNRR 数值大小排序         |
 | $M$                   |  512 | 每轮候选原子上界与奖励归一化常数 |
 | 查询相似阈值 $\eta$   | 0.85 | 式 (45) 的上限                   |
 | 查询生成重试          |    3 | 初次尝试之外的重试次数           |
 
-正式配置以 `configs/extraction/medical/ts_pl_fewa_50turn.yaml` 为准，执行入口为：
+正式默认配置以 `configs/extraction/medical/uniform_fresh_50turn.yaml` 为准，执行入口为：
 
 ```bash
-./scripts/run_medical_50turn.sh medical_ts_pl_fewa_50turn_seed42
+./scripts/run_medical_50turn.sh medical_uniform_fresh_50turn_seed42
 ```
 
 协议还要求查询唯一率不低于 90%、零图增益轮次比例不高于 20%、连续零图增益和连续零有意义增益都不超过 4、exploit 查询锚点遵从率为 100%、seed 后同时出现 explore 与 exploit、所有主响应非空。这些是运行健康与协议验收条件，不是 BNRR 或 HTSN 的数学定义。
@@ -874,7 +897,7 @@ s_\star^E(u,v)=\max\{s_\star^V(u),s_\star^V(v)\},
 
 - `config.json`：实际运行配置；
 - `query_history.json`：模式、锚点、查询与生成来源；
-- `controller_state.json`：TS-PL 抽样、epoch 和 FEWA 窗口；
+- `controller_state.json`：全局 fresh pool、均匀选择、pull count 与候选审计；
 - `turn_metrics.json` 与 `turn_metrics.csv`：逐轮在线、奖励和真值指标；
 - `extracted_graph.json` 与 `extracted_graph.graphml`：累计恢复图；
 - `turn_logs/llm_responses/`：主响应；
@@ -910,7 +933,7 @@ O(|V_t|\log|V_t|)
 7. 部分图会低估尚未恢复的邻域边，从而改变 BNRR 排序；
 8. 端点最大值只表达“关系涉及至少一个高结构敏感节点”，不表达关系语义风险；
 9. LLM 解析错误和重复幻觉仍可能污染累计图，必须联合报告 precision；
-10. FEWA 的衰减收益假设只做经验诊断，当前结果不支持理论遗憾保证；
+10. 默认 controller 的 uniform fresh 策略是经验诊断结果，不带最优性或遗憾界；
 11. 单个 seed 的 50-turn 结果只能说明该轨迹有效，不能替代多 seed 置信区间；
 12. 当前方法评价的是抽取与优先级，不包含模糊替换、防御效用或正常问答质量实验。
 
@@ -918,13 +941,13 @@ O(|V_t|\log|V_t|)
 
 在当前实现和指标下，可以检验的主张是：
 
-> 相比仅按数量新颖度和简单频率选择锚点，MemATK 使用 BNRR 构造无训练的结构优先级，以 historical anchoring 衡量单位候选的新增结构敏感质量，并通过自适应模式控制与 TS-PL-FEWA 在覆盖新区域和重复开发高产锚点之间分配预算。该方法的效果应由普通 precision/recall、TSC/AUTSC、锚点归因和多 seed 轨迹共同验证。
+> MemATK 使用正 BNRR/sensitivity 作为无训练的结构资格门槛，以 historical anchoring 审计单位候选的新增结构敏感质量，并通过自适应模式控制与全局 uniform-fresh anchor sweep 优先扩大有效 frontier 覆盖。该方法的效果应由普通 precision/recall、TSC/AUTSC、锚点归因和多 seed 轨迹共同验证。
 
 当前不应声称：
 
 - BNRR 等于法律或医学意义上的敏感度；
 - HTSN 是隐藏图真实边际效用的无偏估计；
-- TS-PL-FEWA 对非平稳 LLM 响应具有已证明的最优性或遗憾界；
+- uniform-fresh 对非平稳 LLM 响应具有已证明的最优性或遗憾界；
 - 单一 medical 数据集和单个随机种子可以证明跨域泛化；
 - 高结构覆盖必然转化为有效且低损的防御策略。
 
@@ -932,12 +955,12 @@ O(|V_t|\log|V_t|)
 
 - `src/extraction/models.py`：规范化关系原子与候选批次；
 - `src/extraction/metrics/graph.py`：投影、BNRR、中秩、historical anchoring、HTSN 与 RTSN；
-- `src/extraction/control/admission.py`：合法 arm 与 TS-PL 采样；
-- `src/extraction/control/controllers.py`：自动模式控制、epoch-frozen FEWA 与 rotting 诊断；
+- `src/extraction/control/admission.py`：合法 arm 与兼容的 TS-PL 采样；
+- `src/extraction/control/controllers.py`：自动模式控制、默认 uniform-fresh、兼容的 epoch-frozen FEWA 与 rotting 诊断；
 - `src/extraction/backends/graphrag.py`：动态查询、GraphRAG local search、解析和引用门控；
 - `src/extraction/pipeline.py`：完整顺序流程、奖励归因、验收与产物保存；
 - `src/evaluation/graph_recovery.py`：冻结真值上的 precision、recall、TSC、AUTSC、AUTC 和 Spearman；
-- `configs/extraction/medical/ts_pl_fewa_50turn.yaml`：正式实验参数。
+- `configs/extraction/medical/uniform_fresh_50turn.yaml`：正式默认实验参数。
 
 ## 18. 术语表
 
@@ -946,6 +969,7 @@ O(|V_t|\log|V_t|)
 | BNRR  | Balanced Non-Redundant Reach                        | 度与碰撞有效多样性的几何均值           |
 | HTSN  | Historically Anchored Topological Sensitive Novelty | 查询前历史图锚定的单位候选敏感新增质量 |
 | RTSN  | Retrospective Topological Sensitive Novelty         | 并图后重评分得到的审计指标             |
+| UF    | Uniform Fresh                                       | 在正结构资格池中全局无重复均匀选择锚点 |
 | TS-PL | Topology-Sensitive Plackett--Luce                   | 基于敏感度与欠采样修正的无放回候选采样 |
 | FEWA  | Filtering on Expanding Window Averages              | 用指数增长最近窗口过滤衰减收益 arm     |
 | TSC   | Topology-Sensitive Coverage                         | 冻结真值拓扑权重下的累计覆盖率         |

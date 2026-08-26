@@ -17,6 +17,7 @@ from .config import ExperimentConfig
 from .control.controllers import (
     AdaptiveModeController,
     EpochFewaController,
+    FreshAnchorController,
     rotting_diagnostics,
 )
 from evaluation.graph_recovery import TruthData, aggregate_trajectory, evaluate_recovery
@@ -56,11 +57,16 @@ class MedicalExtractionPipeline:
             max_consecutive_failed_explore=config.max_consecutive_failed_explore,
             seed=config.random_seed,
         )
-        self.arm_controller = EpochFewaController(
-            delta=config.fewa_delta,
-            max_arms=config.fewa_max_arms,
-            seed=config.random_seed,
-        )
+        if config.anchor_sampling_policy == "uniform_fresh":
+            self.arm_controller = FreshAnchorController(seed=config.random_seed)
+        elif config.anchor_sampling_policy == "ts_pl_fewa":
+            self.arm_controller = EpochFewaController(
+                delta=config.fewa_delta,
+                max_arms=config.fewa_max_arms,
+                seed=config.random_seed,
+            )
+        else:  # guarded by ExperimentConfig.validate
+            raise ValueError(config.anchor_sampling_policy)
         self.adapter = AgeaGraphRagAdapter(
             graph_root=config.graph_root,
             data_dir=config.data_dir,

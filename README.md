@@ -1,8 +1,10 @@
 # MemATK
 
 MemATK implements topology-sensitive adaptive graph extraction over a prebuilt
-GraphRAG index. The repository is organized around the formal 50-turn medical
-experiment and its AGEA reference.
+GraphRAG index. Its default controller filters the online frontier with the
+positive-BNRR eligibility gate, then uniformly samples globally fresh anchors.
+The repository is organized around the formal 50-turn medical experiment and
+its AGEA reference.
 
 ## Repository layout
 
@@ -41,8 +43,13 @@ path directly; no dataset copy is kept below `baselines/AGEA`.
 ## Formal medical experiment
 
 ```bash
-./scripts/run_medical_50turn.sh medical_ts_pl_fewa_50turn_seed42
+./scripts/run_medical_50turn.sh medical_uniform_fresh_50turn_seed42
 ```
+
+The default `uniform_fresh` controller does not rank anchors by BNRR magnitude,
+repeat anchors while fresh eligible nodes remain, or use FEWA rewards for
+selection. The former `ts_pl_fewa` controller remains available through its
+explicit legacy configurations for reproducibility.
 
 The runner refuses to overwrite a non-empty directory. Complete output is saved
 under `artifacts/runs/mematk`; the compact paper-facing snapshot is curated under
