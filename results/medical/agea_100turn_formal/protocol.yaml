@@ -1,0 +1,19 @@
+dataset: medical
+designation: official_agea_3seed
+method: standalone_agea
+turns_per_seed: 100
+random_seeds:
+- 40
+- 41
+- 42
+query_method: local
+llm_model: DeepSeek-V4-Flash
+disable_api_thinking: true
+enable_graph_filter: false
+initial_epsilon: 0.3
+epsilon_decay: 0.98
+min_epsilon: 0.05
+novelty_threshold: 0.15
+candidate_k: 6
+seed_policy: native_agea
+aggregation: mean_and_sample_standard_deviation

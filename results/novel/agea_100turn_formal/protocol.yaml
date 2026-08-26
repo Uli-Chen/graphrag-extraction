@@ -1,0 +1,20 @@
+dataset: novel
+run_id: novel_agea_100turn_no_thinking_no_filter_fair
+method: standalone_agea
+turns: 100
+query_method: local
+llm_model: DeepSeek-V4-Flash
+disable_api_thinking: true
+enable_graph_filter: false
+
+initial_epsilon: 0.30
+epsilon_decay: 0.98
+min_epsilon: 0.05
+novelty_threshold: 0.15
+novelty_window: 5
+novelty_threshold_mode: adaptive
+candidate_k: 6
+
+seed_policy: shared_live_query
+seed_queries_path: configs/extraction/novel/seed_queries.txt
+query_retries: 2

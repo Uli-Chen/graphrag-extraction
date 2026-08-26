@@ -1,0 +1,730 @@
+{
+  "dataset": "medical",
+  "run_id": "scratch_medical_ts_pl_fewa_100turn_seed41_20260822",
+  "turns_completed": 100,
+  "truth_nodes": 1178,
+  "truth_directed_edge_pairs": 3046,
+  "final_graph_nodes": 882,
+  "final_graph_relation_triples": 1657,
+  "mean_htsn": 0.17631115233419437,
+  "mean_count_novelty": 0.3478236804338082,
+  "mean_retrospective_gain": 0.05639006792733506,
+  "rotting_diagnostics": {
+    "arms_with_repeated_queries": 8,
+    "adjacent_reward_comparisons": 8,
+    "reward_increases": 0,
+    "violation_rate": 0.0
+  },
+  "arm_diagnostics": {
+    "policy": "topology_pl_fewa",
+    "epochs": 29,
+    "unique_admitted_arms": 79,
+    "unique_selected_arms": 77,
+    "selected_arms": [
+      "ABDOMINAL AND PELVIC EXAM",
+      "ABDOMINAL EXAM",
+      "ADRENAL TUMORS",
+      "ALL",
+      "AMERICAN CANCER SOCIETY",
+      "AMERICAN JOINT COMMITTEE ON CANCER",
+      "ANAL CANCER",
+      "ANAL CANCER FOUNDATION",
+      "ANAL DYSPLASIA",
+      "ANAL SEX",
+      "ANUS",
+      "BASAL CELL SKIN CANCER",
+      "BETOBACCOFREE.GOV",
+      "BIOCHEMICAL TESTS",
+      "BIOMARKER TEST",
+      "BIOPSY",
+      "BLOOD TESTS",
+      "BONE MARROW ASPIRATE",
+      "BONE MARROW BIOPSY",
+      "BREAST EXAM",
+      "CANCER",
+      "CANCER TREATMENT",
+      "CARE TEAM",
+      "CDC",
+      "CHEMOTHERAPY",
+      "CLINICAL PRE-SURGERY STAGE",
+      "CLINICAL TRIAL",
+      "COLORECTAL SURGEON",
+      "COMPLETE REMISSION",
+      "COMPREHENSIVE METABOLIC PANEL",
+      "DIAGNOSTIC TESTS",
+      "DIGITAL RECTAL EXAM",
+      "DNA SEQUENCING",
+      "EBV-RELATED CANCER",
+      "ESOPHAGEAL CANCER",
+      "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION",
+      "GENERAL HEALTH HISTORY",
+      "GENETIC COUNSELING",
+      "GERMLINE MUTATION",
+      "HEAD AND NECK CANCER",
+      "HEMATURIA",
+      "HEMORRHOIDS",
+      "HEREDITARY OVARIAN CANCER",
+      "HOSPITAL",
+      "INFECTIONS",
+      "ISOPSA",
+      "LARYNGEAL CANCER",
+      "LEUKEMIA",
+      "LEUKEMIC MENINGITIS",
+      "LUMBAR PUNCTURE",
+      "LUMP OR MASS NEAR ANUS",
+      "MAMMOGRAM",
+      "MEDICAL HISTORY",
+      "METASTATIC CANCER",
+      "MINIMALLY INVASIVE SURGERY",
+      "NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE",
+      "PAP TEST",
+      "PDEMA/MOHS PROCEDURE",
+      "PELVIC EXENTERATION",
+      "PET SCAN",
+      "PHARYNGOSCOPY",
+      "PHYSICAL EXAM",
+      "PROVIDER",
+      "RELAPSE",
+      "SIDE EFFECTS",
+      "SKIN LESION BIOPSY",
+      "SMOKEFREE.GOV",
+      "SOMATIC MUTATION",
+      "STEM CELL RESCUE",
+      "SUPPORT GROUPS",
+      "TESTING FOR BREAST CANCER",
+      "TESTING FOR OVARIAN CANCER",
+      "TRANSABDOMINAL SURGERY",
+      "TUMOR TESTING",
+      "U.S. NATIONAL LIBRARY OF MEDICINE (NLM)",
+      "ULTRASOUND",
+      "UNITED STATES"
+    ],
+    "mean_admission_to_first_query_delay": 0.9512195121951219,
+    "unqueried_admitted_slots": 5,
+    "mean_epoch_arm_set_turnover": 1.0,
+    "per_epoch": [
+      {
+        "epoch_id": 1,
+        "active_arms": [
+          "CDC",
+          "LUMBAR PUNCTURE",
+          "BONE MARROW BIOPSY"
+        ],
+        "admission_to_first_query_delay": {
+          "CDC": 0,
+          "LUMBAR PUNCTURE": 2,
+          "BONE MARROW BIOPSY": 1
+        }
+      },
+      {
+        "epoch_id": 2,
+        "active_arms": [
+          "PHYSICAL EXAM",
+          "ANAL CANCER",
+          "UNITED STATES"
+        ],
+        "admission_to_first_query_delay": {
+          "PHYSICAL EXAM": 2,
+          "ANAL CANCER": 1,
+          "UNITED STATES": 0
+        }
+      },
+      {
+        "epoch_id": 3,
+        "active_arms": [
+          "CARE TEAM",
+          "ANAL SEX",
+          "AMERICAN CANCER SOCIETY"
+        ],
+        "admission_to_first_query_delay": {
+          "CARE TEAM": 0,
+          "ANAL SEX": 2,
+          "AMERICAN CANCER SOCIETY": 1
+        }
+      },
+      {
+        "epoch_id": 4,
+        "active_arms": [
+          "TESTING FOR OVARIAN CANCER",
+          "CLINICAL TRIAL",
+          "CHEMOTHERAPY"
+        ],
+        "admission_to_first_query_delay": {
+          "TESTING FOR OVARIAN CANCER": 2,
+          "CLINICAL TRIAL": 0,
+          "CHEMOTHERAPY": 1
+        }
+      },
+      {
+        "epoch_id": 5,
+        "active_arms": [
+          "PHYSICAL EXAM",
+          "ABDOMINAL EXAM",
+          "BIOPSY"
+        ],
+        "admission_to_first_query_delay": {
+          "PHYSICAL EXAM": 2,
+          "ABDOMINAL EXAM": 1,
+          "BIOPSY": 0
+        }
+      },
+      {
+        "epoch_id": 6,
+        "active_arms": [
+          "ABDOMINAL AND PELVIC EXAM",
+          "ADRENAL TUMORS",
+          "METASTATIC CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "ABDOMINAL AND PELVIC EXAM": 0,
+          "ADRENAL TUMORS": 2,
+          "METASTATIC CANCER": 1
+        }
+      },
+      {
+        "epoch_id": 7,
+        "active_arms": [
+          "SMOKEFREE.GOV",
+          "DIAGNOSTIC TESTS",
+          "AMERICAN JOINT COMMITTEE ON CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "SMOKEFREE.GOV": 1,
+          "DIAGNOSTIC TESTS": 0,
+          "AMERICAN JOINT COMMITTEE ON CANCER": 2
+        }
+      },
+      {
+        "epoch_id": 8,
+        "active_arms": [
+          "LEUKEMIC MENINGITIS",
+          "LEUKEMIA",
+          "SKIN LESION BIOPSY"
+        ],
+        "admission_to_first_query_delay": {
+          "LEUKEMIC MENINGITIS": 1,
+          "LEUKEMIA": 0,
+          "SKIN LESION BIOPSY": 2
+        }
+      },
+      {
+        "epoch_id": 9,
+        "active_arms": [
+          "GERMLINE MUTATION",
+          "PAP TEST",
+          "BLOOD TESTS"
+        ],
+        "admission_to_first_query_delay": {
+          "GERMLINE MUTATION": 1,
+          "PAP TEST": 2,
+          "BLOOD TESTS": 0
+        }
+      },
+      {
+        "epoch_id": 10,
+        "active_arms": [
+          "ESOPHAGEAL CANCER",
+          "TESTING FOR BREAST CANCER",
+          "BREAST EXAM"
+        ],
+        "admission_to_first_query_delay": {
+          "ESOPHAGEAL CANCER": 2,
+          "TESTING FOR BREAST CANCER": 1,
+          "BREAST EXAM": 0
+        }
+      },
+      {
+        "epoch_id": 11,
+        "active_arms": [
+          "EBV-RELATED CANCER",
+          "GERMLINE MUTATION",
+          "ANAL DYSPLASIA"
+        ],
+        "admission_to_first_query_delay": {
+          "EBV-RELATED CANCER": 0,
+          "GERMLINE MUTATION": null,
+          "ANAL DYSPLASIA": 1
+        }
+      },
+      {
+        "epoch_id": 12,
+        "active_arms": [
+          "PROVIDER",
+          "HEREDITARY OVARIAN CANCER",
+          "GENERAL HEALTH HISTORY"
+        ],
+        "admission_to_first_query_delay": {
+          "PROVIDER": 2,
+          "HEREDITARY OVARIAN CANCER": 0,
+          "GENERAL HEALTH HISTORY": 1
+        }
+      },
+      {
+        "epoch_id": 13,
+        "active_arms": [
+          "STEM CELL RESCUE",
+          "LUMP OR MASS NEAR ANUS",
+          "COLORECTAL SURGEON"
+        ],
+        "admission_to_first_query_delay": {
+          "STEM CELL RESCUE": 0,
+          "LUMP OR MASS NEAR ANUS": 2,
+          "COLORECTAL SURGEON": 1
+        }
+      },
+      {
+        "epoch_id": 14,
+        "active_arms": [
+          "COMPREHENSIVE METABOLIC PANEL",
+          "DNA SEQUENCING",
+          "ANUS"
+        ],
+        "admission_to_first_query_delay": {
+          "COMPREHENSIVE METABOLIC PANEL": 2,
+          "DNA SEQUENCING": 0,
+          "ANUS": 1
+        }
+      },
+      {
+        "epoch_id": 15,
+        "active_arms": [
+          "SOMATIC MUTATION",
+          "GERMLINE MUTATION",
+          "SUPPORT GROUPS"
+        ],
+        "admission_to_first_query_delay": {
+          "SOMATIC MUTATION": 1,
+          "GERMLINE MUTATION": 2,
+          "SUPPORT GROUPS": 0
+        }
+      },
+      {
+        "epoch_id": 16,
+        "active_arms": [
+          "TRANSABDOMINAL SURGERY",
+          "ALL",
+          "BONE MARROW ASPIRATE"
+        ],
+        "admission_to_first_query_delay": {
+          "TRANSABDOMINAL SURGERY": 0,
+          "ALL": 2,
+          "BONE MARROW ASPIRATE": 1
+        }
+      },
+      {
+        "epoch_id": 17,
+        "active_arms": [
+          "BIOMARKER TEST",
+          "BIOCHEMICAL TESTS",
+          "INFECTIONS"
+        ],
+        "admission_to_first_query_delay": {
+          "BIOMARKER TEST": 2,
+          "BIOCHEMICAL TESTS": 1,
+          "INFECTIONS": 0
+        }
+      },
+      {
+        "epoch_id": 18,
+        "active_arms": [
+          "MAMMOGRAM",
+          "TUMOR TESTING",
+          "DIGITAL RECTAL EXAM"
+        ],
+        "admission_to_first_query_delay": {
+          "MAMMOGRAM": 0,
+          "TUMOR TESTING": 2,
+          "DIGITAL RECTAL EXAM": 1
+        }
+      },
+      {
+        "epoch_id": 19,
+        "active_arms": [
+          "CANCER TREATMENT",
+          "PET SCAN",
+          "SIDE EFFECTS"
+        ],
+        "admission_to_first_query_delay": {
+          "CANCER TREATMENT": 0,
+          "PET SCAN": 1,
+          "SIDE EFFECTS": 2
+        }
+      },
+      {
+        "epoch_id": 20,
+        "active_arms": [
+          "CLINICAL TRIAL",
+          "HEMORRHOIDS",
+          "MINIMALLY INVASIVE SURGERY"
+        ],
+        "admission_to_first_query_delay": {
+          "CLINICAL TRIAL": 2,
+          "HEMORRHOIDS": 0,
+          "MINIMALLY INVASIVE SURGERY": 1
+        }
+      },
+      {
+        "epoch_id": 21,
+        "active_arms": [
+          "HEAD AND NECK CANCER",
+          "CLINICAL PRE-SURGERY STAGE",
+          "HEMATURIA"
+        ],
+        "admission_to_first_query_delay": {
+          "HEAD AND NECK CANCER": 0,
+          "CLINICAL PRE-SURGERY STAGE": 1,
+          "HEMATURIA": 2
+        }
+      },
+      {
+        "epoch_id": 22,
+        "active_arms": [
+          "PDEMA/MOHS PROCEDURE",
+          "LARYNGEAL CANCER",
+          "RELAPSE"
+        ],
+        "admission_to_first_query_delay": {
+          "PDEMA/MOHS PROCEDURE": 1,
+          "LARYNGEAL CANCER": 0,
+          "RELAPSE": 2
+        }
+      },
+      {
+        "epoch_id": 23,
+        "active_arms": [
+          "MEDICAL HISTORY",
+          "NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE",
+          "PHYSICAL EXAM"
+        ],
+        "admission_to_first_query_delay": {
+          "MEDICAL HISTORY": 0,
+          "NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE": 1,
+          "PHYSICAL EXAM": null
+        }
+      },
+      {
+        "epoch_id": 24,
+        "active_arms": [
+          "ULTRASOUND",
+          "ISOPSA",
+          "STEM CELL RESCUE"
+        ],
+        "admission_to_first_query_delay": {
+          "ULTRASOUND": 0,
+          "ISOPSA": 1,
+          "STEM CELL RESCUE": 2
+        }
+      },
+      {
+        "epoch_id": 25,
+        "active_arms": [
+          "BETOBACCOFREE.GOV",
+          "ANAL CANCER FOUNDATION",
+          "COMPLETE REMISSION"
+        ],
+        "admission_to_first_query_delay": {
+          "BETOBACCOFREE.GOV": 1,
+          "ANAL CANCER FOUNDATION": 2,
+          "COMPLETE REMISSION": 0
+        }
+      },
+      {
+        "epoch_id": 26,
+        "active_arms": [
+          "PHARYNGOSCOPY",
+          "BASAL CELL SKIN CANCER",
+          "PELVIC EXENTERATION"
+        ],
+        "admission_to_first_query_delay": {
+          "PHARYNGOSCOPY": 2,
+          "BASAL CELL SKIN CANCER": 0,
+          "PELVIC EXENTERATION": 1
+        }
+      },
+      {
+        "epoch_id": 27,
+        "active_arms": [
+          "BETOBACCOFREE.GOV",
+          "U.S. NATIONAL LIBRARY OF MEDICINE (NLM)",
+          "CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "BETOBACCOFREE.GOV": null,
+          "U.S. NATIONAL LIBRARY OF MEDICINE (NLM)": 1,
+          "CANCER": 0
+        }
+      },
+      {
+        "epoch_id": 28,
+        "active_arms": [
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION",
+          "ANAL CANCER",
+          "GENETIC COUNSELING"
+        ],
+        "admission_to_first_query_delay": {
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION": 0,
+          "ANAL CANCER": 2,
+          "GENETIC COUNSELING": 1
+        }
+      },
+      {
+        "epoch_id": 29,
+        "active_arms": [
+          "RADICAL TRACHELECTOMY",
+          "HOSPITAL",
+          "NUTRITIONAL ASSESSMENT"
+        ],
+        "admission_to_first_query_delay": {
+          "RADICAL TRACHELECTOMY": null,
+          "HOSPITAL": 0,
+          "NUTRITIONAL ASSESSMENT": null
+        }
+      }
+    ]
+  },
+  "query_diagnostics": {
+    "total_queries": 100,
+    "unique_queries": 100,
+    "query_unique_rate": 1.0,
+    "zero_gain_turns": 14,
+    "zero_gain_rate": 0.14,
+    "max_consecutive_zero_gain": 2,
+    "zero_graph_gain_turns": 14,
+    "zero_graph_gain_rate": 0.14,
+    "zero_relation_gain_turns": 18,
+    "zero_relation_gain_rate": 0.18,
+    "zero_sensitive_gain_turns": 19,
+    "zero_sensitive_gain_rate": 0.19,
+    "zero_meaningful_gain_turns": 18,
+    "zero_meaningful_gain_rate": 0.18,
+    "max_consecutive_meaningful_zero_gain": 2,
+    "repeated_arms": 8,
+    "repeated_arm_counts": {
+      "ANAL CANCER": 2,
+      "PHYSICAL EXAM": 2,
+      "CLINICAL TRIAL": 2,
+      "GERMLINE MUTATION": 2,
+      "EBV-RELATED CANCER": 2,
+      "STEM CELL RESCUE": 2,
+      "MEDICAL HISTORY": 2,
+      "U.S. NATIONAL LIBRARY OF MEDICINE (NLM)": 2
+    },
+    "nonempty_main_responses": 100,
+    "nonempty_main_response_rate": 1.0,
+    "query_generator_fallback_turns": 2,
+    "query_generator_fallback_rate": 0.02
+  },
+  "mode_diagnostics": {
+    "seed_turns": 1,
+    "post_seed_turns": 99,
+    "post_seed_explore_turns": 14,
+    "post_seed_exploit_turns": 85,
+    "post_seed_explore_ratio": 0.1414141414141414,
+    "post_seed_exploit_ratio": 0.8585858585858586,
+    "both_post_seed_modes_observed": true,
+    "decision_reason_counts": {
+      "epsilon_sample(0.0500)": 1,
+      "epsilon_sample(0.0875)": 1,
+      "epsilon_sample(0.0893)": 1,
+      "epsilon_sample(0.1115)": 1,
+      "epsilon_sample(0.1479)": 1,
+      "epsilon_sample(0.1604)": 1,
+      "epsilon_sample(0.1670)": 1,
+      "epsilon_sample(0.1885)": 1,
+      "epsilon_sample(0.1963)": 1,
+      "epsilon_sample(0.2085)": 1,
+      "epsilon_sample(0.2171)": 1,
+      "epsilon_sample(0.2216)": 1,
+      "epsilon_sample(0.2824)": 1,
+      "epsilon_sample(0.2881)": 1,
+      "fewa(0.0500)": 10,
+      "fewa(0.0507)": 1,
+      "fewa(0.0517)": 1,
+      "fewa(0.0528)": 1,
+      "fewa(0.0539)": 1,
+      "fewa(0.0550)": 1,
+      "fewa(0.0561)": 1,
+      "fewa(0.0572)": 1,
+      "fewa(0.0584)": 1,
+      "fewa(0.0596)": 1,
+      "fewa(0.0608)": 1,
+      "fewa(0.0621)": 1,
+      "fewa(0.0633)": 1,
+      "fewa(0.0646)": 1,
+      "fewa(0.0659)": 1,
+      "fewa(0.0673)": 1,
+      "fewa(0.0686)": 1,
+      "fewa(0.0700)": 1,
+      "fewa(0.0715)": 1,
+      "fewa(0.0729)": 1,
+      "fewa(0.0744)": 1,
+      "fewa(0.0759)": 1,
+      "fewa(0.0775)": 1,
+      "fewa(0.0791)": 1,
+      "fewa(0.0807)": 1,
+      "fewa(0.0823)": 1,
+      "fewa(0.0840)": 1,
+      "fewa(0.0857)": 1,
+      "fewa(0.0911)": 1,
+      "fewa(0.0929)": 1,
+      "fewa(0.0948)": 1,
+      "fewa(0.0968)": 1,
+      "fewa(0.0988)": 1,
+      "fewa(0.1008)": 1,
+      "fewa(0.1028)": 1,
+      "fewa(0.1049)": 1,
+      "fewa(0.1071)": 1,
+      "fewa(0.1093)": 1,
+      "fewa(0.1138)": 1,
+      "fewa(0.1161)": 1,
+      "fewa(0.1184)": 1,
+      "fewa(0.1209)": 1,
+      "fewa(0.1233)": 1,
+      "fewa(0.1258)": 1,
+      "fewa(0.1284)": 1,
+      "fewa(0.1310)": 1,
+      "fewa(0.1337)": 1,
+      "fewa(0.1364)": 1,
+      "fewa(0.1392)": 1,
+      "fewa(0.1421)": 1,
+      "fewa(0.1450)": 1,
+      "fewa(0.1509)": 1,
+      "fewa(0.1540)": 1,
+      "fewa(0.1572)": 1,
+      "fewa(0.1636)": 1,
+      "fewa(0.1704)": 1,
+      "fewa(0.1739)": 1,
+      "fewa(0.1774)": 1,
+      "fewa(0.1810)": 1,
+      "fewa(0.1847)": 1,
+      "fewa(0.1924)": 1,
+      "fewa(0.2003)": 1,
+      "fewa(0.2044)": 1,
+      "fewa(0.2128)": 1,
+      "fewa(0.2261)": 1,
+      "fewa(0.2307)": 1,
+      "fewa(0.2354)": 1,
+      "fewa(0.2402)": 1,
+      "fewa(0.2451)": 1,
+      "fewa(0.2501)": 1,
+      "fewa(0.2552)": 1,
+      "fewa(0.2604)": 1,
+      "fewa(0.2658)": 1,
+      "fewa(0.2712)": 1,
+      "fewa(0.2767)": 1,
+      "fewa(0.2940)": 1,
+      "seed_turn": 1
+    },
+    "by_mode": {
+      "explore": {
+        "turns": 14,
+        "mean_htsn": 0.20775197710383647,
+        "mean_raw_batch_reward": 0.03555414965521941,
+        "mean_effective_fewa_reward": 0.0,
+        "mean_new_nodes": 11.928571428571429,
+        "mean_new_edges": 23.285714285714285
+      },
+      "exploit": {
+        "turns": 85,
+        "mean_htsn": 0.1732069123995967,
+        "mean_raw_batch_reward": 0.024134504623801296,
+        "mean_effective_fewa_reward": 0.024064805266992565,
+        "mean_new_nodes": 7.7176470588235295,
+        "mean_new_edges": 15.270588235294118
+      }
+    }
+  },
+  "anchor_diagnostics": {
+    "eligible_exploit_turns": 85,
+    "query_anchor_adherent_turns": 85,
+    "query_anchor_adherence_rate": 1.0,
+    "response_anchor_text_hit_turns": 85,
+    "response_anchor_text_hit_rate": 1.0,
+    "response_anchor_node_hit_turns": 83,
+    "response_anchor_node_hit_rate": 0.9764705882352941,
+    "response_anchor_adherent_turns": 81,
+    "response_anchor_adherence_rate": 0.9529411764705882,
+    "reward_attribution_warning_turns": 4,
+    "mean_raw_exploit_reward": 0.024134504623801296,
+    "mean_effective_fewa_reward": 0.024064805266992565,
+    "anchor_rejected_query_generations": 4
+  },
+  "formal_acceptance": {
+    "query_unique_rate": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "passed": true
+    },
+    "zero_gain_rate": {
+      "value": 0.14,
+      "threshold": 0.2,
+      "passed": true
+    },
+    "max_consecutive_zero_gain": {
+      "value": 2,
+      "threshold": 4,
+      "passed": true
+    },
+    "max_consecutive_meaningful_zero_gain": {
+      "value": 2,
+      "threshold": 4,
+      "passed": true
+    },
+    "anchor_query_adherence_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "both_post_seed_modes_observed": {
+      "value": 1,
+      "threshold": 1,
+      "passed": true
+    },
+    "nonempty_main_response_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "all_passed": true
+  },
+  "trajectory": {
+    "au_node_tsc_rank": 0.5577367868326004,
+    "au_node_tsc_raw": 0.6536801887794583,
+    "au_edge_tsc_rank": 0.32228454313288346,
+    "au_edge_tsc_raw": 0.3175166521972195,
+    "au_node_recall": 0.4850594227504245,
+    "au_edge_pair_recall": 0.3172127380170715,
+    "au_node_autc_rank": 0.6263851028895545
+  },
+  "final": {
+    "recovered_nodes": 882,
+    "recovered_edge_pairs": 1657,
+    "matched_nodes": 780,
+    "matched_directed_edge_pairs": 1519,
+    "node_precision": 0.8843537414965986,
+    "node_recall": 0.6621392190152802,
+    "edge_pair_precision": 0.9167169583584792,
+    "edge_pair_recall": 0.49868680236375573,
+    "undirected_edge_pair_precision": 0.9657027572293208,
+    "undirected_edge_pair_recall": 0.5010467550593162,
+    "node_tsc_rank": 0.7365727972129461,
+    "node_tsc_raw": 0.8032105948764017,
+    "edge_tsc_rank": 0.5062592731527015,
+    "edge_tsc_raw": 0.4842807114056639,
+    "edge_tsc_noisy_or_rank": 0.5033949162063805,
+    "node_tsc_degree": 0.8438590369853455,
+    "node_tsc_burt_effective": 0.8540723873027737,
+    "node_tsc_collision_diversity": 0.7589565774487926,
+    "node_tsc_burt_balanced": 0.8496089094067271,
+    "degree_weighted_node_coverage": 0.8438590369853455,
+    "pagerank_weighted_node_coverage": 0.7578395196339541,
+    "node_autc_rank": 0.7938138279573244,
+    "spearman_bnrr_online_vs_truth": 0.6704084137108024,
+    "spearman_sensitivity_online_vs_truth": 0.6704084137108024,
+    "spearman_matched_nodes": 780,
+    "top5_sensitive_nodes_recovered": 5,
+    "top10_sensitive_nodes_recovered": 10,
+    "top20_sensitive_nodes_recovered": 20,
+    "top50_sensitive_nodes_recovered": 49
+  }
+}

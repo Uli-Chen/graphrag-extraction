@@ -1,0 +1,684 @@
+{
+  "dataset": "medical",
+  "run_id": "scratch_medical_ts_pl_fewa_100turn_seed42_20260822",
+  "turns_completed": 100,
+  "truth_nodes": 1178,
+  "truth_directed_edge_pairs": 3046,
+  "final_graph_nodes": 898,
+  "final_graph_relation_triples": 1635,
+  "mean_htsn": 0.15266508499659992,
+  "mean_count_novelty": 0.30036625867987093,
+  "mean_retrospective_gain": 0.04978463041830728,
+  "rotting_diagnostics": {
+    "arms_with_repeated_queries": 1,
+    "adjacent_reward_comparisons": 1,
+    "reward_increases": 0,
+    "violation_rate": 0.0
+  },
+  "arm_diagnostics": {
+    "policy": "topology_pl_fewa",
+    "epochs": 26,
+    "unique_admitted_arms": 77,
+    "unique_selected_arms": 77,
+    "selected_arms": [
+      "4KSCORE",
+      "ABDOMINAL AND PELVIC EXAM",
+      "ACUTE LYMPHOBLASTIC LEUKEMIA",
+      "ADVANCED-STAGE PROSTATE CANCER",
+      "ALPHA-FETOPROTEIN (AFP) TEST",
+      "B SYMPTOMS",
+      "BIOPSY",
+      "BLACK PEOPLE",
+      "BLOOD TESTS",
+      "BONE MARROW BIOPSY",
+      "BRCA MUTATION",
+      "BREAST DEVELOPMENT",
+      "CANCER STAGING",
+      "CANCER TREATMENT",
+      "CARDIOLOGIST",
+      "CHECKPOINT INHIBITORS",
+      "CHRONIC HEPATITIS B",
+      "CHRONIC MYELOID LEUKEMIA",
+      "CLL",
+      "COLON CANCER",
+      "COMPLETE BLOOD COUNT AND DIFFERENTIAL",
+      "COMPUTED TOMOGRAPHY",
+      "COMPUTED TOMOGRAPHY (CT) SCAN",
+      "CREATE A MEDICAL BINDER",
+      "DEEP VEIN THROMBOSIS",
+      "DIAGNOSTIC TESTING",
+      "DIAGNOSTIC TESTS",
+      "DOCTOR",
+      "EARLY DETECTION",
+      "EXTERNAL BEAM RADIATION THERAPY",
+      "EXTRAFASCIAL HYSTERECTOMY",
+      "FAMILY HISTORY",
+      "FAMILY MEMBERS",
+      "FERTILITY PRESERVATION",
+      "FERTILITY-SPARING TREATMENT",
+      "GENETIC TEST",
+      "GENETIC TESTS",
+      "HEALTH CARE PROVIDER",
+      "HEART TESTS",
+      "HEPATITIS C",
+      "HEREDITARY GENE TESTING",
+      "INFLAMMATION",
+      "LI-FRAUMENI SYNDROME",
+      "LOW BLOOD CELL COUNTS",
+      "LYNCH SYNDROME",
+      "MEDICAL HISTORY",
+      "MEDICAL HISTORY AND PHYSICAL EXAM (H&P)",
+      "MEDICAL ONCOLOGIST",
+      "MEDICAL PROVIDERS",
+      "MEDICAL TEAM",
+      "MISMATCH REPAIR",
+      "NASOPHARYNGEAL CANCER STAGING",
+      "NATURAL PREGNANCY",
+      "NAUSEA",
+      "NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD)",
+      "ORGAN TRANSPLANT",
+      "PET",
+      "PROGNOSIS",
+      "PROLONGED CORRECTED QT INTERVAL",
+      "QUITTING SMOKING",
+      "RADICAL TRACHELECTOMY",
+      "RADIOLOGY",
+      "RET MUTATIONS",
+      "RICHTER TRANSFORMATION",
+      "SERIOUS BLOOD CLOTS",
+      "SIDE EFFECTS",
+      "SUPPORT GROUPS",
+      "SUPPORTIVE CARE",
+      "TARGETED THERAPY",
+      "TESTING FOR OVARIAN CANCER",
+      "TESTS",
+      "TISSUE TESTS",
+      "TMB-H",
+      "TREATMENT",
+      "TUMOR STAGING",
+      "TUMOR TESTING",
+      "ULTRASOUND"
+    ],
+    "mean_admission_to_first_query_delay": 0.987012987012987,
+    "unqueried_admitted_slots": 1,
+    "mean_epoch_arm_set_turnover": 1.0,
+    "per_epoch": [
+      {
+        "epoch_id": 1,
+        "active_arms": [
+          "TUMOR STAGING",
+          "MEDICAL HISTORY AND PHYSICAL EXAM (H&P)",
+          "DIAGNOSTIC TESTS"
+        ],
+        "admission_to_first_query_delay": {
+          "TUMOR STAGING": 2,
+          "MEDICAL HISTORY AND PHYSICAL EXAM (H&P)": 1,
+          "DIAGNOSTIC TESTS": 0
+        }
+      },
+      {
+        "epoch_id": 2,
+        "active_arms": [
+          "MEDICAL TEAM",
+          "DIAGNOSTIC TESTING",
+          "SIDE EFFECTS"
+        ],
+        "admission_to_first_query_delay": {
+          "MEDICAL TEAM": 2,
+          "DIAGNOSTIC TESTING": 0,
+          "SIDE EFFECTS": 1
+        }
+      },
+      {
+        "epoch_id": 3,
+        "active_arms": [
+          "BLACK PEOPLE",
+          "MEDICAL HISTORY",
+          "TARGETED THERAPY"
+        ],
+        "admission_to_first_query_delay": {
+          "BLACK PEOPLE": 2,
+          "MEDICAL HISTORY": 0,
+          "TARGETED THERAPY": 1
+        }
+      },
+      {
+        "epoch_id": 4,
+        "active_arms": [
+          "HEPATITIS C",
+          "MEDICAL PROVIDERS",
+          "SERIOUS BLOOD CLOTS"
+        ],
+        "admission_to_first_query_delay": {
+          "HEPATITIS C": 0,
+          "MEDICAL PROVIDERS": 1,
+          "SERIOUS BLOOD CLOTS": 2
+        }
+      },
+      {
+        "epoch_id": 5,
+        "active_arms": [
+          "SUPPORTIVE CARE",
+          "LOW BLOOD CELL COUNTS",
+          "CANCER STAGING"
+        ],
+        "admission_to_first_query_delay": {
+          "SUPPORTIVE CARE": 1,
+          "LOW BLOOD CELL COUNTS": 2,
+          "CANCER STAGING": 0
+        }
+      },
+      {
+        "epoch_id": 6,
+        "active_arms": [
+          "GENETIC TEST",
+          "MISMATCH REPAIR",
+          "ADVANCED-STAGE PROSTATE CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "GENETIC TEST": 1,
+          "MISMATCH REPAIR": 2,
+          "ADVANCED-STAGE PROSTATE CANCER": 0
+        }
+      },
+      {
+        "epoch_id": 7,
+        "active_arms": [
+          "HEALTH CARE PROVIDER",
+          "LYNCH SYNDROME",
+          "CLL"
+        ],
+        "admission_to_first_query_delay": {
+          "HEALTH CARE PROVIDER": 1,
+          "LYNCH SYNDROME": 2,
+          "CLL": 0
+        }
+      },
+      {
+        "epoch_id": 8,
+        "active_arms": [
+          "TREATMENT",
+          "CANCER TREATMENT",
+          "MEDICAL ONCOLOGIST"
+        ],
+        "admission_to_first_query_delay": {
+          "TREATMENT": 1,
+          "CANCER TREATMENT": 0,
+          "MEDICAL ONCOLOGIST": 2
+        }
+      },
+      {
+        "epoch_id": 9,
+        "active_arms": [
+          "BLOOD TESTS",
+          "SUPPORT GROUPS",
+          "PET"
+        ],
+        "admission_to_first_query_delay": {
+          "BLOOD TESTS": 0,
+          "SUPPORT GROUPS": 1,
+          "PET": 2
+        }
+      },
+      {
+        "epoch_id": 10,
+        "active_arms": [
+          "DEEP VEIN THROMBOSIS",
+          "HEREDITARY GENE TESTING",
+          "QUITTING SMOKING"
+        ],
+        "admission_to_first_query_delay": {
+          "DEEP VEIN THROMBOSIS": 1,
+          "HEREDITARY GENE TESTING": 0,
+          "QUITTING SMOKING": 2
+        }
+      },
+      {
+        "epoch_id": 11,
+        "active_arms": [
+          "FAMILY HISTORY",
+          "COMPLETE BLOOD COUNT AND DIFFERENTIAL",
+          "B SYMPTOMS"
+        ],
+        "admission_to_first_query_delay": {
+          "FAMILY HISTORY": 0,
+          "COMPLETE BLOOD COUNT AND DIFFERENTIAL": 1,
+          "B SYMPTOMS": 2
+        }
+      },
+      {
+        "epoch_id": 12,
+        "active_arms": [
+          "TMB-H",
+          "ACUTE LYMPHOBLASTIC LEUKEMIA",
+          "HEART TESTS"
+        ],
+        "admission_to_first_query_delay": {
+          "TMB-H": 2,
+          "ACUTE LYMPHOBLASTIC LEUKEMIA": 0,
+          "HEART TESTS": 1
+        }
+      },
+      {
+        "epoch_id": 13,
+        "active_arms": [
+          "4KSCORE",
+          "GENETIC TESTS",
+          "RICHTER TRANSFORMATION"
+        ],
+        "admission_to_first_query_delay": {
+          "4KSCORE": 2,
+          "GENETIC TESTS": 0,
+          "RICHTER TRANSFORMATION": 1
+        }
+      },
+      {
+        "epoch_id": 14,
+        "active_arms": [
+          "BRCA MUTATION",
+          "FERTILITY PRESERVATION",
+          "ULTRASOUND"
+        ],
+        "admission_to_first_query_delay": {
+          "BRCA MUTATION": 1,
+          "FERTILITY PRESERVATION": 2,
+          "ULTRASOUND": 0
+        }
+      },
+      {
+        "epoch_id": 15,
+        "active_arms": [
+          "TISSUE TESTS",
+          "NATURAL PREGNANCY",
+          "TESTING FOR OVARIAN CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "TISSUE TESTS": 2,
+          "NATURAL PREGNANCY": 1,
+          "TESTING FOR OVARIAN CANCER": 0
+        }
+      },
+      {
+        "epoch_id": 16,
+        "active_arms": [
+          "BREAST DEVELOPMENT",
+          "CHECKPOINT INHIBITORS",
+          "BIOPSY"
+        ],
+        "admission_to_first_query_delay": {
+          "BREAST DEVELOPMENT": 1,
+          "CHECKPOINT INHIBITORS": 2,
+          "BIOPSY": 0
+        }
+      },
+      {
+        "epoch_id": 17,
+        "active_arms": [
+          "FAMILY MEMBERS",
+          "NASOPHARYNGEAL CANCER STAGING",
+          "CREATE A MEDICAL BINDER"
+        ],
+        "admission_to_first_query_delay": {
+          "FAMILY MEMBERS": 0,
+          "NASOPHARYNGEAL CANCER STAGING": 2,
+          "CREATE A MEDICAL BINDER": 1
+        }
+      },
+      {
+        "epoch_id": 18,
+        "active_arms": [
+          "CHRONIC HEPATITIS B",
+          "TUMOR TESTING",
+          "RADICAL TRACHELECTOMY"
+        ],
+        "admission_to_first_query_delay": {
+          "CHRONIC HEPATITIS B": 1,
+          "TUMOR TESTING": 0,
+          "RADICAL TRACHELECTOMY": 2
+        }
+      },
+      {
+        "epoch_id": 19,
+        "active_arms": [
+          "COMPUTED TOMOGRAPHY",
+          "COLON CANCER",
+          "FERTILITY-SPARING TREATMENT"
+        ],
+        "admission_to_first_query_delay": {
+          "COMPUTED TOMOGRAPHY": 2,
+          "COLON CANCER": 0,
+          "FERTILITY-SPARING TREATMENT": 1
+        }
+      },
+      {
+        "epoch_id": 20,
+        "active_arms": [
+          "EXTRAFASCIAL HYSTERECTOMY",
+          "RET MUTATIONS",
+          "INFLAMMATION"
+        ],
+        "admission_to_first_query_delay": {
+          "EXTRAFASCIAL HYSTERECTOMY": 0,
+          "RET MUTATIONS": 2,
+          "INFLAMMATION": 1
+        }
+      },
+      {
+        "epoch_id": 21,
+        "active_arms": [
+          "EXTERNAL BEAM RADIATION THERAPY",
+          "ALPHA-FETOPROTEIN (AFP) TEST",
+          "EARLY DETECTION"
+        ],
+        "admission_to_first_query_delay": {
+          "EXTERNAL BEAM RADIATION THERAPY": 0,
+          "ALPHA-FETOPROTEIN (AFP) TEST": 2,
+          "EARLY DETECTION": 1
+        }
+      },
+      {
+        "epoch_id": 22,
+        "active_arms": [
+          "ORGAN TRANSPLANT",
+          "BONE MARROW BIOPSY",
+          "LI-FRAUMENI SYNDROME"
+        ],
+        "admission_to_first_query_delay": {
+          "ORGAN TRANSPLANT": 2,
+          "BONE MARROW BIOPSY": 0,
+          "LI-FRAUMENI SYNDROME": 1
+        }
+      },
+      {
+        "epoch_id": 23,
+        "active_arms": [
+          "RADIOLOGY",
+          "NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD)",
+          "NAUSEA"
+        ],
+        "admission_to_first_query_delay": {
+          "RADIOLOGY": 2,
+          "NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD)": 0,
+          "NAUSEA": 1
+        }
+      },
+      {
+        "epoch_id": 24,
+        "active_arms": [
+          "COMPUTED TOMOGRAPHY (CT) SCAN",
+          "ABDOMINAL AND PELVIC EXAM",
+          "TESTS"
+        ],
+        "admission_to_first_query_delay": {
+          "COMPUTED TOMOGRAPHY (CT) SCAN": 0,
+          "ABDOMINAL AND PELVIC EXAM": 1,
+          "TESTS": 2
+        }
+      },
+      {
+        "epoch_id": 25,
+        "active_arms": [
+          "DOCTOR",
+          "CHRONIC MYELOID LEUKEMIA",
+          "EXTRAFASCIAL HYSTERECTOMY"
+        ],
+        "admission_to_first_query_delay": {
+          "DOCTOR": 0,
+          "CHRONIC MYELOID LEUKEMIA": 1,
+          "EXTRAFASCIAL HYSTERECTOMY": null
+        }
+      },
+      {
+        "epoch_id": 26,
+        "active_arms": [
+          "PROGNOSIS",
+          "PROLONGED CORRECTED QT INTERVAL",
+          "CARDIOLOGIST"
+        ],
+        "admission_to_first_query_delay": {
+          "PROGNOSIS": 0,
+          "PROLONGED CORRECTED QT INTERVAL": 1,
+          "CARDIOLOGIST": 2
+        }
+      }
+    ]
+  },
+  "query_diagnostics": {
+    "total_queries": 100,
+    "unique_queries": 100,
+    "query_unique_rate": 1.0,
+    "zero_gain_turns": 10,
+    "zero_gain_rate": 0.1,
+    "max_consecutive_zero_gain": 2,
+    "zero_graph_gain_turns": 10,
+    "zero_graph_gain_rate": 0.1,
+    "zero_relation_gain_turns": 18,
+    "zero_relation_gain_rate": 0.18,
+    "zero_sensitive_gain_turns": 19,
+    "zero_sensitive_gain_rate": 0.19,
+    "zero_meaningful_gain_turns": 18,
+    "zero_meaningful_gain_rate": 0.18,
+    "max_consecutive_meaningful_zero_gain": 3,
+    "repeated_arms": 1,
+    "repeated_arm_counts": {
+      "DOCTOR": 2
+    },
+    "nonempty_main_responses": 100,
+    "nonempty_main_response_rate": 1.0,
+    "query_generator_fallback_turns": 2,
+    "query_generator_fallback_rate": 0.02
+  },
+  "mode_diagnostics": {
+    "seed_turns": 1,
+    "post_seed_turns": 99,
+    "post_seed_explore_turns": 21,
+    "post_seed_exploit_turns": 78,
+    "post_seed_explore_ratio": 0.21212121212121213,
+    "post_seed_exploit_ratio": 0.7878787878787878,
+    "both_post_seed_modes_observed": true,
+    "decision_reason_counts": {
+      "epsilon_sample(0.0500)": 1,
+      "epsilon_sample(0.0686)": 1,
+      "epsilon_sample(0.1093)": 1,
+      "epsilon_sample(0.1138)": 1,
+      "epsilon_sample(0.1209)": 1,
+      "epsilon_sample(0.1604)": 1,
+      "epsilon_sample(0.1636)": 1,
+      "epsilon_sample(0.1739)": 1,
+      "epsilon_sample(0.1885)": 1,
+      "epsilon_sample(0.2128)": 1,
+      "epsilon_sample(0.2171)": 1,
+      "epsilon_sample(0.2261)": 1,
+      "epsilon_sample(0.2354)": 1,
+      "epsilon_sample(0.2451)": 1,
+      "epsilon_sample(0.2658)": 1,
+      "epsilon_sample(0.2881)": 1,
+      "fewa(0.0500)": 10,
+      "fewa(0.0507)": 1,
+      "fewa(0.0517)": 1,
+      "fewa(0.0528)": 1,
+      "fewa(0.0539)": 1,
+      "fewa(0.0550)": 1,
+      "fewa(0.0561)": 1,
+      "fewa(0.0572)": 1,
+      "fewa(0.0584)": 1,
+      "fewa(0.0596)": 1,
+      "fewa(0.0608)": 1,
+      "fewa(0.0621)": 1,
+      "fewa(0.0633)": 1,
+      "fewa(0.0646)": 1,
+      "fewa(0.0659)": 1,
+      "fewa(0.0673)": 1,
+      "fewa(0.0700)": 1,
+      "fewa(0.0715)": 1,
+      "fewa(0.0729)": 1,
+      "fewa(0.0744)": 1,
+      "fewa(0.0759)": 1,
+      "fewa(0.0775)": 1,
+      "fewa(0.0791)": 1,
+      "fewa(0.0807)": 1,
+      "fewa(0.0823)": 1,
+      "fewa(0.0840)": 1,
+      "fewa(0.0857)": 1,
+      "fewa(0.0875)": 1,
+      "fewa(0.0893)": 1,
+      "fewa(0.0911)": 1,
+      "fewa(0.0929)": 1,
+      "fewa(0.0988)": 1,
+      "fewa(0.1008)": 1,
+      "fewa(0.1028)": 1,
+      "fewa(0.1049)": 1,
+      "fewa(0.1071)": 1,
+      "fewa(0.1115)": 1,
+      "fewa(0.1161)": 1,
+      "fewa(0.1184)": 1,
+      "fewa(0.1233)": 1,
+      "fewa(0.1258)": 1,
+      "fewa(0.1284)": 1,
+      "fewa(0.1310)": 1,
+      "fewa(0.1337)": 1,
+      "fewa(0.1364)": 1,
+      "fewa(0.1392)": 1,
+      "fewa(0.1421)": 1,
+      "fewa(0.1450)": 1,
+      "fewa(0.1479)": 1,
+      "fewa(0.1509)": 1,
+      "fewa(0.1540)": 1,
+      "fewa(0.1572)": 1,
+      "fewa(0.1670)": 1,
+      "fewa(0.1704)": 1,
+      "fewa(0.1774)": 1,
+      "fewa(0.1810)": 1,
+      "fewa(0.1847)": 1,
+      "fewa(0.1924)": 1,
+      "fewa(0.1963)": 1,
+      "fewa(0.2003)": 1,
+      "fewa(0.2044)": 1,
+      "fewa(0.2085)": 1,
+      "fewa(0.2216)": 1,
+      "fewa(0.2402)": 1,
+      "fewa(0.2501)": 1,
+      "fewa(0.2552)": 1,
+      "fewa(0.2604)": 1,
+      "fewa(0.2712)": 1,
+      "fewa(0.2940)": 1,
+      "recent_htsn_below_threshold(0.0474)": 1,
+      "recent_htsn_below_threshold(0.0484)": 1,
+      "recent_htsn_below_threshold(0.1154)": 1,
+      "recent_htsn_below_threshold(0.1384)": 1,
+      "recent_htsn_below_threshold(0.1412)": 1,
+      "seed_turn": 1
+    },
+    "by_mode": {
+      "explore": {
+        "turns": 21,
+        "mean_htsn": 0.16982222079408726,
+        "mean_raw_batch_reward": 0.028906522887824544,
+        "mean_effective_fewa_reward": 0.0,
+        "mean_new_nodes": 13.333333333333334,
+        "mean_new_edges": 19.38095238095238
+      },
+      "exploit": {
+        "turns": 78,
+        "mean_htsn": 0.15000310080748924,
+        "mean_raw_batch_reward": 0.0254208062845997,
+        "mean_effective_fewa_reward": 0.022801514347865363,
+        "mean_new_nodes": 7.166666666666667,
+        "mean_new_edges": 15.320512820512821
+      }
+    }
+  },
+  "anchor_diagnostics": {
+    "eligible_exploit_turns": 78,
+    "query_anchor_adherent_turns": 78,
+    "query_anchor_adherence_rate": 1.0,
+    "response_anchor_text_hit_turns": 78,
+    "response_anchor_text_hit_rate": 1.0,
+    "response_anchor_node_hit_turns": 75,
+    "response_anchor_node_hit_rate": 0.9615384615384616,
+    "response_anchor_adherent_turns": 71,
+    "response_anchor_adherence_rate": 0.9102564102564102,
+    "reward_attribution_warning_turns": 7,
+    "mean_raw_exploit_reward": 0.0254208062845997,
+    "mean_effective_fewa_reward": 0.022801514347865363,
+    "anchor_rejected_query_generations": 0
+  },
+  "formal_acceptance": {
+    "query_unique_rate": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "passed": true
+    },
+    "zero_gain_rate": {
+      "value": 0.1,
+      "threshold": 0.2,
+      "passed": true
+    },
+    "max_consecutive_zero_gain": {
+      "value": 2,
+      "threshold": 4,
+      "passed": true
+    },
+    "max_consecutive_meaningful_zero_gain": {
+      "value": 3,
+      "threshold": 4,
+      "passed": true
+    },
+    "anchor_query_adherence_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "both_post_seed_modes_observed": {
+      "value": 1,
+      "threshold": 1,
+      "passed": true
+    },
+    "nonempty_main_response_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "all_passed": true
+  },
+  "trajectory": {
+    "au_node_tsc_rank": 0.5090521268748441,
+    "au_node_tsc_raw": 0.6157069626245875,
+    "au_edge_tsc_rank": 0.28978724056919786,
+    "au_edge_tsc_raw": 0.2817181788785904,
+    "au_node_recall": 0.440848896434635,
+    "au_edge_pair_recall": 0.28579120157583726,
+    "au_node_autc_rank": 0.5829281268784416
+  },
+  "final": {
+    "recovered_nodes": 898,
+    "recovered_edge_pairs": 1635,
+    "matched_nodes": 778,
+    "matched_directed_edge_pairs": 1526,
+    "node_precision": 0.8663697104677061,
+    "node_recall": 0.6604414261460102,
+    "edge_pair_precision": 0.9333333333333333,
+    "edge_pair_recall": 0.5009848982271832,
+    "undirected_edge_pair_precision": 0.9781718963165075,
+    "undirected_edge_pair_recall": 0.5003489183531054,
+    "node_tsc_rank": 0.7444091586409542,
+    "node_tsc_raw": 0.8076777313415058,
+    "edge_tsc_rank": 0.5074377514109838,
+    "edge_tsc_raw": 0.49260520512209655,
+    "edge_tsc_noisy_or_rank": 0.5052978030822598,
+    "node_tsc_degree": 0.8443824145150035,
+    "node_tsc_burt_effective": 0.8592142160951461,
+    "node_tsc_collision_diversity": 0.7675920463277995,
+    "node_tsc_burt_balanced": 0.8529212614465613,
+    "degree_weighted_node_coverage": 0.8443824145150035,
+    "pagerank_weighted_node_coverage": 0.7478107360805986,
+    "node_autc_rank": 0.8016671192913081,
+    "spearman_bnrr_online_vs_truth": 0.6796234139382688,
+    "spearman_sensitivity_online_vs_truth": 0.6796234139382688,
+    "spearman_matched_nodes": 778,
+    "top5_sensitive_nodes_recovered": 5,
+    "top10_sensitive_nodes_recovered": 10,
+    "top20_sensitive_nodes_recovered": 20,
+    "top50_sensitive_nodes_recovered": 50
+  }
+}

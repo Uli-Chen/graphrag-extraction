@@ -1,0 +1,59 @@
+{
+  "dataset": "medical",
+  "llm_model": "DeepSeek_V4_Flash",
+  "random_seed": 41,
+  "final_stats": {
+    "num_nodes": 999,
+    "num_edges": 1751
+  },
+  "exploration_stats": {
+    "explore_count": 14,
+    "exploit_count": 85,
+    "explore_ratio": 0.14,
+    "total_queries": 100
+  },
+  "leakage_analysis": {
+    "avg_novelty": 0.3602699770813064,
+    "total_new_entities": 999,
+    "total_new_relationships": 1751,
+    "avg_entities_per_turn": 9.99,
+    "avg_relationships_per_turn": 17.51
+  },
+  "extraction_analysis": {
+    "leakage_rate_nodes": 69.8641765704584,
+    "leakage_rate_edges": 52.69205515430072,
+    "precision_nodes": 82.46492985971943,
+    "precision_edges": 91.66190748143917,
+    "noise_rate_nodes": 17.535070140280563,
+    "noise_rate_edges": 8.338092518560822,
+    "original_graph_nodes": 1178,
+    "original_graph_edges": 3046,
+    "total_extracted_nodes": 999,
+    "total_extracted_edges": 1751
+  },
+  "extraction_analysis_raw": {
+    "leakage_rate_nodes": 69.8641765704584,
+    "leakage_rate_edges": 52.69205515430072,
+    "precision_nodes": 82.46492985971943,
+    "precision_edges": 91.66190748143917,
+    "noise_rate_nodes": 17.535070140280563,
+    "noise_rate_edges": 8.338092518560822,
+    "original_graph_nodes": 1178,
+    "original_graph_edges": 3046,
+    "total_extracted_nodes": 999,
+    "total_extracted_edges": 1751
+  },
+  "extraction_summary": {
+    "total_turns": 100,
+    "final_epsilon": 0.05,
+    "total_experiment_time_seconds": 6169.028800010681,
+    "total_experiment_time_minutes": 102.81714666684469,
+    "total_experiment_time_hours": 1.7136191111140782,
+    "query_efficiency": {
+      "entities_per_query": 9.99,
+      "relationships_per_query": 17.51,
+      "novelty_rate": 0.3602699770813064
+    }
+  },
+  "timestamp": 1787401685.689906
+}

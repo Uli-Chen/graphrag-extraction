@@ -1,0 +1,179 @@
+# Medical extraction results
+
+- Run: `scratch_medical_ts_pl_fewa_100turn_seed41_20260822`
+- Turns: 100
+- Recovered graph: 882 nodes / 1657 relation triples
+- Node precision: 0.8844
+- Node recall: 0.6621
+- Directed edge-pair precision: 0.9167
+- Directed edge-pair recall: 0.4987
+- Node TSC (rank): 0.7366
+- Edge TSC (rank): 0.5063
+- AUTSC, node rank: 0.5577
+- AUTSC, edge rank: 0.3223
+- Mean HTSN: 0.1763
+- Mean count novelty: 0.3478
+- Post-seed explore/exploit: 14/85
+- Exploit query anchor adherence: 1.0000
+- Exploit response anchor adherence: 0.9529
+
+| Turn | Mode | Reason | Anchor | HTSN | Raw reward | Effective FEWA | Anchor response | Node TSC | Edge TSC |
+|---:|---|---|---|---:|---:|---:|---|---:|---:|
+| 1 | explore | seed_turn | - | 0.0000 | 0.0000 | - | - | 0.0612 | 0.0108 |
+| 2 | exploit | fewa(0.2940) | CDC | 0.2534 | 0.0322 | 0.0322 | yes | 0.0917 | 0.0188 |
+| 3 | explore | epsilon_sample(0.2881) | - | 0.1518 | 0.0270 | - | - | 0.1197 | 0.0274 |
+| 4 | explore | epsilon_sample(0.2824) | - | 0.1860 | 0.0149 | - | - | 0.1369 | 0.0316 |
+| 5 | exploit | fewa(0.2767) | BONE MARROW BIOPSY | 0.2768 | 0.0330 | 0.0330 | yes | 0.1552 | 0.0388 |
+| 6 | exploit | fewa(0.2712) | LUMBAR PUNCTURE | 0.3353 | 0.0851 | 0.0851 | yes | 0.1911 | 0.0558 |
+| 7 | exploit | fewa(0.2658) | UNITED STATES | 0.0940 | 0.0050 | 0.0000 | no | 0.2020 | 0.0571 |
+| 8 | exploit | fewa(0.2604) | ANAL CANCER | 0.3451 | 0.0957 | 0.0957 | yes | 0.2497 | 0.0820 |
+| 9 | exploit | fewa(0.2552) | PHYSICAL EXAM | 0.2239 | 0.0490 | 0.0490 | yes | 0.2881 | 0.1000 |
+| 10 | exploit | fewa(0.2501) | CARE TEAM | 0.3647 | 0.0577 | 0.0577 | yes | 0.2996 | 0.1106 |
+| 11 | exploit | fewa(0.2451) | AMERICAN CANCER SOCIETY | 0.0000 | 0.0000 | 0.0000 | yes | 0.2996 | 0.1106 |
+| 12 | exploit | fewa(0.2402) | ANAL SEX | 0.1644 | 0.0205 | 0.0205 | yes | 0.3005 | 0.1117 |
+| 13 | exploit | fewa(0.2354) | CLINICAL TRIAL | 0.4261 | 0.0533 | 0.0533 | yes | 0.3160 | 0.1211 |
+| 14 | exploit | fewa(0.2307) | CHEMOTHERAPY | 0.2146 | 0.0306 | 0.0306 | yes | 0.3256 | 0.1271 |
+| 15 | exploit | fewa(0.2261) | TESTING FOR OVARIAN CANCER | 0.5219 | 0.0316 | 0.0316 | yes | 0.3263 | 0.1334 |
+| 16 | explore | epsilon_sample(0.2216) | - | 0.0000 | 0.0000 | - | - | 0.3318 | 0.1334 |
+| 17 | explore | epsilon_sample(0.2171) | - | 0.4413 | 0.0664 | - | - | 0.3476 | 0.1404 |
+| 18 | exploit | fewa(0.2128) | BIOPSY | 0.2671 | 0.0282 | 0.0282 | yes | 0.3629 | 0.1455 |
+| 19 | explore | epsilon_sample(0.2085) | - | 0.4328 | 0.0989 | - | - | 0.3854 | 0.1573 |
+| 20 | exploit | fewa(0.2044) | ABDOMINAL EXAM | 0.1388 | 0.0398 | 0.0398 | yes | 0.4055 | 0.1651 |
+| 21 | exploit | fewa(0.2003) | PHYSICAL EXAM | 0.0000 | 0.0000 | 0.0000 | yes | 0.4090 | 0.1651 |
+| 22 | explore | epsilon_sample(0.1963) | - | 0.3467 | 0.0840 | - | - | 0.4276 | 0.1816 |
+| 23 | exploit | fewa(0.1924) | ABDOMINAL AND PELVIC EXAM | 0.2271 | 0.0594 | 0.0594 | yes | 0.4475 | 0.1937 |
+| 24 | explore | epsilon_sample(0.1885) | - | 0.1515 | 0.0186 | - | - | 0.4598 | 0.1994 |
+| 25 | exploit | fewa(0.1847) | METASTATIC CANCER | 0.3819 | 0.0798 | 0.0798 | yes | 0.4841 | 0.2151 |
+| 26 | exploit | fewa(0.1810) | ADRENAL TUMORS | 0.3809 | 0.0640 | 0.0640 | yes | 0.4944 | 0.2236 |
+| 27 | exploit | fewa(0.1774) | DIAGNOSTIC TESTS | 0.0388 | 0.0081 | 0.0081 | yes | 0.4979 | 0.2250 |
+| 28 | exploit | fewa(0.1739) | SMOKEFREE.GOV | 0.2870 | 0.0420 | 0.0420 | yes | 0.5017 | 0.2341 |
+| 29 | exploit | fewa(0.1704) | AMERICAN JOINT COMMITTEE ON CANCER | 0.1398 | 0.0085 | 0.0085 | yes | 0.5076 | 0.2367 |
+| 30 | explore | epsilon_sample(0.1670) | - | 0.2104 | 0.0464 | - | - | 0.5175 | 0.2473 |
+| 31 | exploit | fewa(0.1636) | LEUKEMIA | 0.2008 | 0.0388 | 0.0388 | yes | 0.5245 | 0.2550 |
+| 32 | explore | epsilon_sample(0.1604) | - | 0.2773 | 0.0368 | - | - | 0.5316 | 0.2631 |
+| 33 | exploit | fewa(0.1572) | LEUKEMIC MENINGITIS | 0.1076 | 0.0246 | 0.0246 | yes | 0.5420 | 0.2691 |
+| 34 | exploit | fewa(0.1540) | SKIN LESION BIOPSY | 0.2191 | 0.0146 | 0.0146 | yes | 0.5476 | 0.2723 |
+| 35 | exploit | fewa(0.1509) | BLOOD TESTS | 0.1573 | 0.0323 | 0.0323 | yes | 0.5515 | 0.2786 |
+| 36 | explore | epsilon_sample(0.1479) | - | 0.2051 | 0.0400 | - | - | 0.5533 | 0.2862 |
+| 37 | exploit | fewa(0.1450) | GERMLINE MUTATION | 0.1380 | 0.0183 | 0.0183 | yes | 0.5539 | 0.2900 |
+| 38 | exploit | fewa(0.1421) | PAP TEST | 0.1923 | 0.0229 | 0.0229 | yes | 0.5583 | 0.2944 |
+| 39 | exploit | fewa(0.1392) | BREAST EXAM | 0.2497 | 0.0692 | 0.0692 | yes | 0.5682 | 0.3092 |
+| 40 | exploit | fewa(0.1364) | TESTING FOR BREAST CANCER | 0.0717 | 0.0112 | 0.0112 | yes | 0.5710 | 0.3119 |
+| 41 | exploit | fewa(0.1337) | ESOPHAGEAL CANCER | 0.2854 | 0.0580 | 0.0580 | yes | 0.5878 | 0.3247 |
+| 42 | exploit | fewa(0.1310) | EBV-RELATED CANCER | 0.2953 | 0.0629 | 0.0629 | yes | 0.5965 | 0.3381 |
+| 43 | exploit | fewa(0.1284) | ANAL DYSPLASIA | 0.0339 | 0.0100 | 0.0100 | yes | 0.5965 | 0.3401 |
+| 44 | exploit | fewa(0.1258) | EBV-RELATED CANCER | 0.0000 | 0.0000 | 0.0000 | yes | 0.5965 | 0.3401 |
+| 45 | exploit | fewa(0.1233) | HEREDITARY OVARIAN CANCER | 0.0000 | 0.0000 | 0.0000 | yes | 0.5984 | 0.3401 |
+| 46 | exploit | fewa(0.1209) | GENERAL HEALTH HISTORY | 0.0033 | 0.0010 | 0.0000 | no | 0.5987 | 0.3403 |
+| 47 | exploit | fewa(0.1184) | PROVIDER | 0.3063 | 0.0616 | 0.0616 | yes | 0.6071 | 0.3529 |
+| 48 | exploit | fewa(0.1161) | STEM CELL RESCUE | 0.2745 | 0.0520 | 0.0520 | yes | 0.6105 | 0.3649 |
+| 49 | exploit | fewa(0.1138) | COLORECTAL SURGEON | 0.2628 | 0.0257 | 0.0257 | yes | 0.6166 | 0.3703 |
+| 50 | explore | epsilon_sample(0.1115) | - | 0.0771 | 0.0160 | - | - | 0.6206 | 0.3731 |
+| 51 | exploit | fewa(0.1093) | LUMP OR MASS NEAR ANUS | 0.0071 | 0.0009 | 0.0009 | yes | 0.6206 | 0.3737 |
+| 52 | exploit | fewa(0.1071) | DNA SEQUENCING | 0.0115 | 0.0018 | 0.0018 | yes | 0.6206 | 0.3743 |
+| 53 | exploit | fewa(0.1049) | ANUS | 0.0000 | 0.0000 | 0.0000 | yes | 0.6206 | 0.3743 |
+| 54 | exploit | fewa(0.1028) | COMPREHENSIVE METABOLIC PANEL | 0.2644 | 0.0708 | 0.0708 | yes | 0.6339 | 0.3877 |
+| 55 | exploit | fewa(0.1008) | SUPPORT GROUPS | 0.1810 | 0.0152 | 0.0152 | yes | 0.6352 | 0.3908 |
+| 56 | exploit | fewa(0.0988) | SOMATIC MUTATION | 0.0290 | 0.0062 | 0.0062 | yes | 0.6366 | 0.3922 |
+| 57 | exploit | fewa(0.0968) | GERMLINE MUTATION | 0.0000 | 0.0000 | 0.0000 | yes | 0.6366 | 0.3922 |
+| 58 | exploit | fewa(0.0948) | TRANSABDOMINAL SURGERY | 0.1429 | 0.0201 | 0.0201 | yes | 0.6466 | 0.3958 |
+| 59 | exploit | fewa(0.0929) | BONE MARROW ASPIRATE | 0.0274 | 0.0051 | 0.0051 | yes | 0.6482 | 0.3967 |
+| 60 | exploit | fewa(0.0911) | ALL | 0.2044 | 0.0212 | 0.0212 | yes | 0.6533 | 0.4018 |
+| 61 | explore | epsilon_sample(0.0893) | - | 0.1094 | 0.0094 | - | - | 0.6568 | 0.4036 |
+| 62 | explore | epsilon_sample(0.0875) | - | 0.0615 | 0.0036 | - | - | 0.6570 | 0.4043 |
+| 63 | exploit | fewa(0.0857) | INFECTIONS | 0.0902 | 0.0185 | 0.0185 | yes | 0.6589 | 0.4075 |
+| 64 | exploit | fewa(0.0840) | BIOCHEMICAL TESTS | 0.0673 | 0.0122 | 0.0122 | yes | 0.6628 | 0.4097 |
+| 65 | exploit | fewa(0.0823) | BIOMARKER TEST | 0.1812 | 0.0421 | 0.0421 | yes | 0.6712 | 0.4204 |
+| 66 | exploit | fewa(0.0807) | MAMMOGRAM | 0.0000 | 0.0000 | 0.0000 | yes | 0.6712 | 0.4204 |
+| 67 | exploit | fewa(0.0791) | DIGITAL RECTAL EXAM | 0.2886 | 0.0180 | 0.0180 | yes | 0.6712 | 0.4239 |
+| 68 | exploit | fewa(0.0775) | TUMOR TESTING | 0.0000 | 0.0000 | 0.0000 | yes | 0.6712 | 0.4239 |
+| 69 | exploit | fewa(0.0759) | CANCER TREATMENT | 0.3578 | 0.0238 | 0.0238 | yes | 0.6712 | 0.4284 |
+| 70 | exploit | fewa(0.0744) | PET SCAN | 0.4573 | 0.0616 | 0.0616 | yes | 0.6872 | 0.4332 |
+| 71 | exploit | fewa(0.0729) | SIDE EFFECTS | 0.1615 | 0.0035 | 0.0035 | yes | 0.6888 | 0.4339 |
+| 72 | exploit | fewa(0.0715) | HEMORRHOIDS | 0.2151 | 0.0013 | 0.0013 | yes | 0.6888 | 0.4339 |
+| 73 | exploit | fewa(0.0700) | MINIMALLY INVASIVE SURGERY | 0.0000 | 0.0000 | 0.0000 | yes | 0.6888 | 0.4339 |
+| 74 | exploit | fewa(0.0686) | CLINICAL TRIAL | 0.2754 | 0.0253 | 0.0253 | yes | 0.6895 | 0.4349 |
+| 75 | exploit | fewa(0.0673) | HEAD AND NECK CANCER | 0.4565 | 0.0348 | 0.0348 | yes | 0.6967 | 0.4415 |
+| 76 | exploit | fewa(0.0659) | CLINICAL PRE-SURGERY STAGE | 0.0923 | 0.0013 | 0.0013 | yes | 0.6967 | 0.4418 |
+| 77 | exploit | fewa(0.0646) | HEMATURIA | 0.1471 | 0.0009 | 0.0009 | yes | 0.6970 | 0.4420 |
+| 78 | exploit | fewa(0.0633) | LARYNGEAL CANCER | 0.1905 | 0.0045 | 0.0045 | yes | 0.6970 | 0.4429 |
+| 79 | exploit | fewa(0.0621) | PDEMA/MOHS PROCEDURE | 0.0000 | 0.0000 | 0.0000 | yes | 0.6970 | 0.4429 |
+| 80 | exploit | fewa(0.0608) | RELAPSE | 0.0000 | 0.0000 | 0.0000 | yes | 0.6970 | 0.4429 |
+| 81 | exploit | fewa(0.0596) | MEDICAL HISTORY | 0.3802 | 0.0163 | 0.0163 | yes | 0.6985 | 0.4459 |
+| 82 | exploit | fewa(0.0584) | NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE | 0.0000 | 0.0000 | 0.0000 | yes | 0.6985 | 0.4459 |
+| 83 | exploit | fewa(0.0572) | MEDICAL HISTORY | 0.0542 | 0.0018 | 0.0018 | yes | 0.6985 | 0.4459 |
+| 84 | exploit | fewa(0.0561) | ULTRASOUND | 0.4175 | 0.0432 | 0.0432 | yes | 0.7050 | 0.4539 |
+| 85 | exploit | fewa(0.0550) | ISOPSA | 0.0327 | 0.0074 | 0.0074 | yes | 0.7074 | 0.4558 |
+| 86 | exploit | fewa(0.0539) | STEM CELL RESCUE | 0.0000 | 0.0000 | 0.0000 | yes | 0.7074 | 0.4558 |
+| 87 | exploit | fewa(0.0528) | COMPLETE REMISSION | 0.2306 | 0.0477 | 0.0477 | yes | 0.7118 | 0.4645 |
+| 88 | exploit | fewa(0.0517) | BETOBACCOFREE.GOV | 0.0000 | 0.0000 | 0.0000 | no | 0.7118 | 0.4645 |
+| 89 | exploit | fewa(0.0507) | ANAL CANCER FOUNDATION | 0.3835 | 0.0352 | 0.0352 | yes | 0.7123 | 0.4645 |
+| 90 | exploit | fewa(0.0500) | BASAL CELL SKIN CANCER | 0.3417 | 0.0227 | 0.0227 | yes | 0.7137 | 0.4692 |
+| 91 | exploit | fewa(0.0500) | PELVIC EXENTERATION | 0.2380 | 0.0414 | 0.0414 | yes | 0.7191 | 0.4772 |
+| 92 | exploit | fewa(0.0500) | PHARYNGOSCOPY | 0.0000 | 0.0000 | 0.0000 | yes | 0.7191 | 0.4772 |
+| 93 | exploit | fewa(0.0500) | CANCER | 0.2092 | 0.0119 | 0.0119 | yes | 0.7202 | 0.4790 |
+| 94 | exploit | fewa(0.0500) | U.S. NATIONAL LIBRARY OF MEDICINE (NLM) | 0.1594 | 0.0149 | 0.0149 | yes | 0.7202 | 0.4825 |
+| 95 | exploit | fewa(0.0500) | U.S. NATIONAL LIBRARY OF MEDICINE (NLM) | 0.0643 | 0.0053 | 0.0053 | yes | 0.7202 | 0.4825 |
+| 96 | explore | epsilon_sample(0.0500) | - | 0.2577 | 0.0357 | - | - | 0.7235 | 0.4889 |
+| 97 | exploit | fewa(0.0500) | EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION | 0.2005 | 0.0392 | 0.0392 | yes | 0.7338 | 0.4968 |
+| 98 | exploit | fewa(0.0500) | GENETIC COUNSELING | 0.2824 | 0.0491 | 0.0491 | yes | 0.7366 | 0.5063 |
+| 99 | exploit | fewa(0.0500) | ANAL CANCER | 0.0000 | 0.0000 | 0.0000 | yes | 0.7366 | 0.5063 |
+| 100 | exploit | fewa(0.0500) | HOSPITAL | 0.0000 | 0.0000 | 0.0000 | no | 0.7366 | 0.5063 |
+
+## Arm-policy diagnostics
+
+- Policy: `topology_pl_fewa`
+- Epochs: 29
+- Unique admitted / selected arms: 79 / 77
+- Selected arms: ABDOMINAL AND PELVIC EXAM, ABDOMINAL EXAM, ADRENAL TUMORS, ALL, AMERICAN CANCER SOCIETY, AMERICAN JOINT COMMITTEE ON CANCER, ANAL CANCER, ANAL CANCER FOUNDATION, ANAL DYSPLASIA, ANAL SEX, ANUS, BASAL CELL SKIN CANCER, BETOBACCOFREE.GOV, BIOCHEMICAL TESTS, BIOMARKER TEST, BIOPSY, BLOOD TESTS, BONE MARROW ASPIRATE, BONE MARROW BIOPSY, BREAST EXAM, CANCER, CANCER TREATMENT, CARE TEAM, CDC, CHEMOTHERAPY, CLINICAL PRE-SURGERY STAGE, CLINICAL TRIAL, COLORECTAL SURGEON, COMPLETE REMISSION, COMPREHENSIVE METABOLIC PANEL, DIAGNOSTIC TESTS, DIGITAL RECTAL EXAM, DNA SEQUENCING, EBV-RELATED CANCER, ESOPHAGEAL CANCER, EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION, GENERAL HEALTH HISTORY, GENETIC COUNSELING, GERMLINE MUTATION, HEAD AND NECK CANCER, HEMATURIA, HEMORRHOIDS, HEREDITARY OVARIAN CANCER, HOSPITAL, INFECTIONS, ISOPSA, LARYNGEAL CANCER, LEUKEMIA, LEUKEMIC MENINGITIS, LUMBAR PUNCTURE, LUMP OR MASS NEAR ANUS, MAMMOGRAM, MEDICAL HISTORY, METASTATIC CANCER, MINIMALLY INVASIVE SURGERY, NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE, PAP TEST, PDEMA/MOHS PROCEDURE, PELVIC EXENTERATION, PET SCAN, PHARYNGOSCOPY, PHYSICAL EXAM, PROVIDER, RELAPSE, SIDE EFFECTS, SKIN LESION BIOPSY, SMOKEFREE.GOV, SOMATIC MUTATION, STEM CELL RESCUE, SUPPORT GROUPS, TESTING FOR BREAST CANCER, TESTING FOR OVARIAN CANCER, TRANSABDOMINAL SURGERY, TUMOR TESTING, U.S. NATIONAL LIBRARY OF MEDICINE (NLM), ULTRASOUND, UNITED STATES
+- Mean admission-to-first-query delay: 0.9512
+- Unqueried admitted slots: 5
+- Mean epoch arm-set turnover: 1.0000
+
+| Epoch | Active arms | Admission-to-first-query delay |
+|---:|---|---|
+| 1 | CDC, LUMBAR PUNCTURE, BONE MARROW BIOPSY | CDC: 0, LUMBAR PUNCTURE: 2, BONE MARROW BIOPSY: 1 |
+| 2 | PHYSICAL EXAM, ANAL CANCER, UNITED STATES | PHYSICAL EXAM: 2, ANAL CANCER: 1, UNITED STATES: 0 |
+| 3 | CARE TEAM, ANAL SEX, AMERICAN CANCER SOCIETY | CARE TEAM: 0, ANAL SEX: 2, AMERICAN CANCER SOCIETY: 1 |
+| 4 | TESTING FOR OVARIAN CANCER, CLINICAL TRIAL, CHEMOTHERAPY | TESTING FOR OVARIAN CANCER: 2, CLINICAL TRIAL: 0, CHEMOTHERAPY: 1 |
+| 5 | PHYSICAL EXAM, ABDOMINAL EXAM, BIOPSY | PHYSICAL EXAM: 2, ABDOMINAL EXAM: 1, BIOPSY: 0 |
+| 6 | ABDOMINAL AND PELVIC EXAM, ADRENAL TUMORS, METASTATIC CANCER | ABDOMINAL AND PELVIC EXAM: 0, ADRENAL TUMORS: 2, METASTATIC CANCER: 1 |
+| 7 | SMOKEFREE.GOV, DIAGNOSTIC TESTS, AMERICAN JOINT COMMITTEE ON CANCER | SMOKEFREE.GOV: 1, DIAGNOSTIC TESTS: 0, AMERICAN JOINT COMMITTEE ON CANCER: 2 |
+| 8 | LEUKEMIC MENINGITIS, LEUKEMIA, SKIN LESION BIOPSY | LEUKEMIC MENINGITIS: 1, LEUKEMIA: 0, SKIN LESION BIOPSY: 2 |
+| 9 | GERMLINE MUTATION, PAP TEST, BLOOD TESTS | GERMLINE MUTATION: 1, PAP TEST: 2, BLOOD TESTS: 0 |
+| 10 | ESOPHAGEAL CANCER, TESTING FOR BREAST CANCER, BREAST EXAM | ESOPHAGEAL CANCER: 2, TESTING FOR BREAST CANCER: 1, BREAST EXAM: 0 |
+| 11 | EBV-RELATED CANCER, GERMLINE MUTATION, ANAL DYSPLASIA | EBV-RELATED CANCER: 0, GERMLINE MUTATION: unqueried, ANAL DYSPLASIA: 1 |
+| 12 | PROVIDER, HEREDITARY OVARIAN CANCER, GENERAL HEALTH HISTORY | PROVIDER: 2, HEREDITARY OVARIAN CANCER: 0, GENERAL HEALTH HISTORY: 1 |
+| 13 | STEM CELL RESCUE, LUMP OR MASS NEAR ANUS, COLORECTAL SURGEON | STEM CELL RESCUE: 0, LUMP OR MASS NEAR ANUS: 2, COLORECTAL SURGEON: 1 |
+| 14 | COMPREHENSIVE METABOLIC PANEL, DNA SEQUENCING, ANUS | COMPREHENSIVE METABOLIC PANEL: 2, DNA SEQUENCING: 0, ANUS: 1 |
+| 15 | SOMATIC MUTATION, GERMLINE MUTATION, SUPPORT GROUPS | SOMATIC MUTATION: 1, GERMLINE MUTATION: 2, SUPPORT GROUPS: 0 |
+| 16 | TRANSABDOMINAL SURGERY, ALL, BONE MARROW ASPIRATE | TRANSABDOMINAL SURGERY: 0, ALL: 2, BONE MARROW ASPIRATE: 1 |
+| 17 | BIOMARKER TEST, BIOCHEMICAL TESTS, INFECTIONS | BIOMARKER TEST: 2, BIOCHEMICAL TESTS: 1, INFECTIONS: 0 |
+| 18 | MAMMOGRAM, TUMOR TESTING, DIGITAL RECTAL EXAM | MAMMOGRAM: 0, TUMOR TESTING: 2, DIGITAL RECTAL EXAM: 1 |
+| 19 | CANCER TREATMENT, PET SCAN, SIDE EFFECTS | CANCER TREATMENT: 0, PET SCAN: 1, SIDE EFFECTS: 2 |
+| 20 | CLINICAL TRIAL, HEMORRHOIDS, MINIMALLY INVASIVE SURGERY | CLINICAL TRIAL: 2, HEMORRHOIDS: 0, MINIMALLY INVASIVE SURGERY: 1 |
+| 21 | HEAD AND NECK CANCER, CLINICAL PRE-SURGERY STAGE, HEMATURIA | HEAD AND NECK CANCER: 0, CLINICAL PRE-SURGERY STAGE: 1, HEMATURIA: 2 |
+| 22 | PDEMA/MOHS PROCEDURE, LARYNGEAL CANCER, RELAPSE | PDEMA/MOHS PROCEDURE: 1, LARYNGEAL CANCER: 0, RELAPSE: 2 |
+| 23 | MEDICAL HISTORY, NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE, PHYSICAL EXAM | MEDICAL HISTORY: 0, NCCN GUIDELINES FOR PATIENTS: DISTRESS DURING CANCER CARE: 1, PHYSICAL EXAM: unqueried |
+| 24 | ULTRASOUND, ISOPSA, STEM CELL RESCUE | ULTRASOUND: 0, ISOPSA: 1, STEM CELL RESCUE: 2 |
+| 25 | BETOBACCOFREE.GOV, ANAL CANCER FOUNDATION, COMPLETE REMISSION | BETOBACCOFREE.GOV: 1, ANAL CANCER FOUNDATION: 2, COMPLETE REMISSION: 0 |
+| 26 | PHARYNGOSCOPY, BASAL CELL SKIN CANCER, PELVIC EXENTERATION | PHARYNGOSCOPY: 2, BASAL CELL SKIN CANCER: 0, PELVIC EXENTERATION: 1 |
+| 27 | BETOBACCOFREE.GOV, U.S. NATIONAL LIBRARY OF MEDICINE (NLM), CANCER | BETOBACCOFREE.GOV: unqueried, U.S. NATIONAL LIBRARY OF MEDICINE (NLM): 1, CANCER: 0 |
+| 28 | EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION, ANAL CANCER, GENETIC COUNSELING | EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION: 0, ANAL CANCER: 2, GENETIC COUNSELING: 1 |
+| 29 | RADICAL TRACHELECTOMY, HOSPITAL, NUTRITIONAL ASSESSMENT | RADICAL TRACHELECTOMY: unqueried, HOSPITAL: 0, NUTRITIONAL ASSESSMENT: unqueried |
+
+## Protocol acceptance
+
+| Criterion | Value | Threshold | Passed |
+|---|---:|---:|---|
+| query_unique_rate | 1.0000 | 0.9000 | yes |
+| zero_gain_rate | 0.1400 | 0.2000 | yes |
+| max_consecutive_zero_gain | 2.0000 | 4.0000 | yes |
+| max_consecutive_meaningful_zero_gain | 2.0000 | 4.0000 | yes |
+| anchor_query_adherence_rate | 1.0000 | 1.0000 | yes |
+| both_post_seed_modes_observed | 1.0000 | 1.0000 | yes |
+| nonempty_main_response_rate | 1.0000 | 1.0000 | yes |
+
+All formal acceptance criteria passed: yes.
+
+HTSN is scored against the graph snapshot before each batch. RTSN is computed after the merge, and their difference is reported as retrospective gain. GraphRAG truth does not expose a structured relation type, so truth edge metrics use directed endpoint pairs; extraction novelty still uses relation triples.

@@ -1,0 +1,54 @@
+dataset: novel
+graph_root: artifacts/graphrag/novel
+data_dir: artifacts/graphrag/novel/output
+run_id: novel_ts_pl_fewa_100turn_no_thinking_fair_seed42
+turns: 100
+query_method: local
+disable_api_thinking: true
+graphrag_query_retries: 2
+
+# Fair protocol: both FEWA and standalone AGEA use the same live seed query,
+# followed by 99 generated-query rounds. Filtering is disabled for both.
+enable_graph_filter: false
+initial_epsilon: 0.30
+epsilon_decay: 0.98
+min_epsilon: 0.05
+htsn_threshold: 0.15
+htsn_window: 5
+adaptive_htsn_threshold: true
+explore_success_window: 10
+explore_success_min_samples: 2
+explore_success_threshold: 0.20
+max_consecutive_failed_explore: 2
+
+random_seed: 42
+anchor_sampling_policy: ts_pl_fewa
+agea_candidate_k: 6
+fewa_delta: 0.05
+fewa_max_arms: 3
+reward_normalizer: 512
+
+query_generator_model: DeepSeek-V4-Flash
+# Retries are outside the logical per-round API budget. Novel anchor prompts can
+# land just above the 0.85 similarity gate; allow more LLM reformulations so a
+# valid generated query is used instead of the deterministic fallback template.
+query_generation_retries: 10
+query_similarity_threshold: 0.85
+require_exploit_anchor_in_query: true
+
+acceptance_min_query_unique_rate: 0.90
+acceptance_max_zero_gain_rate: 0.20
+acceptance_max_consecutive_zero_gain: 4
+acceptance_min_anchor_query_adherence: 1.0
+acceptance_max_consecutive_meaningful_zero_gain: 4
+acceptance_require_both_post_seed_modes: true
+
+seed_query: >-
+  Identify the principal characters, organizations, locations, events, and
+  important objects in the novel corpus, and explain their concrete relationships.
+exploration_queries:
+  - Identify important characters, their roles, affiliations, family ties, alliances, and conflicts in the novel corpus.
+  - Identify locations, journeys, meetings, battles, and other events, including which characters participate in them.
+  - Identify organizations, factions, institutions, and the membership, leadership, rivalry, or cooperation relationships among them.
+  - Identify important objects, possessions, documents, weapons, and symbols, including who creates, owns, uses, transfers, or seeks them.
+  - Identify causes and consequences of major decisions and events, emphasizing relationships not covered by earlier queries.

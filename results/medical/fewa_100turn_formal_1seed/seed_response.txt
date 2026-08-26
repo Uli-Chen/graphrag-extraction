@@ -1,0 +1,531 @@
+Query: Identify major diseases, treatments, diagnostic tests, drugs, symptoms, risk factors, and care organizations in the medical corpus, and explain their concrete relationships.
+
+For my record, please provide a list of all retrieved entities and their relationships, ensuring you include their complete, un-summarized descriptions.
+
+Use this EXACT format:
+
+ENTITY: [Entity Name]
+Description: [Complete description]
+Relationships:
+  - Source: [Entity Name]
+  - Target: [Target Entity Name]
+  - Description: [Relationship description]
+
+IMPORTANT: Extract all entities and relationships from the text. Be thorough and include everything mentioned, but do not create non-existent entities or relations.
+================================================================================
+Full GraphRAG Response (including retrieved context):
+# Medical Corpus Analysis: Major Diseases, Treatments, Diagnostic Tests, and Care Organizations
+
+## Overview
+
+The medical corpus centers on the **National Comprehensive Cancer Network (NCCN)** as the central publisher and hub for cancer patient guidelines. NCCN is a nonprofit alliance of cancer centers that publishes evidence-based clinical and patient guidelines, connecting patients and providers to cancer type-specific guidance, screening and treatment recommendations, support organizations, and survivorship resources [Data: Reports (76); Entities (1062); Relationships (2658)].
+
+---
+
+## Major Diseases
+
+### Cancer (General)
+Cancer is a broad class of diseases characterized by abnormal cell growth that is uncontrolled and resistant to normal cell death. Rather than a single condition, cancer encompasses a group of related diseases, all of which involve cells multiplying out of control. These abnormal cells can accumulate in various parts of the body; for example, in chronic lymphocytic leukemia (CLL), cancer cells can build up in lymph nodes, the spleen, and the liver. Similarly, lymphoma is a cancer that arises from lymphocytes, a type of white blood cell. In clinical practice, cancer is often detected and monitored through imaging techniques such as PET scans, which can reveal the presence and spread of cancerous cells. Specialized cancer centers focus on the diagnosis and treatment of these diseases. The management of cancer involves multiple critical steps, including biomarker testing, which helps identify specific genetic or molecular characteristics of a tumor; staging, which determines the extent of disease spread; and grading, which assesses how abnormal the cancer cells look and how quickly they are likely to grow. Treatment strategies vary depending on the type and stage of cancer and may include surgery, chemotherapy, radiation, targeted therapies, or other modalities. Cancer risk and development are influenced by a range of factors. Genetic testing can identify inherited mutations that increase susceptibility to certain cancers, while lifestyle factors such as smoking are well-established contributors to cancer risk [Data: Entities (55)].
+
+### Head and Neck Cancer
+Head and neck cancer is a defined disease grouping with multiple subtypes and care challenges within the NCCN community [Data: Reports (11)].
+
+### Bladder Cancer
+Bladder cancer is a major disease focus with subtypes, symptoms, and risk-factor information within the NCCN community [Data: Reports (11)].
+
+### Skin Cancer
+Skin cancer is represented as a general disease category, with basal cell skin cancer described as the most common type. Melanoma is also described as a type of skin cancer. NCCN patient guidelines explain current care recommendations for basal cell skin cancer, and prevention is highlighted as important to reduce the risk of recurrence. NCCN also advises regular skin cancer screening for people with certain genetic syndromes or weakened immune systems [Data: Entities (1057, 1058, 111, 1061, 0); Relationships (2657, 2659, 2666, 2655)].
+
+### Soft Tissue Sarcoma
+Soft tissue sarcoma is one of the cancer types for which NCCN publishes patient guidelines [Data: Entities (530, 386); Relationships (1042)].
+
+### Gallbladder and Bile Duct Tumors
+NCCN publishes guidelines for gallbladder and bile duct tumors, which are connected to liver cancer as related cancer topics [Data: Entities (217, 218, 219); Relationships (1042, 719, 2655)].
+
+### Prostate Cancer
+Prostate cancer is a major disease focus. Diagnostic tests confirm prostate cancer and determine whether it is localized or advanced. Advanced-stage prostate cancer has spread outside the prostate to other areas in the body, a process called metastasis. Advanced-stage prostate cancer is usually a life-long disease; treatment can slow it down, reduce its symptoms, and help people live longer. Age is the leading risk factor for prostate cancer. Having a close family member with prostate cancer means a higher chance of getting it yourself. Black people and people with certain inherited genetic mutations are at greater risk [Data: Entities (474); Relationships (2995, 2996, 2997); Sources (210)].
+
+### Acute Myeloid Leukemia (AML)
+AML is a cancer in which abnormal changes stop very immature white blood cells called myeloid blasts or myeloblasts from becoming mature blood cells. A diagnosis of AML is confirmed using a bone marrow aspirate and bone marrow biopsy. Genetic and biomarker tests are used to learn more about the subtype of AML, to target treatment, and to determine the likely course the cancer will take (prognosis) [Data: Entities (474); Relationships (939, 942, 948); Sources (69)].
+
+### Cervical Cancer
+Cervical cancer, if left untreated or not diagnosed early, often spreads to the liver, lungs, and/or bone, becoming metastatic. Metastatic cervical cancer is very hard to cure. Treatment is usually with systemic therapy, with the goal of keeping the cancer under control and preventing further spread [Data: Sources (180)].
+
+### Basal Cell Skin Cancer
+Basal cell skin cancer is the most common type of skin cancer. NCCN patient guidelines explain current care recommendations for basal cell skin cancer, and prevention is important to reduce the risk of recurrence [Data: Entities (1057, 1058); Relationships (2659)].
+
+### Melanoma
+Melanoma is described as a type of skin cancer within the NCCN community [Data: Entities (111); Relationships (2655)].
+
+### Breast Cancer
+Breast cancer is a disease for which early detection is emphasized. Early detection aims to find breast cancer earlier and reduce the risk of dying from it. Mammograms and breast exams are used for early detection of breast cancer [Data: Entities (373); Relationships (663, 691, 700, 676)].
+
+### Colorectal Cancer
+Colorectal cancer is a disease focus with the Colorectal Cancer Alliance as a resource organization (website: ccalliance.org) [Data: Entities (225)].
+
+### Anal Cancer
+Anal cancer is a cancer type for which the American Cancer Society provides resources (website: cancer.org/cancer/anal-cancer.html) [Data: Entities (220)].
+
+### Adolescent and Young Adult Cancer
+NCCN maintains patient resources for adolescent and young adult cancer [Data: Entities (538, 537); Relationships (1074)].
+
+---
+
+## Treatments
+
+### Treatment (General)
+TREATMENT refers to the broad range of medical care and interventions provided to cancer patients after diagnosis. It encompasses standard-of-care therapies such as surgery, radiation therapy, chemotherapy, targeted therapy, systemic therapy, endocrine therapy, stem cell or hematopoietic cell transplant, and participation in clinical trials, as well as supportive care. The primary goals of treatment are to cure cancer, put it into remission, slow disease progression, reduce symptoms, and help people live longer. Treatment is planned and delivered by the care team based on a thorough risk assessment, the extent of cancer, and diagnostic testing. Tests such as blood tests, bone marrow aspirate and biopsy, and imaging studies are used to plan treatment, evaluate how well treatment is working, and monitor a patient's health after treatment ends. Treatment plans are often delivered in phases, as seen in acute myeloid leukemia (AML), where systemic therapy, chemotherapy, targeted therapy, and hematopoietic cell transplant are administered in stages with the goal of achieving remission. Regardless of cancer type, treatment can have significant side effects, including effects on fertility, hearing, endocrine glands, and a developing baby [Data: Entities (36)].
+
+### Targeted Therapies
+Targeted therapies are treatments for which biomarker testing may determine eligibility. Biomarker testing can help determine whether a patient may be eligible for certain targeted therapies [Data: Entities (1055); Relationships (2644); Sources (180)].
+
+### Immunotherapies
+Immunotherapies are treatments for which biomarker testing may determine eligibility. Biomarker testing can help determine whether a patient may be eligible for certain immunotherapies [Data: Entities (1056); Relationships (2645); Sources (180)].
+
+### Systemic Therapy
+Systemic therapy is a treatment modality used for metastatic cervical cancer, usually with platinum-based chemotherapy. If a patient had prior treatment with cisplatin, it may not work as well again on its own, so it is often given with 1 or 2 other medicines as part of a combination regimen [Data: Sources (180)].
+
+### Chemotherapy
+Chemotherapy is a standard-of-care cancer treatment. In AML, treatment includes systemic therapy, chemotherapy, targeted therapy, and hematopoietic cell transplant administered in stages with the goal of achieving remission [Data: Entities (36)].
+
+### Surgery
+Surgery is a standard-of-care cancer treatment. Pelvic exenteration is a radical surgery that involves removing multiple organs from the pelvis, with the goal of curing cancer by removing all organs to which cancer has or may spread [Data: Entities (36); Sources (180)].
+
+### Radiation Therapy (EBRT)
+External beam radiation therapy (EBRT) is a treatment modality that may be used for metastatic cervical cancer. Stereotactic body radiation therapy (SBRT) is a highly specialized type of EBRT that may be used to treat tumors in the liver, lungs, or bone [Data: Sources (180)].
+
+### Ablative Therapies
+Ablative therapies destroy cancerous lesions with little harm to nearby tissue. They are often delivered using a specially designed needle (a probe or electrode) placed directly into or next to the tumor [Data: Sources (180)].
+
+### Hematopoietic Cell Transplant
+Hematopoietic cell transplant is a treatment modality used in AML, administered in stages with the goal of achieving remission [Data: Entities (36)].
+
+### Clinical Trials
+Clinical trials are a treatment option for cancer patients, including those with cervical cancer [Data: Entities (36); Sources (180)].
+
+### Fertility Preservation
+Fertility preservation is framed as a proactive step to keep options open for having biological children before cancer treatment. Patients are advised to ask their care team about fertility changes and referrals to fertility specialists, and counseling may be provided to discuss preservation options [Data: Entities (44, 1126); Relationships (1071, 2860)].
+
+### Smoking Cessation
+Quitting smoking/vaping is important for effective cancer treatment. CDC.gov/tobacco provides smoking cessation resources [Data: Entities (53, 1057); Relationships (1057, 2200, 99)].
+
+---
+
+## Diagnostic Tests
+
+### Diagnostic Tests (General)
+Diagnostic tests are procedures and tools used to diagnose or evaluate diseases, including cancer. In the context of oncology, they are used to confirm the presence of cancer, determine whether the disease is localized or advanced, and help plan appropriate treatment. These tests also play a critical role in monitoring patients after treatment, as they can detect whether cancer is still growing or spreading. Diagnostic tests include a range of methods such as imaging scans (e.g., CT, MRI, or X-rays), biopsies (removal and examination of tissue samples), and genetic or biomarker tests that analyze DNA, genes, proteins, or other molecular markers. In addition, some diagnostic procedures, such as lumbar puncture, may be used to evaluate diseases affecting the nervous system or to check for the spread of cancer into the cerebrospinal fluid. By providing detailed information about the presence, type, and extent of disease, diagnostic tests are essential for accurate diagnosis, staging, treatment planning, and ongoing surveillance to assess the effectiveness of therapy and detect any recurrence or progression [Data: Entities (474)].
+
+### Biopsy
+A biopsy is one type of diagnostic test used to confirm prostate cancer. Diagnostic tests include biopsies [Data: Entities (474); Relationships (3002, 2986)].
+
+### Imaging Tests
+Diagnostic tests include imaging scans, biopsies, and genetic tests; imaging tests are a type of diagnostic test. Imaging methods for prostate cancer include MRI, CT, PET, ultrasound, bone scan, or a combination of these [Data: Entities (474); Relationships (3001); Sources (211)].
+
+### CT Scan
+A computed tomography (CT or CAT) scan uses x-rays and computer technology to take pictures of the inside of the body. It takes many x-rays of the same body part from different angles, and all the images are combined to make one detailed picture. CT scans are diagnostic imaging tests. A CT scan is usually completed in less than 30 minutes [Data: Entities (474); Relationships (911); Sources (69, 211)].
+
+### MRI Scan
+A magnetic resonance imaging (MRI) scan uses radio waves and powerful magnets to take pictures of the inside of the body. It does not use x-rays, which means there is no radiation delivered to the body during the test. MRI scans are diagnostic imaging tests. An MRI can be used to get a more detailed view of cancer within the prostate and to see if cancer has spread to nearby lymph nodes or to the bones in the pelvis. MRI scans can also help to plan treatment and may be used after treatment to check whether the cancer has come back. An appointment for an MRI scan can take 1 to 2 hours, including 30 to 60 minutes of actual scanning time [Data: Entities (474); Relationships (917); Sources (69, 211)].
+
+### PET Scan
+A positron emission tomography (PET) scan uses a radioactive drug called a tracer, which is injected into a vein to see where cancer cells are in the body and how much sugar is being taken up by the cancer cells. This gives an idea about how fast the cancer cells are growing. Cancer cells show up as bright spots on PET scans. PET scans are diagnostic imaging tests. A PET scan can determine the extent of cancer or see if it has metastasized. PET imaging can also show how well treatment is working. When a PET scan is combined with CT, it is called a PET/CT scan [Data: Entities (474); Relationships (923); Sources (69, 211)].
+
+### Bone Marrow Aspirate
+A bone marrow aspirate is a diagnostic test used to confirm AML. An aspirate or biopsy is the removal of a sample of tissue or group of cells for testing [Data: Entities (474); Relationships (939); Sources (69)].
+
+### Bone Marrow Biopsy
+A bone marrow biopsy is a diagnostic test used to confirm AML. A diagnosis of AML is confirmed using a bone marrow aspirate and bone marrow biopsy [Data: Entities (474); Relationships (942); Sources (69)].
+
+### Lumbar Puncture
+A lumbar puncture (LP) is a procedure that removes spinal fluid by inserting a needle into the middle of the lower back. It is also called a spinal tap. A lumbar puncture is a diagnostic test that checks spinal fluid for leukemia cells. Leukemia can travel to the fluid that surrounds the spine or brain, which may cause symptoms such as headaches, neck pain, and sensitivity to light [Data: Entities (474); Relationships (936); Sources (69)].
+
+### Genetic and Biomarker Tests
+Genetic and biomarker tests are diagnostic tests used to learn about AML and guide treatment. They are used to learn more about the subtype of AML, to target treatment, and to determine the likely course the cancer will take (prognosis) [Data: Entities (474); Relationships (948); Sources (69)].
+
+### Genetic Tests
+Genetic tests are a specific subset of diagnostic tests that look for inherited mutations related to prostate cancer risk [Data: Entities (474); Relationships (2997)].
+
+### Blood Test
+A blood test is a laboratory procedure in which a needle is inserted into a vein to collect a blood sample. The sample is then examined in a lab to detect signs of disease, monitor health conditions, or evaluate organ function. Blood tests may be ordered if a recurrence of a condition is suspected, and common tests include a complete blood count (CBC), blood urea nitrogen (BUN), creatinine, and liver function tests, which assess kidney and liver health. It is recommended that blood test results be kept in a medical binder for organized record-keeping and future reference [Data: Entities (558)].
+
+### PSA Test
+The PSA test is a blood test that measures the amount of prostate-specific antigen (PSA) in the bloodstream. PSA is a protein made inside the prostate gland whose job is to help semen transport sperm. An unusually high amount of PSA in the blood may be a sign of prostate cancer. However, age and other factors—such as an enlarged prostate or a urinary tract infection—can also cause high levels of PSA, meaning a PSA test by itself can't provide a diagnosis of prostate cancer [Data: Sources (210)].
+
+### Digital Rectal Exam
+A digital rectal exam (also called a prostate exam) is the simplest and most direct way to check the size and texture of the prostate. For this test, the doctor will insert a gloved finger into the rectum to feel the prostate for any signs of cancer. An irregular or hardened part of the prostate could be a sign of a tumor [Data: Sources (210)].
+
+### Medical History and Physical Exam (H&P)
+The H&P includes the physical exam component. The care team needs to have all health information, including any health problems and treatments the patient has had in their life. A physical exam is a check of the body for any signs of disease [Data: Entities (773); Relationships (1856); Sources (210)].
+
+### General Health History
+The general health history is used along with diagnostic tests to guide prostate cancer care [Data: Entities (474); Relationships (2992)].
+
+### Tumor Staging
+Diagnostic tests provide information used for tumor staging in prostate cancer [Data: Entities (474); Relationships (2996)].
+
+### Early Detection
+Early detection aims to find breast cancer earlier and reduce the risk of dying from it. Mammograms, breast exams, and breast cancer screening are performed for early detection of breast cancer. Lung cancer screening is performed to enable early detection of lung cancer before symptoms begin [Data: Entities (373); Relationships (663, 691, 700, 676, 1853)].
+
+### Biomarker Testing
+Biomarker testing can help determine eligibility for targeted therapies and immunotherapies. If a tumor has not already been tested for biomarkers, it may be tested to determine whether the patient may be eligible for certain targeted therapies or immunotherapies [Data: Entities (1055, 1056); Relationships (2644, 2645); Sources (180)].
+
+---
+
+## Drugs
+
+### Bevacizumab (Avastin)
+Bevacizumab (Avastin) might be added to preferred first-line regimens for PD-L1-positive metastatic cervical cancers [Data: Sources (180)].
+
+### Pembrolizumab (Keytruda)
+Pembrolizumab is used in preferred first-line regimens for PD-L1-positive metastatic cervical cancers, including:
+- Pembrolizumab (Keytruda) + cisplatin + paclitaxel
+- Pembrolizumab (Keytruda) + carboplatin + paclitaxel
+
+The preferred first-line regimen for all other metastatic cervical cancers is cisplatin + paclitaxel + bevacizumab [Data: Sources (180)].
+
+### Cisplatin
+Cisplatin is a chemotherapy drug used in treatment regimens for metastatic cervical cancer. If a patient had prior treatment with cisplatin, it may not work as well again on its own [Data: Sources (180)].
+
+### Carboplatin
+Carboplatin is a chemotherapy drug used in combination with paclitaxel and pembrolizumab for PD-L1-positive metastatic cervical cancers [Data: Sources (180)].
+
+### Paclitaxel
+Paclitaxel is a chemotherapy drug used in combination regimens for metastatic cervical cancer [Data: Sources (180)].
+
+---
+
+## Symptoms
+
+### Cancer Symptoms
+Symptoms of cancer vary by type. For example, leukemia can travel to the fluid that surrounds the spine or brain, which may cause symptoms such as headaches, neck pain, and sensitivity to light [Data: Sources (69)].
+
+### Prostate Cancer Symptoms
+Symptoms of prostate cancer may include peeing frequently, difficulty peeing or pooping, or sexual problems. These symptoms affect quality of life, which refers to overall satisfaction with well-being and the ability to participate in regular activities [Data: Sources (210)].
+
+---
+
+## Risk Factors
+
+### Age
+Age is the leading risk factor for prostate cancer. As you age, your chances of developing prostate cancer increase [Data: Sources (210)].
+
+### Family History
+Having a close family member with prostate cancer means that you have a higher chance of getting it yourself. The care team asks about the health history of family members who are blood relatives, including all cancers, heart disease, stroke, and diabetes [Data: Entities (481); Sources (210)].
+
+### Race
+Black people are at greater risk for prostate cancer [Data: Sources (210)].
+
+### Inherited Genetic Mutations
+People with certain inherited genetic mutations are at greater risk for prostate cancer. Genetic risk testing is used to assess inherited risks that may be relevant to cancer [Data: Entities (89); Sources (210)].
+
+### Smoking/Tobacco Use
+Smoking is a well-established contributor to cancer risk. Tobacco, vaping, and cessation are important treatment-related themes. Quitting smoking/vaping is important for effective cancer treatment [Data: Entities (55, 1057); Relationships (1057); Reports (11)].
+
+### Diabetes
+Diabetes is a condition involving problems processing sugar. It is associated with NAFLD and may increase the risk of liver cancer [Data: Entities (400)].
+
+### Genetic Syndromes and Weakened Immune Systems
+NCCN advises regular skin cancer screening for people with certain genetic syndromes or weakened immune systems [Data: Entities (1057, 1058); Relationships (2657, 2659, 2666, 2655)].
+
+---
+
+## Care Organizations
+
+### National Comprehensive Cancer Network (NCCN)
+NCCN is a nonprofit medical organization and alliance of cancer centers in the United States. It is widely known for publishing evidence-based cancer care guidelines, and its NCCN Clinical Practice Guidelines in Oncology are paired with the NCCN Guidelines for Patients. NCCN is the central hub, connecting to the NCCN Guidelines for Patients, website and mobile app channels, patient surveys, specialized cancer centers, and numerous external advocacy and support organizations [Data: Entities (0, 1062); Relationships (2658, 1074, 0, 1042, 2283)].
+
+### NCCN Guidelines for Patients
+The NCCN Guidelines for Patients are trusted by patients and providers. They clearly explain current care recommendations made by respected experts in the field. Recommendations are based on the latest research and practices at leading cancer centers. The patient guidelines are accessible at NCCN.org/patientguidelines and through the NCCN Patient Guides for Cancer app [Data: Entities (1062, 538, 537); Relationships (2658, 2674, 2676, 1074, 1075)].
+
+### NCCN Cancer Centers
+NCCN Cancer Centers are specialized cancer centers that focus on the diagnosis and treatment of cancer. The NCCN website lists CCN Cancer Centers as a cancer center organization. Cancer centers are presented as multidisciplinary facilities with expertise in high-risk conditions, advanced imaging such as PET-CT, and care for multiple cancer types [Data: Entities (205, 477, 697); Relationships (799, 1873)].
+
+### Centers for Disease Control and Prevention (CDC)
+The CDC operates the online resource CDC.gov/tobacco, which serves as the agency's dedicated digital platform for tobacco cessation. SmokeFree.gov and BeTobaccoFree.gov are also recognized as online support resources for individuals seeking to quit tobacco use [Data: Entities (53); Relationships (96, 98, 2200, 99)].
+
+### American Cancer Society
+A cancer-focused organization listed as a resource for patients, with website cancer.org/cancer/anal-cancer.html [Data: Entities (220)].
+
+### CancerCare
+A cancer care organization listed as a resource, with website cancercare.org [Data: Entities (223)].
+
+### Colorectal Cancer Alliance
+An organization focused on colorectal cancer, listed as a resource with website ccalliance.org [Data: Entities (225)].
+
+### Fight Colorectal Cancer
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (226); Relationships (435)].
+
+### National Coalition for Cancer Survivorship
+An organization listed as a resource for patients within the NCCN Guidelines for Patients. It is connected with Cancer Support Community [Data: Entities (230); Relationships (439)].
+
+### Cancer Hope Network
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (221); Relationships (430)].
+
+### Cancer.Net
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (222); Relationships (431)].
+
+### Cancer Support Community
+An organization connected with the National Coalition for Cancer Survivorship within the support ecosystem [Data: Entities (230); Relationships (439)].
+
+### HPV Cancers Alliance
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (226); Relationships (435)].
+
+### Love Your Buns
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (226); Relationships (435)].
+
+### PAN Foundation
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (226); Relationships (435)].
+
+### The Anchor Study
+An organization listed as a resource for patients within the NCCN Guidelines for Patients [Data: Entities (226); Relationships (435)].
+
+---
+
+## Key Relationships
+
+### NCCN as Central Hub
+NCCN publishes the NCCN Guidelines for Patients [Data: Relationships (2658)]. The guidelines are written for patients and are trusted by them [Data: Relationships (2674)]. The guidelines are also trusted by providers to explain cancer care recommendations [Data: Relationships (2676)].
+
+### Diagnostic Tests and Treatment Planning
+Diagnostic tests help plan treatment after a diagnosis and can monitor whether cancer is growing or spreading after treatment [Data: Relationships (3004)]. Diagnostic tests are used to confirm cancer and support diagnosis [Data: Relationships (3003)].
+
+### Biomarker Testing and Treatment Eligibility
+Biomarker testing can help determine eligibility for targeted therapies [Data: Relationships (2644)] and immunotherapies [Data: Relationships (2645)].
+
+### Early Detection and Breast Cancer
+Early detection aims to find breast cancer earlier and reduce the risk of dying from it [Data: Relationships (663)]. Mammograms are used for early detection of breast cancer [Data: Relationships (691)]. Breast exams help achieve early detection of breast cancer [Data: Relationships (700)]. Breast cancer screening is performed for early detection of breast cancer [Data: Relationships (676)].
+
+### Lung Cancer Screening
+Lung cancer screening is performed to enable early detection of lung cancer before symptoms begin [Data: Relationships (1853)].
+
+### CDC and Tobacco Cessation
+CDC.gov/tobacco is the official tobacco resource page of the CDC [Data: Relationships (99)]. The CDC operates the online resource CDC.gov/tobacco [Data: Relationships (2200)]. SmokeFree.gov and BeTobaccoFree.gov are both recognized as online support resources for individuals seeking to quit tobacco use [Data: Relationships (96, 98)].
+
+### Cancer and Treatment
+CDC.gov/tobacco provides smoking cessation resources; quitting smoking/vaping is important for effective cancer treatment [Data: Relationships (1057)].
+
+### Diagnostic Tests and Prostate Cancer
+Diagnostic tests confirm prostate cancer and determine whether it is localized or advanced [Data: Relationships (2995)]. Diagnostic tests provide information used for tumor staging in prostate cancer [Data: Relationships (2996)]. A biopsy is one type of diagnostic test used to confirm prostate cancer [Data: Relationships (2986)].
+
+### Diagnostic Tests and AML
+A bone marrow aspirate is a diagnostic test used to confirm AML [Data: Relationships (939)]. A bone marrow biopsy is a diagnostic test used to confirm AML [Data: Relationships (942)]. Genetic and biomarker tests are diagnostic tests used to learn about AML and guide treatment [Data: Relationships (948)]. A lumbar puncture is a diagnostic test that checks spinal fluid for leukemia cells [Data: Relationships (936)].
+
+### Insurance and Diagnostic Tests
+The patient asks whether insurance will pay for the diagnostic tests they need [Data: Relationships (958)].
+
+### Family Members and Health History
+Family members are the patient's blood relatives on both sides of the family whose health histories are collected for the family history. The care team asks about their diseases and genetic testing, as well as health issues such as heart disease, cancer, and diabetes, which are all relevant to understanding the patient's familial risk. Beyond their role in medical history, family members also provide practical and emotional support, including transportation, meals, emotional encouragement, and help taking notes during appointments [Data: Entities (481)].
+
+### Fertility Preservation and Cancer Care
+Fertility preservation is framed as a proactive step to keep options open for having biological children before cancer treatment. Patients are advised to ask their care team about fertility changes and referrals to fertility specialists, and counseling may be provided to discuss preservation options [Data: Entities (44, 1126); Relationships (1071, 2860)].
+
+### Survivorship Care
+Survivorship care for cancer-related late and long-term effects is an NCCN patient guideline/resource for cancer survivors that addresses late and long-term effects of cancer treatment [Data: Entities (219)]. This is supported by survivorship care resources that address healthy living and late and long-term effects after treatment [Data: Entities (218, 219); Relationships (426, 427)].
+
+### Dr. Google Warning
+The patient guidance in this community advises readers not to consult "Dr. Google" when seeking health information. Google is personified as Dr. Google based on its search engine, and the text cautions that random Google results may be unreliable or misleading. Instead, it directs patients to reputable, medically reviewed resources such as the NCCN patient guidelines [Data: Entities (1127, 695); Relationships (2862, 2863)].
+
+---
+
+## Complete Entity and Relationship List
+
+### ENTITY: TARGETED THERAPIES
+**Description:** Treatments for which biomarker testing may determine eligibility
+**Relationships:**
+  - Source: BIOMARKER TESTING
+  - Target: TARGETED THERAPIES
+  - Description: Biomarker testing can help determine eligibility for targeted therapies
+
+### ENTITY: IMMUNOTHERAPIES
+**Description:** Treatments for which biomarker testing may determine eligibility
+**Relationships:**
+  - Source: BIOMARKER TESTING
+  - Target: IMMUNOTHERAPIES
+  - Description: Biomarker testing can help determine eligibility for immunotherapies
+
+### ENTITY: DIAGNOSTIC TESTS
+**Description:** Diagnostic tests are procedures and tools used to diagnose or evaluate diseases, including cancer. In the context of oncology, they are used to confirm the presence of cancer, determine whether the disease is localized or advanced, and help plan appropriate treatment. These tests also play a critical role in monitoring patients after treatment, as they can detect whether cancer is still growing or spreading. Diagnostic tests include a range of methods such as imaging scans (e.g., CT, MRI, or X-rays), biopsies (removal and examination of tissue samples), and genetic or biomarker tests that analyze DNA, genes, proteins, or other molecular markers. In addition, some diagnostic procedures, such as lumbar puncture, may be used to evaluate diseases affecting the nervous system or to check for the spread of cancer into the cerebrospinal fluid. By providing detailed information about the presence, type, and extent of disease, diagnostic tests are essential for accurate diagnosis, staging, treatment planning, and ongoing surveillance to assess the effectiveness of therapy and detect any recurrence or progression.
+**Relationships:**
+  - Source: DIAGNOSTIC TESTS
+  - Target: BIOPSY
+  - Description: Diagnostic tests include biopsies
+  - Source: BIOPSY
+  - Target: DIAGNOSTIC TESTS
+  - Description: A biopsy is one type of diagnostic test used to confirm prostate cancer
+  - Source: DIAGNOSTIC TESTS
+  - Target: TREATMENT
+  - Description: Diagnostic tests help plan treatment after a diagnosis and can monitor whether cancer is growing or spreading after treatment
+  - Source: DIAGNOSTIC TESTS
+  - Target: IMAGING TESTS
+  - Description: Diagnostic tests include imaging scans, biopsies, and genetic tests; imaging tests are a type of diagnostic test
+  - Source: DIAGNOSTIC TESTS
+  - Target: PROSTATE CANCER
+  - Description: Diagnostic tests confirm prostate cancer and determine whether it is localized or advanced
+  - Source: CT SCAN
+  - Target: DIAGNOSTIC TESTS
+  - Description: CT scans are diagnostic imaging tests
+  - Source: DIAGNOSTIC TESTS
+  - Target: DIAGNOSIS
+  - Description: Diagnostic tests are used to confirm cancer and support diagnosis
+  - Source: PET SCAN
+  - Target: DIAGNOSTIC TESTS
+  - Description: PET scans are diagnostic imaging tests
+  - Source: MRI SCAN
+  - Target: DIAGNOSTIC TESTS
+  - Description: MRI scans are diagnostic imaging tests
+  - Source: BONE MARROW BIOPSY
+  - Target: DIAGNOSTIC TESTS
+  - Description: A bone marrow biopsy is a diagnostic test used to confirm AML
+  - Source: BONE MARROW ASPIRATE
+  - Target: DIAGNOSTIC TESTS
+  - Description: A bone marrow aspirate is a diagnostic test used to confirm AML
+  - Source: GENETIC AND BIOMARKER TESTS
+  - Target: DIAGNOSTIC TESTS
+  - Description: Genetic and biomarker tests are diagnostic tests used to learn about AML and guide treatment
+  - Source: DIAGNOSTIC TESTS
+  - Target: TUMOR STAGING
+  - Description: Diagnostic tests provide information used for tumor staging in prostate cancer
+  - Source: LUMBAR PUNCTURE
+  - Target: DIAGNOSTIC TESTS
+  - Description: A lumbar puncture is a diagnostic test that checks spinal fluid for leukemia cells
+  - Source: DIAGNOSTIC TESTS
+  - Target: INSURANCE
+  - Description: The patient asks whether insurance will pay for the diagnostic tests they need
+  - Source: DIAGNOSTIC TESTS
+  - Target: GENETIC TESTS
+  - Description: DIAGNOSTIC TESTS encompass a broad category of medical assessments used to identify the presence or cause of a condition. Within this category, GENETIC TESTS are included as a specific subset. GENETIC TESTS are diagnostic tests that look for inherited mutations related to prostate cancer risk. Together, these entities describe the relationship between the broader diagnostic category and the specialized genetic testing used to assess inherited prostate cancer susceptibility.
+  - Source: GENERAL HEALTH HISTORY
+  - Target: DIAGNOSTIC TESTS
+  - Description: The general health history is used along with diagnostic tests to guide prostate cancer care
+
+### ENTITY: NCCN GUIDELINES FOR PATIENTS
+**Description:** (No additional description provided)
+**Relationships:**
+  - Source: NCCN
+  - Target: NCCN GUIDELINES FOR PATIENTS
+  - Description: NCCN publishes the NCCN Guidelines for Patients
+  - Source: PATIENT
+  - Target: NCCN GUIDELINES FOR PATIENTS
+  - Description: The guidelines are written for patients and are trusted by them
+  - Source: BASAL CELL SKIN CANCER
+  - Target: NCCN GUIDELINES FOR PATIENTS
+  - Description: The guidelines explain current care recommendations for basal cell skin cancer
+  - Source: PROVIDER
+  - Target: NCCN GUIDELINES FOR PATIENTS
+  - Description: The guidelines are trusted by providers to explain cancer care recommendations
+
+### ENTITY: MEDICAL HISTORY AND PHYSICAL EXAM (H&P)
+**Description:** (No additional description provided)
+**Relationships:**
+  - Source: PHYSICAL EXAM
+  - Target: MEDICAL HISTORY AND PHYSICAL EXAM (H&P)
+  - Description: The H&P includes the physical exam component.
+
+### ENTITY: EARLY DETECTION
+**Description:** (No additional description provided)
+**Relationships:**
+  - Source: BREAST CANCER
+  - Target: EARLY DETECTION
+  - Description: Early detection aims to find breast cancer earlier and reduce the risk of dying from it
+  - Source: MAMMOGRAM
+  - Target: EARLY DETECTION
+  - Description: Mammograms are used for early detection of breast cancer
+  - Source: BREAST CANCER SCREENING
+  - Target: EARLY DETECTION
+  - Description: Breast cancer screening is performed for early detection of breast cancer
+  - Source: BREAST EXAM
+  - Target: EARLY DETECTION
+  - Description: Breast exams help achieve early detection of breast cancer
+  - Source: LUNG CANCER SCREENING
+  - Target: EARLY DETECTION
+  - Description: Lung cancer screening is performed to enable early detection of lung cancer before symptoms begin
+
+### ENTITY: CDC
+**Description:** (No additional description provided)
+**Relationships:**
+  - Source: SMOKEFREE.GOV
+  - Target: CDC
+  - Description: SmokeFree.gov and the Centers for Disease Control and Prevention (CDC) are both recognized as online support resources for individuals seeking to quit tobacco use. Specifically, SmokeFree.gov is listed as an online support option to help people quit smoking or vaping, while the CDC's website, CDC.gov/tobacco, is also listed as an online support resource for quitting tobacco. Together, they serve as accessible digital tools for tobacco cessation, offering guidance and assistance to those looking to stop using tobacco products.
+  - Source: BETOBACCOFREE.GOV
+  - Target: CDC
+  - Description: BeTobaccoFree.gov and the Centers for Disease Control and Prevention (CDC) are both recognized as online support resources for individuals seeking to quit tobacco use. Specifically, the CDC provides these resources through its dedicated website, CDC.gov/tobacco. Together, BeTobaccoFree.gov and the CDC serve as accessible online support options to help people quit smoking or vaping. Both entities are listed as credible sources of assistance for tobacco cessation, offering guidance and resources for those looking to stop using tobacco products.
+  - Source: CDC
+  - Target: CDC.GOV/TOBACCO
+  - Description: The Centers for Disease Control and Prevention (CDC) operates the online resource CDC.gov/tobacco, which serves as the agency's dedicated digital platform for tobacco cessation. As the CDC's official online tobacco cessation resource, CDC.gov/tobacco provides information and support to help individuals quit tobacco use, reflecting the CDC's broader public health mission to reduce tobacco-related disease and death. This platform is a key component of the CDC's efforts to offer accessible cessation guidance and resources to the public.
+  - Source: CDC.GOV/TOBACCO
+  - Target: CDC
+  - Description: CDC.gov/tobacco is the official tobacco resource page of the CDC (Centers for Disease Control and Prevention). As a dedicated web resource maintained by the CDC, it is designed to provide reliable information and online support for individuals looking to quit smoking or vaping. The CDC is the organization responsible for and associated with this website, ensuring that the content and resources offered align with public health guidelines and evidence-based cessation strategies.
+
+### ENTITY: CANCER
+**Description:** Cancer is a broad class of diseases characterized by abnormal cell growth that is uncontrolled and resistant to normal cell death. Rather than a single condition, cancer encompasses a group of related diseases, all of which involve cells multiplying out of control. These abnormal cells can accumulate in various parts of the body; for example, in chronic lymphocytic leukemia (CLL), cancer cells can build up in lymph nodes, the spleen, and the liver. Similarly, lymphoma is a cancer that arises from lymphocytes, a type of white blood cell. In clinical practice, cancer is often detected and monitored through imaging techniques such as PET scans, which can reveal the presence and spread of cancerous cells. Specialized cancer centers focus on the diagnosis and treatment of these diseases. The management of cancer involves multiple critical steps, including biomarker testing, which helps identify specific genetic or molecular characteristics of a tumor; staging, which determines the extent of disease spread; and grading, which assesses how abnormal the cancer cells look and how quickly they are likely to grow. Treatment strategies vary depending on the type and stage of cancer and may include surgery, chemotherapy, radiation, targeted therapies, or other modalities. Cancer risk and development are influenced by a range of factors. Genetic testing can identify inherited mutations that increase susceptibility to certain cancers, while lifestyle factors such as smoking are well-established contributors to cancer risk. The disease process itself is complex, and modern oncology relies on a combination of molecular profiling, pathological assessment, and individualized treatment planning to address each patient's unique situation. Overall, cancer is a term used to describe a large family of diseases marked by dysregulated cell growth, with diverse causes, behaviors, and treatment responses.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: NCCN CANCER CENTERS
+**Description:** (No additional description provided)
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: TREATMENT
+**Description:** TREATMENT refers to the broad range of medical care and interventions provided to cancer patients after diagnosis. It encompasses standard-of-care therapies such as surgery, radiation therapy, chemotherapy, targeted therapy, systemic therapy, endocrine therapy, stem cell or hematopoietic cell transplant, and participation in clinical trials, as well as supportive care. The primary goals of treatment are to cure cancer, put it into remission, slow disease progression, reduce symptoms, and help people live longer. Treatment is planned and delivered by the care team based on a thorough risk assessment, the extent of cancer, and diagnostic testing. Tests such as blood tests, bone marrow aspirate and biopsy, and imaging studies are used to plan treatment, evaluate how well treatment is working, and monitor a patient's health after treatment ends. Imaging may also be used before, during, or after treatment to help plan care, assess response, and check for recurrence. For lower-risk cases—particularly in prostate cancer and basal cell skin cancer—treatment may be avoided or delayed, with some patients requiring minimal or no intervention. Conversely, higher-risk or more aggressive disease usually requires more intensive treatment. Treatment plans are often delivered in phases, as seen in acute myeloid leukemia (AML), where systemic therapy, chemotherapy, targeted therapy, and hematopoietic cell transplant are administered in stages with the goal of achieving remission. The approach for cancers such as cervical cancer may include surgery, radiation therapy, chemoradiation, systemic therapy, and clinical trials, depending on how far the cancer has spread. Bladder cancer treatment may be stronger or more intense than other options, while prostate cancer management focuses on slowing the disease, reducing symptoms, and prolonging survival. Regardless of cancer type, treatment can have significant side effects, including effects on fertility, hearing, endocrine glands, and a developing baby. The potential for toxicity and long-term outcomes are important considerations when selecting a treatment plan. Overall, treatment is the comprehensive management of cancer, integrating therapeutic procedures, supportive care, and ongoing monitoring to optimize patient outcomes throughout the cancer journey.
+**Relationships:**
+  - Source: DIAGNOSTIC TESTS
+  - Target: TREATMENT
+  - Description: Diagnostic tests help plan treatment after a diagnosis and can monitor whether cancer is growing or spreading after treatment
+
+### ENTITY: SURVIVORSHIP CARE FOR CANCER-RELATED LATE AND LONG-TERM EFFECTS
+**Description:** This is an NCCN patient guideline/resource for cancer survivors that addresses late and long-term effects of cancer treatment
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: GENETIC RISK TESTING
+**Description:** Genetic risk testing is used to assess inherited risks that may be relevant to cancer
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: FAMILY MEMBERS
+**Description:** Family members are the patient's blood relatives on both sides of the family whose health histories are collected for the family history. The care team asks about their diseases and genetic testing, as well as health issues such as heart disease, cancer, and diabetes, which are all relevant to understanding the patient's familial risk. Beyond their role in medical history, family members also provide practical and emotional support, including transportation, meals, emotional encouragement, and help taking notes during appointments.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: DIABETES
+**Description:** Diabetes is a condition involving problems processing sugar. It is associated with NAFLD and may increase the risk of liver cancer.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: BLOOD TEST
+**Description:** A blood test is a laboratory procedure in which a needle is inserted into a vein to collect a blood sample. The sample is then examined in a lab to detect signs of disease, monitor health conditions, or evaluate organ function. Blood tests may be ordered if a recurrence of a condition is suspected, and common tests include a complete blood count (CBC), blood urea nitrogen (BUN), creatinine, and liver function tests, which assess kidney and liver health. It is recommended that blood test results be kept in a medical binder for organized record-keeping and future reference.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: COLORECTAL CANCER ALLIANCE
+**Description:** An organization focused on colorectal cancer, listed as a resource with website ccalliance.org.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: CANCERCARE
+**Description:** A cancer care organization listed as a resource, with website cancercare.org.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: INFECTIONS
+**Description:** Infections are illnesses caused by pathogens, and they are commonly included in family history questions as part of medical assessments. In the context of cancer treatment, infections are also a frequent side effect of targeted therapy, and the body becomes particularly vulnerable to infections during high-dose chemotherapy. Thus, infections represent both a general category of disease and a specific clinical concern for patients undergoing certain cancer treatments.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+### ENTITY: AMERICAN CANCER SOCIETY
+**Description:** A cancer-focused organization listed as a resource for patients, with website cancer.org/cancer/anal-cancer.html.
+**Relationships:** (No explicit relationships listed in the data tables)
+
+---
+
+## Summary of Key Relationships
+
+The corpus reveals a well-structured ecosystem where:
+
+1. **NCCN** serves as the central publisher and hub, connecting patients and providers to evidence-based cancer guidelines [Data: Reports (76); Relationships (2658)].
+
+2. **Diagnostic tests** form the foundation of cancer care, confirming diagnoses, determining disease extent, planning treatment, and monitoring outcomes. They include imaging tests (CT, MRI, PET), biopsies, genetic tests, and specialized procedures like lumbar puncture [Data: Entities (474); Relationships (3001, 3002, 3003, 3004)].
+
+3. **Biomarker testing** directly links to treatment eligibility for targeted therapies and immunotherapies, particularly in metastatic cancers [Data: Relationships (2644, 2645); Sources (180)].
+
+4. **Early detection** is emphasized for breast cancer (via mammograms, breast exams, and screening) and lung cancer (via lung cancer screening) [Data: Entities (373); Relationships (663, 691, 700, 676, 1853)].
+
+5. **The CDC** provides tobacco cessation resources that support effective cancer treatment [Data: Entities (53); Relationships (96, 98, 99, 2200, 1057)].
+
+6. **A broad network of support organizations** (American Cancer Society, CancerCare, Colorectal Cancer Alliance, and others) complements NCCN's clinical guidance with advocacy, financial assistance, and community support [Data: Entities (220, 223, 225, 226, 230); Relationships (435, 439, 430, 431)].
+
+7. **Fertility preservation and survivorship care** are integrated into cancer care guidance, addressing long-term quality of life beyond acute treatment [Data: Entities (44, 1126, 218, 219); Relationships (1071, 2860, 426, 427)].
+
+8. **Patient safety** is emphasized through explicit warnings against unreliable sources like "Dr. Google" and direction toward curated, medically reviewed resources [Data: Entities (1127, 695); Relationships (2862, 2863)].

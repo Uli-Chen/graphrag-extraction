@@ -1,0 +1,682 @@
+{
+  "dataset": "novel",
+  "run_id": "novel_ts_pl_fewa_100turn_no_thinking_fair_seed42",
+  "turns_completed": 100,
+  "truth_nodes": 17161,
+  "truth_directed_edge_pairs": 29236,
+  "final_graph_nodes": 1906,
+  "final_graph_relation_triples": 2168,
+  "mean_htsn": 0.19881558587770748,
+  "mean_count_novelty": 0.5348144200428722,
+  "mean_retrospective_gain": 0.14691314748065024,
+  "rotting_diagnostics": {
+    "arms_with_repeated_queries": 3,
+    "adjacent_reward_comparisons": 3,
+    "reward_increases": 1,
+    "violation_rate": 0.3333333333333333
+  },
+  "arm_diagnostics": {
+    "policy": "topology_pl_fewa",
+    "epochs": 26,
+    "unique_admitted_arms": 75,
+    "unique_selected_arms": 73,
+    "selected_arms": [
+      "ABD-EL-KADER",
+      "ACHELOUS",
+      "ALGERIA",
+      "AUNT WIGHT",
+      "BACHMAN'S LIVERY STABLE",
+      "BRAZIL",
+      "CASTALIAN STREAM",
+      "CHAACMOL",
+      "CHANTEL",
+      "CISSY TRIXIT",
+      "CLARISSA",
+      "COMMUNITY MEMBERS",
+      "CORNISH COWS",
+      "CORNISH HORSES",
+      "CYBELE",
+      "DICK MASTERTON",
+      "DR. EARLE",
+      "DR. ELSIE",
+      "DUKE OF CORNWALL",
+      "EIN EIGNES KAPITEL",
+      "EPISTLE OF MEDEA TO JASON",
+      "FALMOUTH",
+      "FIGHEEGH",
+      "FIRE",
+      "FRANCE",
+      "GENERAL GRANT",
+      "GILLY",
+      "GORLOIS",
+      "HAWK",
+      "HEARTH-STONE",
+      "HEYWOOD",
+      "INFANT GIRL",
+      "ISIS",
+      "JAKE POOLE",
+      "JEWELS",
+      "MACROBIUS",
+      "MADAME PALMER",
+      "MEN",
+      "MISS R.",
+      "MONTAGU TRIXIT",
+      "MRS. SHEA",
+      "MYSELF",
+      "NASO",
+      "NORTH AFRICA",
+      "SERAPIS",
+      "SERPENT",
+      "SISTRA",
+      "SNAPSHOT HARRY",
+      "SPIRIT HOSS",
+      "STAFF",
+      "STANKES",
+      "SULTAN",
+      "TERRABIL",
+      "THE CARRIAGE AND HORSE",
+      "THE COACH",
+      "THE EXCELSIOR BANK",
+      "THE MAGISTRATE",
+      "THE MERCHANT",
+      "THE OLD EAGLE INN",
+      "THE PAN",
+      "THE POET",
+      "THE SMALL BOY",
+      "THE TREASURE",
+      "THE TREASURE-CHAMBER",
+      "THE WEEBLEY",
+      "TINKA JALLINGER",
+      "TRAIN",
+      "TREGEAGLE",
+      "TRELOWARREN",
+      "TRISTRAM AND ISEULT",
+      "TWO LITTLE BLACK FIGURES",
+      "WIGHT",
+      "WOODCHUCK"
+    ],
+    "mean_admission_to_first_query_delay": 0.9868421052631579,
+    "unqueried_admitted_slots": 2,
+    "mean_epoch_arm_set_turnover": 1.0,
+    "per_epoch": [
+      {
+        "epoch_id": 1,
+        "active_arms": [
+          "THE SMALL BOY",
+          "MEN",
+          "CLARISSA"
+        ],
+        "admission_to_first_query_delay": {
+          "THE SMALL BOY": 2,
+          "MEN": 0,
+          "CLARISSA": 1
+        }
+      },
+      {
+        "epoch_id": 2,
+        "active_arms": [
+          "THE COACH",
+          "HEYWOOD",
+          "THE TREASURE"
+        ],
+        "admission_to_first_query_delay": {
+          "THE COACH": 0,
+          "HEYWOOD": 1,
+          "THE TREASURE": 2
+        }
+      },
+      {
+        "epoch_id": 3,
+        "active_arms": [
+          "CHAACMOL",
+          "THE CARRIAGE AND HORSE",
+          "TREGEAGLE"
+        ],
+        "admission_to_first_query_delay": {
+          "CHAACMOL": 1,
+          "THE CARRIAGE AND HORSE": 0,
+          "TREGEAGLE": 2
+        }
+      },
+      {
+        "epoch_id": 4,
+        "active_arms": [
+          "NASO",
+          "TERRABIL",
+          "THE TREASURE-CHAMBER"
+        ],
+        "admission_to_first_query_delay": {
+          "NASO": 2,
+          "TERRABIL": 0,
+          "THE TREASURE-CHAMBER": 1
+        }
+      },
+      {
+        "epoch_id": 5,
+        "active_arms": [
+          "TINKA JALLINGER",
+          "SERPENT",
+          "CORNISH HORSES"
+        ],
+        "admission_to_first_query_delay": {
+          "TINKA JALLINGER": 0,
+          "SERPENT": 2,
+          "CORNISH HORSES": 1
+        }
+      },
+      {
+        "epoch_id": 6,
+        "active_arms": [
+          "MACROBIUS",
+          "SULTAN",
+          "BACHMAN'S LIVERY STABLE"
+        ],
+        "admission_to_first_query_delay": {
+          "MACROBIUS": 1,
+          "SULTAN": 2,
+          "BACHMAN'S LIVERY STABLE": 0
+        }
+      },
+      {
+        "epoch_id": 7,
+        "active_arms": [
+          "MONTAGU TRIXIT",
+          "SERAPIS",
+          "FIGHEEGH"
+        ],
+        "admission_to_first_query_delay": {
+          "MONTAGU TRIXIT": 1,
+          "SERAPIS": 0,
+          "FIGHEEGH": 2
+        }
+      },
+      {
+        "epoch_id": 8,
+        "active_arms": [
+          "TWO LITTLE BLACK FIGURES",
+          "DICK MASTERTON",
+          "SNAPSHOT HARRY"
+        ],
+        "admission_to_first_query_delay": {
+          "TWO LITTLE BLACK FIGURES": 2,
+          "DICK MASTERTON": 1,
+          "SNAPSHOT HARRY": 0
+        }
+      },
+      {
+        "epoch_id": 9,
+        "active_arms": [
+          "CISSY TRIXIT",
+          "THE WEEBLEY",
+          "THE EXCELSIOR BANK"
+        ],
+        "admission_to_first_query_delay": {
+          "CISSY TRIXIT": 0,
+          "THE WEEBLEY": 2,
+          "THE EXCELSIOR BANK": 1
+        }
+      },
+      {
+        "epoch_id": 10,
+        "active_arms": [
+          "GORLOIS",
+          "MRS. SHEA",
+          "THE PAN"
+        ],
+        "admission_to_first_query_delay": {
+          "GORLOIS": 1,
+          "MRS. SHEA": 2,
+          "THE PAN": 0
+        }
+      },
+      {
+        "epoch_id": 11,
+        "active_arms": [
+          "JEWELS",
+          "FRANCE",
+          "BRAZIL"
+        ],
+        "admission_to_first_query_delay": {
+          "JEWELS": 2,
+          "FRANCE": 1,
+          "BRAZIL": 0
+        }
+      },
+      {
+        "epoch_id": 12,
+        "active_arms": [
+          "TRISTRAM AND ISEULT",
+          "ALGERIA",
+          "MISS R."
+        ],
+        "admission_to_first_query_delay": {
+          "TRISTRAM AND ISEULT": 1,
+          "ALGERIA": 0,
+          "MISS R.": 2
+        }
+      },
+      {
+        "epoch_id": 13,
+        "active_arms": [
+          "ABD-EL-KADER",
+          "MADAME PALMER",
+          "THE POET"
+        ],
+        "admission_to_first_query_delay": {
+          "ABD-EL-KADER": 1,
+          "MADAME PALMER": 2,
+          "THE POET": 0
+        }
+      },
+      {
+        "epoch_id": 14,
+        "active_arms": [
+          "COMMUNITY MEMBERS",
+          "JAKE POOLE",
+          "WOODCHUCK"
+        ],
+        "admission_to_first_query_delay": {
+          "COMMUNITY MEMBERS": 2,
+          "JAKE POOLE": 1,
+          "WOODCHUCK": 0
+        }
+      },
+      {
+        "epoch_id": 15,
+        "active_arms": [
+          "TRELOWARREN",
+          "STAFF",
+          "TREGEAGLE"
+        ],
+        "admission_to_first_query_delay": {
+          "TRELOWARREN": 0,
+          "STAFF": 1,
+          "TREGEAGLE": 2
+        }
+      },
+      {
+        "epoch_id": 16,
+        "active_arms": [
+          "CORNISH COWS",
+          "DR. EARLE",
+          "CASTALIAN STREAM"
+        ],
+        "admission_to_first_query_delay": {
+          "CORNISH COWS": 0,
+          "DR. EARLE": 1,
+          "CASTALIAN STREAM": 2
+        }
+      },
+      {
+        "epoch_id": 17,
+        "active_arms": [
+          "INFANT GIRL",
+          "SPIRIT HOSS",
+          "FIRE"
+        ],
+        "admission_to_first_query_delay": {
+          "INFANT GIRL": 1,
+          "SPIRIT HOSS": 2,
+          "FIRE": 0
+        }
+      },
+      {
+        "epoch_id": 18,
+        "active_arms": [
+          "DUKE OF CORNWALL",
+          "WIGHT",
+          "THE MERCHANT"
+        ],
+        "admission_to_first_query_delay": {
+          "DUKE OF CORNWALL": 0,
+          "WIGHT": 2,
+          "THE MERCHANT": 1
+        }
+      },
+      {
+        "epoch_id": 19,
+        "active_arms": [
+          "EPISTLE OF MEDEA TO JASON",
+          "EIN EIGNES KAPITEL",
+          "ISIS"
+        ],
+        "admission_to_first_query_delay": {
+          "EPISTLE OF MEDEA TO JASON": 2,
+          "EIN EIGNES KAPITEL": 0,
+          "ISIS": 1
+        }
+      },
+      {
+        "epoch_id": 20,
+        "active_arms": [
+          "HEARTH-STONE",
+          "THE OLD EAGLE INN",
+          "MYSELF"
+        ],
+        "admission_to_first_query_delay": {
+          "HEARTH-STONE": 1,
+          "THE OLD EAGLE INN": 2,
+          "MYSELF": 0
+        }
+      },
+      {
+        "epoch_id": 21,
+        "active_arms": [
+          "HAWK",
+          "AUNT WIGHT",
+          "GILLY"
+        ],
+        "admission_to_first_query_delay": {
+          "HAWK": 2,
+          "AUNT WIGHT": 1,
+          "GILLY": 0
+        }
+      },
+      {
+        "epoch_id": 22,
+        "active_arms": [
+          "SULTAN",
+          "CHANTEL",
+          "NORTH AFRICA"
+        ],
+        "admission_to_first_query_delay": {
+          "SULTAN": 2,
+          "CHANTEL": 0,
+          "NORTH AFRICA": 1
+        }
+      },
+      {
+        "epoch_id": 23,
+        "active_arms": [
+          "THE MAGISTRATE",
+          "STANKES",
+          "SISTRA"
+        ],
+        "admission_to_first_query_delay": {
+          "THE MAGISTRATE": 0,
+          "STANKES": 1,
+          "SISTRA": 2
+        }
+      },
+      {
+        "epoch_id": 24,
+        "active_arms": [
+          "FALMOUTH",
+          "ACHELOUS",
+          "TRAIN"
+        ],
+        "admission_to_first_query_delay": {
+          "FALMOUTH": 0,
+          "ACHELOUS": 2,
+          "TRAIN": 1
+        }
+      },
+      {
+        "epoch_id": 25,
+        "active_arms": [
+          "GENERAL GRANT",
+          "DR. ELSIE",
+          "HEYWOOD"
+        ],
+        "admission_to_first_query_delay": {
+          "GENERAL GRANT": 1,
+          "DR. ELSIE": 0,
+          "HEYWOOD": 2
+        }
+      },
+      {
+        "epoch_id": 26,
+        "active_arms": [
+          "THE INCENSE MASTER",
+          "THE KETTLE",
+          "CYBELE"
+        ],
+        "admission_to_first_query_delay": {
+          "THE INCENSE MASTER": null,
+          "THE KETTLE": null,
+          "CYBELE": 0
+        }
+      }
+    ]
+  },
+  "query_diagnostics": {
+    "total_queries": 100,
+    "unique_queries": 100,
+    "query_unique_rate": 1.0,
+    "zero_gain_turns": 12,
+    "zero_gain_rate": 0.12,
+    "max_consecutive_zero_gain": 2,
+    "zero_graph_gain_turns": 12,
+    "zero_graph_gain_rate": 0.12,
+    "zero_relation_gain_turns": 14,
+    "zero_relation_gain_rate": 0.14,
+    "zero_sensitive_gain_turns": 17,
+    "zero_sensitive_gain_rate": 0.17,
+    "zero_meaningful_gain_turns": 14,
+    "zero_meaningful_gain_rate": 0.14,
+    "max_consecutive_meaningful_zero_gain": 3,
+    "repeated_arms": 3,
+    "repeated_arm_counts": {
+      "HEYWOOD": 2,
+      "TREGEAGLE": 2,
+      "SULTAN": 2
+    },
+    "nonempty_main_responses": 100,
+    "nonempty_main_response_rate": 1.0,
+    "query_generator_fallback_turns": 2,
+    "query_generator_fallback_rate": 0.02
+  },
+  "mode_diagnostics": {
+    "seed_turns": 1,
+    "post_seed_turns": 99,
+    "post_seed_explore_turns": 23,
+    "post_seed_exploit_turns": 76,
+    "post_seed_explore_ratio": 0.23232323232323232,
+    "post_seed_exploit_ratio": 0.7676767676767676,
+    "both_post_seed_modes_observed": true,
+    "decision_reason_counts": {
+      "epsilon_sample(0.0500)": 1,
+      "epsilon_sample(0.0715)": 1,
+      "epsilon_sample(0.1093)": 1,
+      "epsilon_sample(0.1138)": 1,
+      "epsilon_sample(0.1209)": 1,
+      "epsilon_sample(0.1604)": 1,
+      "epsilon_sample(0.1636)": 1,
+      "epsilon_sample(0.1739)": 1,
+      "epsilon_sample(0.1885)": 1,
+      "epsilon_sample(0.2128)": 1,
+      "epsilon_sample(0.2171)": 1,
+      "epsilon_sample(0.2261)": 1,
+      "epsilon_sample(0.2307)": 1,
+      "epsilon_sample(0.2402)": 1,
+      "epsilon_sample(0.2767)": 1,
+      "epsilon_sample(0.2824)": 1,
+      "epsilon_sample(0.2881)": 1,
+      "fewa(0.0500)": 10,
+      "fewa(0.0507)": 1,
+      "fewa(0.0517)": 1,
+      "fewa(0.0528)": 1,
+      "fewa(0.0539)": 1,
+      "fewa(0.0550)": 1,
+      "fewa(0.0561)": 1,
+      "fewa(0.0572)": 1,
+      "fewa(0.0584)": 1,
+      "fewa(0.0596)": 1,
+      "fewa(0.0608)": 1,
+      "fewa(0.0621)": 1,
+      "fewa(0.0633)": 1,
+      "fewa(0.0646)": 1,
+      "fewa(0.0659)": 1,
+      "fewa(0.0729)": 1,
+      "fewa(0.0744)": 1,
+      "fewa(0.0759)": 1,
+      "fewa(0.0775)": 1,
+      "fewa(0.0791)": 1,
+      "fewa(0.0807)": 1,
+      "fewa(0.0823)": 1,
+      "fewa(0.0840)": 1,
+      "fewa(0.0857)": 1,
+      "fewa(0.0875)": 1,
+      "fewa(0.0893)": 1,
+      "fewa(0.0911)": 1,
+      "fewa(0.0929)": 1,
+      "fewa(0.0948)": 1,
+      "fewa(0.0968)": 1,
+      "fewa(0.0988)": 1,
+      "fewa(0.1008)": 1,
+      "fewa(0.1028)": 1,
+      "fewa(0.1049)": 1,
+      "fewa(0.1071)": 1,
+      "fewa(0.1115)": 1,
+      "fewa(0.1161)": 1,
+      "fewa(0.1184)": 1,
+      "fewa(0.1233)": 1,
+      "fewa(0.1258)": 1,
+      "fewa(0.1284)": 1,
+      "fewa(0.1310)": 1,
+      "fewa(0.1337)": 1,
+      "fewa(0.1364)": 1,
+      "fewa(0.1392)": 1,
+      "fewa(0.1421)": 1,
+      "fewa(0.1450)": 1,
+      "fewa(0.1479)": 1,
+      "fewa(0.1509)": 1,
+      "fewa(0.1540)": 1,
+      "fewa(0.1572)": 1,
+      "fewa(0.1670)": 1,
+      "fewa(0.1704)": 1,
+      "fewa(0.1774)": 1,
+      "fewa(0.1810)": 1,
+      "fewa(0.1847)": 1,
+      "fewa(0.1924)": 1,
+      "fewa(0.1963)": 1,
+      "fewa(0.2003)": 1,
+      "fewa(0.2044)": 1,
+      "fewa(0.2085)": 1,
+      "fewa(0.2216)": 1,
+      "fewa(0.2354)": 1,
+      "fewa(0.2501)": 1,
+      "fewa(0.2658)": 1,
+      "fewa(0.2712)": 1,
+      "fewa(0.2940)": 1,
+      "recent_htsn_below_threshold(0.0336)": 1,
+      "recent_htsn_below_threshold(0.0343)": 1,
+      "recent_htsn_below_threshold(0.0350)": 1,
+      "recent_htsn_below_threshold(0.1226)": 1,
+      "recent_htsn_below_threshold(0.1276)": 1,
+      "recent_htsn_below_threshold(0.1302)": 1,
+      "seed_turn": 1
+    },
+    "by_mode": {
+      "explore": {
+        "turns": 23,
+        "mean_htsn": 0.16597396473622442,
+        "mean_raw_batch_reward": 0.03249283152397565,
+        "mean_effective_fewa_reward": 0.0,
+        "mean_new_nodes": 29.52173913043478,
+        "mean_new_edges": 29.956521739130434
+      },
+      "exploit": {
+        "turns": 76,
+        "mean_htsn": 0.21137049208996825,
+        "mean_raw_batch_reward": 0.0294530269260855,
+        "mean_effective_fewa_reward": 0.029100437750035218,
+        "mean_new_nodes": 15.894736842105264,
+        "mean_new_edges": 19.31578947368421
+      }
+    }
+  },
+  "anchor_diagnostics": {
+    "eligible_exploit_turns": 76,
+    "query_anchor_adherent_turns": 76,
+    "query_anchor_adherence_rate": 1.0,
+    "response_anchor_text_hit_turns": 76,
+    "response_anchor_text_hit_rate": 1.0,
+    "response_anchor_node_hit_turns": 71,
+    "response_anchor_node_hit_rate": 0.9342105263157895,
+    "response_anchor_adherent_turns": 71,
+    "response_anchor_adherence_rate": 0.9342105263157895,
+    "reward_attribution_warning_turns": 5,
+    "mean_raw_exploit_reward": 0.0294530269260855,
+    "mean_effective_fewa_reward": 0.029100437750035218,
+    "anchor_rejected_query_generations": 0
+  },
+  "formal_acceptance": {
+    "query_unique_rate": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "passed": true
+    },
+    "zero_gain_rate": {
+      "value": 0.12,
+      "threshold": 0.2,
+      "passed": true
+    },
+    "max_consecutive_zero_gain": {
+      "value": 2,
+      "threshold": 4,
+      "passed": true
+    },
+    "max_consecutive_meaningful_zero_gain": {
+      "value": 3,
+      "threshold": 4,
+      "passed": true
+    },
+    "anchor_query_adherence_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "both_post_seed_modes_observed": {
+      "value": 1,
+      "threshold": 1,
+      "passed": true
+    },
+    "nonempty_main_response_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "all_passed": true
+  },
+  "trajectory": {
+    "au_node_tsc_rank": 0.10971447472016614,
+    "au_node_tsc_raw": 0.18688658143401804,
+    "au_edge_tsc_rank": 0.038287284382949635,
+    "au_edge_tsc_raw": 0.03403273017333997,
+    "au_node_recall": 0.059516927917953495,
+    "au_edge_pair_recall": 0.03804829662060474,
+    "au_node_autc_rank": 0.1275785205486778
+  },
+  "final": {
+    "recovered_nodes": 1906,
+    "recovered_edge_pairs": 2168,
+    "matched_nodes": 1636,
+    "matched_directed_edge_pairs": 1914,
+    "node_precision": 0.8583420776495279,
+    "node_recall": 0.09533243983450848,
+    "edge_pair_precision": 0.8828413284132841,
+    "edge_pair_recall": 0.06546723217950472,
+    "undirected_edge_pair_precision": 0.8961774421897122,
+    "undirected_edge_pair_recall": 0.0665078975939481,
+    "node_tsc_rank": 0.17178230250937096,
+    "node_tsc_raw": 0.27414222435157015,
+    "edge_tsc_rank": 0.06598220498558997,
+    "edge_tsc_raw": 0.05789167568732762,
+    "edge_tsc_noisy_or_rank": 0.0659736682707212,
+    "node_tsc_degree": 0.33538229834331545,
+    "node_tsc_burt_effective": 0.35794133709332276,
+    "node_tsc_collision_diversity": 0.21971029490887375,
+    "node_tsc_burt_balanced": 0.34864574200454207,
+    "degree_weighted_node_coverage": 0.33538229834331545,
+    "pagerank_weighted_node_coverage": 0.1785299853272433,
+    "node_autc_rank": 0.19537356836916356,
+    "spearman_bnrr_online_vs_truth": 0.3738525355477066,
+    "spearman_sensitivity_online_vs_truth": 0.3738525355477066,
+    "spearman_matched_nodes": 1636,
+    "top5_sensitive_nodes_recovered": 5,
+    "top10_sensitive_nodes_recovered": 10,
+    "top20_sensitive_nodes_recovered": 15,
+    "top50_sensitive_nodes_recovered": 35
+  }
+}

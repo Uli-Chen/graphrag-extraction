@@ -1,0 +1,15 @@
+dataset: medical
+run_id: scratch_medical_agea_3seed_4PtQK3_net_seed40
+method: standalone_agea
+turns: 100
+random_seed: 40
+query_method: local
+llm_model: DeepSeek-V4-Flash
+disable_api_thinking: true
+enable_graph_filter: false
+initial_epsilon: 0.3
+epsilon_decay: 0.98
+min_epsilon: 0.05
+novelty_threshold: 0.15
+candidate_k: 6
+seed_policy: native_agea

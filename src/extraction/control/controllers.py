@@ -7,179 +7,7 @@ import random
 from dataclasses import dataclass, field
 from typing import Iterable, Mapping
 
-from .admission import TopologyPlackettLuceAdmission, is_valid_arm
-
-
-@dataclass
-class AgeaBnrrAnchorController:
-    """AGEA-style one-step anchor sampling over a BNRR-ranked candidate set.
-
-    AGEA's candidate priority ``degree / (1 + pulls)`` is replaced by
-    ``BNRR / (1 + pulls)``.  The final draw keeps AGEA's logarithmic degree
-    weighting, mild query-count penalty, and recent-discovery boost.
-    """
-
-    candidate_k: int = 6
-    seed: int = 42
-    query_counts: dict[str, int] = field(default_factory=dict)
-    rewards: dict[str, list[float]] = field(default_factory=dict)
-    active_arms: tuple[str, ...] = ()
-    epoch_id: int = 0
-    admission_history: list[dict[str, object]] = field(default_factory=list)
-    selection_history: list[dict[str, object]] = field(default_factory=list)
-    _rng: random.Random = field(init=False, repr=False)
-
-    def __post_init__(self) -> None:
-        self._rng = random.Random(self.seed)
-
-    @staticmethod
-    def _max_queries(degree: int) -> int:
-        if degree >= 100:
-            return 10
-        if degree >= 50:
-            return 5
-        if degree >= 20:
-            return 3
-        return 1
-
-    def select(
-        self,
-        available: Iterable[str],
-        turn: int,
-        priors: Mapping[str, float] | None = None,
-        *,
-        degrees: Mapping[str, int] | None = None,
-        recently_discovered: Iterable[str] = (),
-    ) -> str | None:
-        bnrr = priors or {}
-        degrees = degrees or {}
-        recent = set(str(arm) for arm in recently_discovered)
-        eligible: list[dict[str, float | int | str]] = []
-        for arm in sorted(set(str(item) for item in available)):
-            raw_bnrr = max(0.0, float(bnrr.get(arm, 0.0)))
-            if not is_valid_arm(arm) or raw_bnrr <= 0.0:
-                continue
-            degree = max(0, int(degrees.get(arm, 0)))
-            pulls = max(0, int(self.query_counts.get(arm, 0)))
-            max_queries = self._max_queries(degree)
-            if pulls >= max_queries:
-                continue
-            eligible.append(
-                {
-                    "arm": arm,
-                    "bnrr": raw_bnrr,
-                    "degree": degree,
-                    "pull_count": pulls,
-                    "max_queries": max_queries,
-                    "candidate_priority": raw_bnrr / (1.0 + pulls),
-                }
-            )
-
-        eligible.sort(
-            key=lambda item: (
-                -float(item["candidate_priority"]),
-                -float(item["bnrr"]),
-                -int(item["degree"]),
-                str(item["arm"]),
-            )
-        )
-        candidates = eligible[: self.candidate_k]
-        self.active_arms = tuple(str(item["arm"]) for item in candidates)
-        self.epoch_id += 1
-
-        weighted_candidates: list[dict[str, float | int | str | bool]] = []
-        for item in candidates:
-            arm = str(item["arm"])
-            degree = int(item["degree"])
-            pulls = int(item["pull_count"])
-            recent_boost = 1.2 if arm in recent else 1.0
-            weight = (
-                max(math.log(degree + 1.0), 1.0)
-                * recent_boost
-                / (1.0 + pulls * 0.05)
-            )
-            weighted_candidates.append(
-                {
-                    **item,
-                    "recently_discovered": arm in recent,
-                    "sampling_weight": max(weight, 0.01),
-                }
-            )
-
-        admission = {
-            "policy": "agea_bnrr_topk",
-            "epoch_id": self.epoch_id,
-            "eligible_arm_count": len(eligible),
-            "active_arms": list(self.active_arms),
-            "candidates": weighted_candidates,
-            "exploit_pull_start": turn,
-            "exploit_pull_end": turn,
-        }
-        self.admission_history.append(admission)
-
-        if not weighted_candidates:
-            self.selection_history.append(
-                {
-                    "exploit_pull": turn,
-                    "epoch_id": self.epoch_id,
-                    "epoch_refreshed": True,
-                    "selected_arm": None,
-                    "reason": "no_bnrr_candidate",
-                    "active_arms": [],
-                }
-            )
-            return None
-
-        total_weight = sum(
-            float(item["sampling_weight"]) for item in weighted_candidates
-        )
-        uniform_draw = self._rng.random()
-        threshold = uniform_draw * total_weight
-        cumulative = 0.0
-        chosen = weighted_candidates[-1]
-        for item in weighted_candidates:
-            cumulative += float(item["sampling_weight"])
-            if threshold <= cumulative:
-                chosen = item
-                break
-
-        selected = str(chosen["arm"])
-        self.selection_history.append(
-            {
-                "exploit_pull": turn,
-                "epoch_id": self.epoch_id,
-                "epoch_refreshed": True,
-                "selected_arm": selected,
-                "reason": "agea_degree_weighted_random_from_bnrr_topk",
-                "active_arms": list(self.active_arms),
-                "uniform_draw": uniform_draw,
-                "total_weight": total_weight,
-                "conditional_probability": float(chosen["sampling_weight"])
-                / total_weight,
-            }
-        )
-        return selected
-
-    def observe(self, arm: str | None, reward: float) -> None:
-        if arm is None:
-            return
-        self.query_counts[arm] = self.query_counts.get(arm, 0) + 1
-        self.rewards.setdefault(arm, []).append(float(reward))
-
-    def state_dict(self) -> dict[str, object]:
-        return {
-            "policy": "agea_bnrr_anchor",
-            "admission_policy": "bnrr_topk",
-            "selection_policy": "agea_degree_weighted_random",
-            "candidate_k": self.candidate_k,
-            "seed": self.seed,
-            "active_arms": list(self.active_arms),
-            "epoch_id": self.epoch_id,
-            "query_counts": self.query_counts,
-            "rewards": self.rewards,
-            "admission_history": self.admission_history,
-            "selection_history": self.selection_history,
-        }
+from .admission import TopologyPlackettLuceAdmission
 
 
 @dataclass
@@ -315,7 +143,7 @@ class EpochFewaController:
             active = retained
             window *= 2
 
-        # FEWA balances pulls among statistically plausible arms.  Recent reward
+        # FEWA balances pulls among statistically plausible arms. Recent reward
         # and lexical order make ties reproducible.
         selected = min(
             active,
@@ -483,7 +311,7 @@ class AdaptiveModeController:
                     explore_suppressed=True,
                 )
 
-        # Productive broad queries are allowed to continue.  The cap is only a
+        # Productive broad queries are allowed to continue. The cap is only a
         # rescue mechanism for consecutive explore turns with no new relation
         # and no positive history-anchored sensitive mass.
         consecutive_failed_explore = 0

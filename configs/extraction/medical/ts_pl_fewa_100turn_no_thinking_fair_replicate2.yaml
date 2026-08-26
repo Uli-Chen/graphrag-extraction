@@ -1,0 +1,40 @@
+dataset: medical
+run_id: medical_ts_pl_fewa_100turn_no_thinking_fair_replicate2_seed42
+turns: 100
+query_method: local
+disable_api_thinking: true
+graphrag_query_retries: 2
+shared_seed_response_path: results/medical/fewa_100turn_formal/seed_response.txt
+
+# Exact FEWA fair-run protocol. The shared response fixes the initial graph and
+# leaves 99 live query-generation/extraction rounds, matching the anchor ablations.
+enable_graph_filter: false
+initial_epsilon: 0.30
+epsilon_decay: 0.98
+min_epsilon: 0.05
+htsn_threshold: 0.15
+htsn_window: 5
+adaptive_htsn_threshold: true
+explore_success_window: 10
+explore_success_min_samples: 2
+explore_success_threshold: 0.20
+max_consecutive_failed_explore: 2
+
+random_seed: 42
+anchor_sampling_policy: ts_pl_fewa
+fewa_delta: 0.05
+fewa_max_arms: 3
+# Keep the original FEWA reward scale. Unlike AGEA-style policies, FEWA uses M.
+reward_normalizer: 512
+
+query_generator_model: DeepSeek-V4-Flash-0731
+query_generation_retries: 3
+query_similarity_threshold: 0.85
+require_exploit_anchor_in_query: true
+
+acceptance_min_query_unique_rate: 0.90
+acceptance_max_zero_gain_rate: 0.20
+acceptance_max_consecutive_zero_gain: 4
+acceptance_min_anchor_query_adherence: 1.0
+acceptance_max_consecutive_meaningful_zero_gain: 4
+acceptance_require_both_post_seed_modes: true

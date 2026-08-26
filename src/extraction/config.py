@@ -22,6 +22,9 @@ class ExperimentConfig:
     run_id: str = "medical_ts_pl_fewa_50turn"
     turns: int = 50
     query_method: str = "local"
+    disable_api_thinking: bool = False
+    graphrag_query_retries: int = 2
+    shared_seed_response_path: str | None = None
     enable_graph_filter: bool = False
     graph_filter_model: str = "gpt-4o-mini"
     initial_epsilon: float = 0.30
@@ -38,7 +41,6 @@ class ExperimentConfig:
     fewa_delta: float = 0.05
     fewa_max_arms: int = 20
     anchor_sampling_policy: str = "ts_pl_fewa"
-    agea_bnrr_candidate_k: int = 6
     reward_normalizer: int = 512
     query_generator_model: str = "gpt-4o-mini"
     query_generation_retries: int = 3
@@ -96,8 +98,10 @@ class ExperimentConfig:
         return config
 
     def validate(self) -> None:
-        if self.dataset != "medical":
-            raise ValueError("This runner currently supports the medical GraphRAG dataset only.")
+        if self.dataset not in {"medical", "novel"}:
+            raise ValueError(
+                "This runner currently supports the medical and novel GraphRAG datasets."
+            )
         if self.turns <= 0:
             raise ValueError("turns must be positive")
         if not 0.0 <= self.htsn_threshold <= 1.0:
@@ -124,6 +128,7 @@ class ExperimentConfig:
             "explore_success_window",
             "explore_success_min_samples",
             "max_consecutive_failed_explore",
+            "graphrag_query_retries",
             "query_generation_retries",
             "acceptance_max_consecutive_zero_gain",
             "acceptance_max_consecutive_meaningful_zero_gain",
@@ -132,15 +137,15 @@ class ExperimentConfig:
                 raise ValueError(f"{name} must be non-negative")
         if self.fewa_max_arms <= 0:
             raise ValueError("fewa_max_arms must be positive")
-        if self.anchor_sampling_policy not in {"ts_pl_fewa", "agea_bnrr"}:
-            raise ValueError(
-                "anchor_sampling_policy must be 'ts_pl_fewa' or 'agea_bnrr'"
-            )
-        if self.agea_bnrr_candidate_k <= 0:
-            raise ValueError("agea_bnrr_candidate_k must be positive")
+        if self.anchor_sampling_policy != "ts_pl_fewa":
+            raise ValueError("anchor_sampling_policy must be 'ts_pl_fewa'")
         for required in (self.graph_root, self.data_dir):
             if not Path(required).exists():
                 raise FileNotFoundError(required)
+        if self.shared_seed_response_path and not Path(
+            self.shared_seed_response_path
+        ).exists():
+            raise FileNotFoundError(self.shared_seed_response_path)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

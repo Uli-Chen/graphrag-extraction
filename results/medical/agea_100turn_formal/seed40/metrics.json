@@ -1,0 +1,73 @@
+{
+  "designation": "official_agea_multiseed_member",
+  "source_run_id": "scratch_medical_agea_3seed_4PtQK3_net_seed40",
+  "method": "standalone_agea",
+  "dataset": "medical",
+  "query_budget": 100,
+  "random_seed": 40,
+  "truth": {
+    "nodes": 1178,
+    "directed_edge_pairs": 3046
+  },
+  "final": {
+    "recovered_nodes": 867,
+    "recovered_edge_pairs": 1539,
+    "matched_nodes": 743,
+    "matched_directed_edge_pairs": 1410,
+    "node_precision": 0.8569780853517878,
+    "node_recall": 0.6307300509337861,
+    "edge_pair_precision": 0.9161793372319688,
+    "edge_pair_recall": 0.4629021667760998,
+    "undirected_edge_pair_precision": 0.9529326574945691,
+    "undirected_edge_pair_recall": 0.45917655268667135,
+    "node_tsc_rank": 0.7130437165430826,
+    "node_tsc_raw": 0.7795434788492002,
+    "edge_tsc_rank": 0.4687242370032394,
+    "edge_tsc_raw": 0.4530723220984212,
+    "edge_tsc_noisy_or_rank": 0.46716273723030205,
+    "node_tsc_degree": 0.8182135380321005,
+    "node_tsc_burt_effective": 0.8332924783614652,
+    "node_tsc_collision_diversity": 0.739564130900085,
+    "node_tsc_burt_balanced": 0.8264837244444881,
+    "degree_weighted_node_coverage": 0.8182135380321005,
+    "pagerank_weighted_node_coverage": 0.7213584785205157,
+    "node_autc_rank": 0.7677641589434161,
+    "spearman_bnrr_online_vs_truth": 0.6271316233499789,
+    "spearman_sensitivity_online_vs_truth": 0.6271316233499789,
+    "spearman_matched_nodes": 743,
+    "top5_sensitive_nodes_recovered": 5,
+    "top10_sensitive_nodes_recovered": 10,
+    "top20_sensitive_nodes_recovered": 20,
+    "top50_sensitive_nodes_recovered": 49,
+    "node_f1": 0.7266503667481662,
+    "edge_pair_f1": 0.6150490730643402
+  },
+  "trajectory": {
+    "au_node_tsc_rank": 0.4837545510292942,
+    "au_node_tsc_raw": 0.5917023260811434,
+    "au_edge_tsc_rank": 0.274931174549997,
+    "au_edge_tsc_raw": 0.2783711717562483,
+    "au_node_recall": 0.4139134125636671,
+    "au_edge_pair_recall": 0.2689921208141826,
+    "au_node_autc_rank": 0.5533871245722282
+  },
+  "query_diagnostics": {
+    "total_queries": 100,
+    "unique_queries": 100,
+    "query_unique_rate": 1.0,
+    "zero_gain_turns": 4,
+    "zero_gain_rate": 0.04
+  },
+  "mode_diagnostics": {
+    "seed_turns": 1,
+    "post_seed_turns": 99,
+    "post_seed_explore_turns": 17,
+    "post_seed_exploit_turns": 82
+  },
+  "replay_validation": {
+    "complete": true,
+    "failed_replay_turns": [],
+    "stored_graph_exact_node_match": true,
+    "stored_graph_exact_edge_match": true
+  }
+}

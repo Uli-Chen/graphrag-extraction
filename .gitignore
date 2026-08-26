@@ -19,3 +19,8 @@ artifacts/*
 .idea/
 .vscode/
 .DS_Store
+
+tmp/*
+paper/*
+tests/*
+docs/*

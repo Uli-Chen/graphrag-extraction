@@ -1,0 +1,323 @@
+{
+  "designation": "official_agea_3seed",
+  "source_run_ids": {
+    "40": "scratch_medical_agea_3seed_4PtQK3_net_seed40",
+    "41": "scratch_medical_agea_3seed_4PtQK3_net_seed41",
+    "42": "scratch_medical_agea_3seed_4PtQK3_net_seed42"
+  },
+  "method": "standalone_agea",
+  "dataset": "medical",
+  "query_budget": 100,
+  "seeds": [
+    40,
+    41,
+    42
+  ],
+  "aggregation": {
+    "center": "arithmetic_mean",
+    "spread": "sample_standard_deviation",
+    "ddof": 1
+  },
+  "truth": {
+    "nodes": 1178,
+    "directed_edge_pairs": 3046
+  },
+  "final": {
+    "degree_weighted_node_coverage": 0.84351011863224,
+    "edge_pair_f1": 0.6476919687582066,
+    "edge_pair_precision": 0.923458056540706,
+    "edge_pair_recall": 0.49923396804552417,
+    "edge_tsc_noisy_or_rank": 0.5034216874047432,
+    "edge_tsc_rank": 0.5052256247140415,
+    "edge_tsc_raw": 0.5037718553664429,
+    "matched_directed_edge_pairs": 1520.6666666666667,
+    "matched_nodes": 782.6666666666666,
+    "node_autc_rank": 0.7960445407288558,
+    "node_f1": 0.7504290308903553,
+    "node_precision": 0.8644291078037725,
+    "node_recall": 0.6644029428409735,
+    "node_tsc_burt_balanced": 0.8509382505378799,
+    "node_tsc_burt_effective": 0.8566932041573628,
+    "node_tsc_collision_diversity": 0.7660446475603576,
+    "node_tsc_degree": 0.84351011863224,
+    "node_tsc_rank": 0.7427319309201378,
+    "node_tsc_raw": 0.8061293518455895,
+    "pagerank_weighted_node_coverage": 0.7576360288601546,
+    "recovered_edge_pairs": 1646.6666666666667,
+    "recovered_nodes": 907.6666666666666,
+    "spearman_bnrr_online_vs_truth": 0.6474938446303251,
+    "spearman_matched_nodes": 782.6666666666666,
+    "spearman_sensitivity_online_vs_truth": 0.6474938446303251,
+    "top10_sensitive_nodes_recovered": 10.0,
+    "top20_sensitive_nodes_recovered": 20.0,
+    "top50_sensitive_nodes_recovered": 49.666666666666664,
+    "top5_sensitive_nodes_recovered": 5.0,
+    "undirected_edge_pair_precision": 0.9683032257044955,
+    "undirected_edge_pair_recall": 0.49592928588043733
+  },
+  "final_std": {
+    "degree_weighted_node_coverage": 0.02660202126896183,
+    "edge_pair_f1": 0.028735710920025,
+    "edge_pair_precision": 0.0122282645609126,
+    "edge_pair_recall": 0.03287313857519796,
+    "edge_tsc_noisy_or_rank": 0.03285344906402162,
+    "edge_tsc_rank": 0.03317341215335653,
+    "edge_tsc_raw": 0.047983723480551424,
+    "matched_directed_edge_pairs": 100.13158010005301,
+    "matched_nodes": 40.00416644967538,
+    "node_autc_rank": 0.032183290082397426,
+    "node_f1": 0.021515263069518467,
+    "node_precision": 0.04479796541447026,
+    "node_recall": 0.03395939426967348,
+    "node_tsc_burt_balanced": 0.02612280653031048,
+    "node_tsc_burt_effective": 0.02529868226004811,
+    "node_tsc_collision_diversity": 0.029717803877932086,
+    "node_tsc_degree": 0.02660202126896183,
+    "node_tsc_rank": 0.034061016842450706,
+    "node_tsc_raw": 0.028763658581183172,
+    "pagerank_weighted_node_coverage": 0.03649121773549913,
+    "recovered_edge_pairs": 106.0393008904403,
+    "recovered_nodes": 79.25486315257464,
+    "spearman_bnrr_online_vs_truth": 0.027363356431557045,
+    "spearman_matched_nodes": 40.00416644967538,
+    "spearman_sensitivity_online_vs_truth": 0.027363356431557045,
+    "top10_sensitive_nodes_recovered": 0.0,
+    "top20_sensitive_nodes_recovered": 0.0,
+    "top50_sensitive_nodes_recovered": 0.5773502691896257,
+    "top5_sensitive_nodes_recovered": 0.0,
+    "undirected_edge_pair_precision": 0.015084909726465942,
+    "undirected_edge_pair_recall": 0.03266131747901639
+  },
+  "trajectory": {
+    "au_edge_pair_recall": 0.29084372948128695,
+    "au_edge_tsc_rank": 0.296186756500834,
+    "au_edge_tsc_raw": 0.30680066881984197,
+    "au_node_autc_rank": 0.5800244439834946,
+    "au_node_recall": 0.43746179966044146,
+    "au_node_tsc_rank": 0.5088630696871561,
+    "au_node_tsc_raw": 0.6161025833403965
+  },
+  "trajectory_std": {
+    "au_edge_pair_recall": 0.022076547648850045,
+    "au_edge_tsc_rank": 0.02130342242382368,
+    "au_edge_tsc_raw": 0.024620899496402338,
+    "au_node_autc_rank": 0.02437259787211939,
+    "au_node_recall": 0.021618264012137626,
+    "au_node_tsc_rank": 0.023152709946504278,
+    "au_node_tsc_raw": 0.02246577831076829
+  },
+  "query_diagnostics": {
+    "query_unique_rate": 1.0,
+    "total_queries": 100.0,
+    "unique_queries": 100.0,
+    "zero_gain_rate": 0.04,
+    "zero_gain_turns": 4.0
+  },
+  "query_diagnostics_std": {
+    "query_unique_rate": 0.0,
+    "total_queries": 0.0,
+    "unique_queries": 0.0,
+    "zero_gain_rate": 0.010000000000000002,
+    "zero_gain_turns": 1.0
+  },
+  "mode_diagnostics": {
+    "post_seed_exploit_turns": 83.33333333333333,
+    "post_seed_explore_turns": 15.666666666666666,
+    "post_seed_turns": 99.0,
+    "seed_turns": 1.0
+  },
+  "mode_diagnostics_std": {
+    "post_seed_exploit_turns": 1.5275252316519468,
+    "post_seed_explore_turns": 1.5275252316519468,
+    "post_seed_turns": 0.0,
+    "seed_turns": 0.0
+  },
+  "per_seed": {
+    "40": {
+      "path": "seed40",
+      "final": {
+        "recovered_nodes": 867,
+        "recovered_edge_pairs": 1539,
+        "matched_nodes": 743,
+        "matched_directed_edge_pairs": 1410,
+        "node_precision": 0.8569780853517878,
+        "node_recall": 0.6307300509337861,
+        "edge_pair_precision": 0.9161793372319688,
+        "edge_pair_recall": 0.4629021667760998,
+        "undirected_edge_pair_precision": 0.9529326574945691,
+        "undirected_edge_pair_recall": 0.45917655268667135,
+        "node_tsc_rank": 0.7130437165430826,
+        "node_tsc_raw": 0.7795434788492002,
+        "edge_tsc_rank": 0.4687242370032394,
+        "edge_tsc_raw": 0.4530723220984212,
+        "edge_tsc_noisy_or_rank": 0.46716273723030205,
+        "node_tsc_degree": 0.8182135380321005,
+        "node_tsc_burt_effective": 0.8332924783614652,
+        "node_tsc_collision_diversity": 0.739564130900085,
+        "node_tsc_burt_balanced": 0.8264837244444881,
+        "degree_weighted_node_coverage": 0.8182135380321005,
+        "pagerank_weighted_node_coverage": 0.7213584785205157,
+        "node_autc_rank": 0.7677641589434161,
+        "spearman_bnrr_online_vs_truth": 0.6271316233499789,
+        "spearman_sensitivity_online_vs_truth": 0.6271316233499789,
+        "spearman_matched_nodes": 743,
+        "top5_sensitive_nodes_recovered": 5,
+        "top10_sensitive_nodes_recovered": 10,
+        "top20_sensitive_nodes_recovered": 20,
+        "top50_sensitive_nodes_recovered": 49,
+        "node_f1": 0.7266503667481662,
+        "edge_pair_f1": 0.6150490730643402
+      },
+      "trajectory": {
+        "au_node_tsc_rank": 0.4837545510292942,
+        "au_node_tsc_raw": 0.5917023260811434,
+        "au_edge_tsc_rank": 0.274931174549997,
+        "au_edge_tsc_raw": 0.2783711717562483,
+        "au_node_recall": 0.4139134125636671,
+        "au_edge_pair_recall": 0.2689921208141826,
+        "au_node_autc_rank": 0.5533871245722282
+      },
+      "query_diagnostics": {
+        "total_queries": 100,
+        "unique_queries": 100,
+        "query_unique_rate": 1.0,
+        "zero_gain_turns": 4,
+        "zero_gain_rate": 0.04
+      },
+      "mode_diagnostics": {
+        "seed_turns": 1,
+        "post_seed_turns": 99,
+        "post_seed_explore_turns": 17,
+        "post_seed_exploit_turns": 82
+      }
+    },
+    "41": {
+      "path": "seed41",
+      "final": {
+        "recovered_nodes": 999,
+        "recovered_edge_pairs": 1751,
+        "matched_nodes": 823,
+        "matched_directed_edge_pairs": 1605,
+        "node_precision": 0.8238238238238238,
+        "node_recall": 0.698641765704584,
+        "edge_pair_precision": 0.9166190748143918,
+        "edge_pair_recall": 0.5269205515430072,
+        "undirected_edge_pair_precision": 0.9688917692806222,
+        "undirected_edge_pair_recall": 0.5216329378925332,
+        "node_tsc_rank": 0.77991681503491,
+        "node_tsc_raw": 0.8366629835948396,
+        "edge_tsc_rank": 0.5335367258815618,
+        "edge_tsc_raw": 0.548476355629765,
+        "edge_tsc_noisy_or_rank": 0.5312111580710418,
+        "node_tsc_degree": 0.8712491277041172,
+        "node_tsc_burt_effective": 0.8835371415429873,
+        "node_tsc_collision_diversity": 0.7981855552280432,
+        "node_tsc_burt_balanced": 0.8784587518348859,
+        "degree_weighted_node_coverage": 0.8712491277041172,
+        "pagerank_weighted_node_coverage": 0.7943372251499635,
+        "node_autc_rank": 0.8310636483817926,
+        "spearman_bnrr_online_vs_truth": 0.6367515656407539,
+        "spearman_sensitivity_online_vs_truth": 0.6367515656407539,
+        "spearman_matched_nodes": 823,
+        "top5_sensitive_nodes_recovered": 5,
+        "top10_sensitive_nodes_recovered": 10,
+        "top20_sensitive_nodes_recovered": 20,
+        "top50_sensitive_nodes_recovered": 50,
+        "node_f1": 0.756086357372531,
+        "edge_pair_f1": 0.6691682301438399
+      },
+      "trajectory": {
+        "au_node_tsc_rank": 0.5134662475819168,
+        "au_node_tsc_raw": 0.6206750138001762,
+        "au_edge_tsc_rank": 0.2960913957046737,
+        "au_edge_tsc_raw": 0.32112248996851844,
+        "au_node_recall": 0.44206281833616323,
+        "au_edge_pair_recall": 0.2904005252790544,
+        "au_node_autc_rank": 0.5854777722928888
+      },
+      "query_diagnostics": {
+        "total_queries": 100,
+        "unique_queries": 100,
+        "query_unique_rate": 1.0,
+        "zero_gain_turns": 3,
+        "zero_gain_rate": 0.03
+      },
+      "mode_diagnostics": {
+        "seed_turns": 1,
+        "post_seed_turns": 99,
+        "post_seed_explore_turns": 14,
+        "post_seed_exploit_turns": 85
+      }
+    },
+    "42": {
+      "path": "seed42",
+      "final": {
+        "recovered_nodes": 857,
+        "recovered_edge_pairs": 1650,
+        "matched_nodes": 782,
+        "matched_directed_edge_pairs": 1547,
+        "node_precision": 0.912485414235706,
+        "node_recall": 0.6638370118845501,
+        "edge_pair_precision": 0.9375757575757576,
+        "edge_pair_recall": 0.5078791858174655,
+        "undirected_edge_pair_precision": 0.983085250338295,
+        "undirected_edge_pair_recall": 0.5069783670621074,
+        "node_tsc_rank": 0.7352352611824208,
+        "node_tsc_raw": 0.8021815930927289,
+        "edge_tsc_rank": 0.5134159112573233,
+        "edge_tsc_raw": 0.5097668883711423,
+        "edge_tsc_noisy_or_rank": 0.5118911669128859,
+        "node_tsc_degree": 0.8410676901605024,
+        "node_tsc_burt_effective": 0.8532499925676359,
+        "node_tsc_collision_diversity": 0.7603842565529446,
+        "node_tsc_burt_balanced": 0.8478722753342655,
+        "degree_weighted_node_coverage": 0.8410676901605024,
+        "pagerank_weighted_node_coverage": 0.7572123829099846,
+        "node_autc_rank": 0.7893058148613586,
+        "spearman_bnrr_online_vs_truth": 0.6785983449002426,
+        "spearman_sensitivity_online_vs_truth": 0.6785983449002426,
+        "spearman_matched_nodes": 782,
+        "top5_sensitive_nodes_recovered": 5,
+        "top10_sensitive_nodes_recovered": 10,
+        "top20_sensitive_nodes_recovered": 20,
+        "top50_sensitive_nodes_recovered": 50,
+        "node_f1": 0.7685503685503685,
+        "edge_pair_f1": 0.6588586030664395
+      },
+      "trajectory": {
+        "au_node_tsc_rank": 0.5293684104502574,
+        "au_node_tsc_raw": 0.63593041013987,
+        "au_edge_tsc_rank": 0.31753769924783126,
+        "au_edge_tsc_raw": 0.3209083447347591,
+        "au_node_recall": 0.456409168081494,
+        "au_edge_pair_recall": 0.31313854235062377,
+        "au_node_autc_rank": 0.6012084350853669
+      },
+      "query_diagnostics": {
+        "total_queries": 100,
+        "unique_queries": 100,
+        "query_unique_rate": 1.0,
+        "zero_gain_turns": 5,
+        "zero_gain_rate": 0.05
+      },
+      "mode_diagnostics": {
+        "seed_turns": 1,
+        "post_seed_turns": 99,
+        "post_seed_explore_turns": 16,
+        "post_seed_exploit_turns": 83
+      }
+    }
+  },
+  "protocol": {
+    "llm_model": "DeepSeek-V4-Flash",
+    "disable_api_thinking": true,
+    "enable_graph_filter": false,
+    "seed_policy": "native AGEA seed query",
+    "random_seeds": [
+      40,
+      41,
+      42
+    ]
+  },
+  "evaluation_note": "All final and trajectory metrics were recomputed by replaying each AGEA response with MemATK's unified evaluator. Aggregate values are the arithmetic mean and sample standard deviation across seeds."
+}

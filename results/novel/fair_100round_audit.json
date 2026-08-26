@@ -1,0 +1,92 @@
+{
+  "checks": {
+    "agea_100_rounds": true,
+    "agea_exit_clean": true,
+    "agea_no_filtering": true,
+    "agea_no_query_fallback": true,
+    "agea_no_thinking_tags": true,
+    "agea_response_count": true,
+    "agea_uniform_replay_exact": true,
+    "exact_fewa_query_model": true,
+    "exact_graphrag_model": true,
+    "fewa_100_rounds": true,
+    "fewa_exit_clean": true,
+    "fewa_no_filtering": true,
+    "fewa_no_generation_error_fallback": true,
+    "fewa_no_thinking_tags": true,
+    "fewa_response_count": true,
+    "fewa_thinking_disabled": true,
+    "index_complete": true,
+    "no_0731_model": true,
+    "same_seed_query": true
+  },
+  "comparison": {
+    "final": {
+      "AGEA": {
+        "edge_pair_precision": 0.7869430966034406,
+        "edge_pair_recall": 0.06102065946093857,
+        "edge_tsc_rank": 0.062155533885817404,
+        "edge_tsc_raw": 0.06436623268215853,
+        "matched_directed_edge_pairs": 1784,
+        "matched_nodes": 1468,
+        "node_precision": 0.8544819557625145,
+        "node_recall": 0.08554280053609929,
+        "node_tsc_rank": 0.14632924736778213,
+        "node_tsc_raw": 0.2503112841714671,
+        "recovered_edge_pairs": 2267,
+        "recovered_nodes": 1718
+      },
+      "FEWA": {
+        "edge_pair_precision": 0.8828413284132841,
+        "edge_pair_recall": 0.06546723217950472,
+        "edge_tsc_rank": 0.06598220498558997,
+        "edge_tsc_raw": 0.05789167568732762,
+        "matched_directed_edge_pairs": 1914,
+        "matched_nodes": 1636,
+        "node_precision": 0.8583420776495279,
+        "node_recall": 0.09533243983450848,
+        "node_tsc_rank": 0.17178230250937096,
+        "node_tsc_raw": 0.27414222435157015,
+        "recovered_edge_pairs": 2168,
+        "recovered_nodes": 1906
+      }
+    },
+    "trajectory_mean": {
+      "AGEA": {
+        "au_edge_pair_recall": 0.03168114653167328,
+        "au_edge_tsc_rank": 0.03244280563979582,
+        "au_edge_tsc_raw": 0.035190784529307705,
+        "au_node_recall": 0.047852106520599035,
+        "au_node_tsc_rank": 0.08279831165973116,
+        "au_node_tsc_raw": 0.15040842599318768
+      },
+      "FEWA": {
+        "au_edge_pair_recall": 0.03804829662060474,
+        "au_edge_tsc_rank": 0.038287284382949635,
+        "au_edge_tsc_raw": 0.03403273017333997,
+        "au_node_recall": 0.059516927917953495,
+        "au_node_tsc_rank": 0.10971447472016614,
+        "au_node_tsc_raw": 0.18688658143401804
+      }
+    }
+  },
+  "complete": true,
+  "details": {
+    "agea_fallback_turns": [],
+    "agea_filter_statuses": [
+      "disabled"
+    ],
+    "agea_reported_model": "DeepSeek_V4_Flash",
+    "agea_turns": 100,
+    "fewa_filter_statuses": [
+      "disabled"
+    ],
+    "fewa_invalid_fallback_turns": [],
+    "fewa_similarity_fallback_turns": [
+      44,
+      56
+    ],
+    "fewa_turns": 100,
+    "graph_digest": "46c42f479b6f30d32752ae06c35789cd1f3f51f17b3150e3b2773425401cc408"
+  }
+}

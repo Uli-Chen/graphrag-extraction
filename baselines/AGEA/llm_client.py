@@ -22,8 +22,8 @@ _MODEL_ALIASES = {
     # Paratera's OpenAI-compatible endpoint treats model IDs as
     # case-sensitive. Canonicalize the legacy AGEA spellings without
     # lowercasing arbitrary provider model names.
-    "deepseek-v4-flash": "deepseek-v4-flash",
-    "deepseek-v4-pro": "deepseek-v4-pro",
+    "deepseek-v4-flash": "DeepSeek-V4-Flash",
+    "deepseek-v4-pro": "DeepSeek-V4-Pro",
 }
 
 

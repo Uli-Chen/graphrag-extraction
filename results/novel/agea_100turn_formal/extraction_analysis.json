@@ -1,0 +1,58 @@
+{
+  "dataset": "novel",
+  "llm_model": "DeepSeek_V4_Flash",
+  "final_stats": {
+    "num_nodes": 1718,
+    "num_edges": 2267
+  },
+  "exploration_stats": {
+    "explore_count": 9,
+    "exploit_count": 90,
+    "explore_ratio": 0.09,
+    "total_queries": 100
+  },
+  "leakage_analysis": {
+    "avg_novelty": 0.4883215296766811,
+    "total_new_entities": 1718,
+    "total_new_relationships": 2267,
+    "avg_entities_per_turn": 17.18,
+    "avg_relationships_per_turn": 22.67
+  },
+  "extraction_analysis": {
+    "leakage_rate_nodes": 8.560107219858983,
+    "leakage_rate_edges": 6.1054863866466,
+    "precision_nodes": 85.55620267909144,
+    "precision_edges": 78.73842082046758,
+    "noise_rate_nodes": 14.44379732090856,
+    "noise_rate_edges": 21.261579179532422,
+    "original_graph_nodes": 17161,
+    "original_graph_edges": 29236,
+    "total_extracted_nodes": 1718,
+    "total_extracted_edges": 2267
+  },
+  "extraction_analysis_raw": {
+    "leakage_rate_nodes": 8.560107219858983,
+    "leakage_rate_edges": 6.1054863866466,
+    "precision_nodes": 85.55620267909144,
+    "precision_edges": 78.73842082046758,
+    "noise_rate_nodes": 14.44379732090856,
+    "noise_rate_edges": 21.261579179532422,
+    "original_graph_nodes": 17161,
+    "original_graph_edges": 29236,
+    "total_extracted_nodes": 1718,
+    "total_extracted_edges": 2267
+  },
+  "extraction_summary": {
+    "total_turns": 100,
+    "final_epsilon": 0.05,
+    "total_experiment_time_seconds": 5115.399412870407,
+    "total_experiment_time_minutes": 85.25665688117346,
+    "total_experiment_time_hours": 1.420944281352891,
+    "query_efficiency": {
+      "entities_per_query": 17.18,
+      "relationships_per_query": 22.67,
+      "novelty_rate": 0.4883215296766811
+    }
+  },
+  "timestamp": 1787180551.423845
+}

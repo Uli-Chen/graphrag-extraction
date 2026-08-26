@@ -1,0 +1,700 @@
+{
+  "dataset": "medical",
+  "run_id": "scratch_medical_ts_pl_fewa_100turn_seed40_20260822",
+  "turns_completed": 100,
+  "truth_nodes": 1178,
+  "truth_directed_edge_pairs": 3046,
+  "final_graph_nodes": 973,
+  "final_graph_relation_triples": 1766,
+  "mean_htsn": 0.19010373509862155,
+  "mean_count_novelty": 0.37695687052763527,
+  "mean_retrospective_gain": 0.05121672319769435,
+  "rotting_diagnostics": {
+    "arms_with_repeated_queries": 5,
+    "adjacent_reward_comparisons": 5,
+    "reward_increases": 0,
+    "violation_rate": 0.0
+  },
+  "arm_diagnostics": {
+    "policy": "topology_pl_fewa",
+    "epochs": 27,
+    "unique_admitted_arms": 76,
+    "unique_selected_arms": 75,
+    "selected_arms": [
+      "ACUTE LYMPHOBLASTIC LEUKEMIA",
+      "ADOLESCENT AND YOUNG ADULT",
+      "AIDS",
+      "BASAL CELL SKIN CANCER",
+      "BIOMARKER TESTING",
+      "BLACK MALES",
+      "BLADDER CANCER",
+      "BLOOD TESTS",
+      "BLOOD UREA NITROGEN",
+      "BONE MARROW ASPIRATE",
+      "BREAST CANCER",
+      "BREAST CANCER SCREENING",
+      "BREASTFEEDING",
+      "CANCER CARE TEAM",
+      "CARCINOMA",
+      "CDC",
+      "CDC.GOV/TOBACCO",
+      "CERVICAL CANCER",
+      "CERVICAL DYSPLASIA",
+      "CHEMOTHERAPY",
+      "CLINICAL TRIAL",
+      "COMBINATION REGIMEN",
+      "CYTOLOGY",
+      "DOCTOR",
+      "DUCTAL CARCINOMA",
+      "DUCTAL CARCINOMA IN SITU",
+      "ENDORECTAL ULTRASOUND",
+      "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION",
+      "FATIGUE",
+      "FOLLOW-UP AND SURVEILLANCE",
+      "GENETIC CANCER RISK TESTING",
+      "GENETIC RISK TESTING",
+      "GERMLINE MUTATION",
+      "HEMATOLOGIST",
+      "HEMATOPATHOLOGIST",
+      "HEMATURIA",
+      "HEREDITARY GENE TESTING",
+      "HIGH-GRADE CANCER",
+      "HISTOLOGY",
+      "HPV",
+      "HPV CANCERS ALLIANCE",
+      "IMAGING TEST",
+      "INFECTIONS",
+      "LUMBAR PUNCTURE",
+      "METASTASIS",
+      "MOLECULAR TESTING",
+      "MRI",
+      "MRI SCAN",
+      "MULTIDISCIPLINARY CARE",
+      "NARROW-BAND IMAGING",
+      "NCCN CANCER CENTERS",
+      "NEUROPATHOLOGIST",
+      "NEUROSURGEON",
+      "NICOTINE WITHDRAWAL",
+      "NPC STAGING",
+      "ONCOLOGY NURSE",
+      "OVARIAN CANCER",
+      "PATIENT",
+      "PET SCAN",
+      "PLATINUM-BASED CHEMOTHERAPY",
+      "POLYPECTOMY",
+      "PREGNANCY",
+      "PRIMARY CNS LYMPHOMA IN THE EYES",
+      "RADIATION THERAPY",
+      "RECTAL CANCER",
+      "SMOKEFREE.GOV",
+      "STAGE 1A1 CERVICAL CANCER",
+      "SURVIVORSHIP CARE FOR HEALTHY LIVING",
+      "TECHNOLOGIST",
+      "TESTING",
+      "TESTING FOR BREAST CANCER",
+      "TESTING FOR NPC",
+      "TNM SCORES",
+      "TREATMENT TEAM",
+      "TUMOR STAGING"
+    ],
+    "mean_admission_to_first_query_delay": 0.948051948051948,
+    "unqueried_admitted_slots": 4,
+    "mean_epoch_arm_set_turnover": 1.0,
+    "per_epoch": [
+      {
+        "epoch_id": 1,
+        "active_arms": [
+          "CDC.GOV/TOBACCO",
+          "CDC",
+          "TUMOR STAGING"
+        ],
+        "admission_to_first_query_delay": {
+          "CDC.GOV/TOBACCO": 1,
+          "CDC": 0,
+          "TUMOR STAGING": 2
+        }
+      },
+      {
+        "epoch_id": 2,
+        "active_arms": [
+          "METASTASIS",
+          "HPV CANCERS ALLIANCE",
+          "PATIENT"
+        ],
+        "admission_to_first_query_delay": {
+          "METASTASIS": 1,
+          "HPV CANCERS ALLIANCE": 2,
+          "PATIENT": 0
+        }
+      },
+      {
+        "epoch_id": 3,
+        "active_arms": [
+          "ACUTE LYMPHOBLASTIC LEUKEMIA",
+          "INFECTIONS",
+          "AIDS"
+        ],
+        "admission_to_first_query_delay": {
+          "ACUTE LYMPHOBLASTIC LEUKEMIA": 1,
+          "INFECTIONS": 0,
+          "AIDS": 2
+        }
+      },
+      {
+        "epoch_id": 4,
+        "active_arms": [
+          "CLINICAL TRIAL",
+          "GENETIC RISK TESTING",
+          "HEMATURIA"
+        ],
+        "admission_to_first_query_delay": {
+          "CLINICAL TRIAL": 0,
+          "GENETIC RISK TESTING": 1,
+          "HEMATURIA": 2
+        }
+      },
+      {
+        "epoch_id": 5,
+        "active_arms": [
+          "MOLECULAR TESTING",
+          "BIOMARKER TESTING",
+          "IMAGING TEST"
+        ],
+        "admission_to_first_query_delay": {
+          "MOLECULAR TESTING": 2,
+          "BIOMARKER TESTING": 1,
+          "IMAGING TEST": 0
+        }
+      },
+      {
+        "epoch_id": 6,
+        "active_arms": [
+          "NARROW-BAND IMAGING",
+          "NCCN CANCER CENTERS",
+          "BREAST CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "NARROW-BAND IMAGING": 2,
+          "NCCN CANCER CENTERS": 1,
+          "BREAST CANCER": 0
+        }
+      },
+      {
+        "epoch_id": 7,
+        "active_arms": [
+          "GENETIC CANCER RISK TESTING",
+          "METASTASIS",
+          "TESTING FOR BREAST CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "GENETIC CANCER RISK TESTING": 0,
+          "METASTASIS": null,
+          "TESTING FOR BREAST CANCER": 1
+        }
+      },
+      {
+        "epoch_id": 8,
+        "active_arms": [
+          "HEMATOPATHOLOGIST",
+          "NEUROPATHOLOGIST",
+          "RADIATION THERAPY"
+        ],
+        "admission_to_first_query_delay": {
+          "HEMATOPATHOLOGIST": 1,
+          "NEUROPATHOLOGIST": 2,
+          "RADIATION THERAPY": 0
+        }
+      },
+      {
+        "epoch_id": 9,
+        "active_arms": [
+          "NICOTINE WITHDRAWAL",
+          "MRI SCAN",
+          "BLOOD TESTS"
+        ],
+        "admission_to_first_query_delay": {
+          "NICOTINE WITHDRAWAL": 1,
+          "MRI SCAN": 2,
+          "BLOOD TESTS": 0
+        }
+      },
+      {
+        "epoch_id": 10,
+        "active_arms": [
+          "HISTOLOGY",
+          "SMOKEFREE.GOV",
+          "NCCN CANCER CENTERS"
+        ],
+        "admission_to_first_query_delay": {
+          "HISTOLOGY": 0,
+          "SMOKEFREE.GOV": 1,
+          "NCCN CANCER CENTERS": null
+        }
+      },
+      {
+        "epoch_id": 11,
+        "active_arms": [
+          "POLYPECTOMY",
+          "CHEMOTHERAPY",
+          "COMBINATION REGIMEN"
+        ],
+        "admission_to_first_query_delay": {
+          "POLYPECTOMY": 2,
+          "CHEMOTHERAPY": 0,
+          "COMBINATION REGIMEN": 1
+        }
+      },
+      {
+        "epoch_id": 12,
+        "active_arms": [
+          "DUCTAL CARCINOMA IN SITU",
+          "CERVICAL CANCER",
+          "NPC STAGING"
+        ],
+        "admission_to_first_query_delay": {
+          "DUCTAL CARCINOMA IN SITU": 1,
+          "CERVICAL CANCER": 0,
+          "NPC STAGING": 2
+        }
+      },
+      {
+        "epoch_id": 13,
+        "active_arms": [
+          "HEREDITARY GENE TESTING",
+          "HPV",
+          "BLOOD UREA NITROGEN"
+        ],
+        "admission_to_first_query_delay": {
+          "HEREDITARY GENE TESTING": 1,
+          "HPV": 0,
+          "BLOOD UREA NITROGEN": 2
+        }
+      },
+      {
+        "epoch_id": 14,
+        "active_arms": [
+          "CYTOLOGY",
+          "OVARIAN CANCER",
+          "FATIGUE"
+        ],
+        "admission_to_first_query_delay": {
+          "CYTOLOGY": 2,
+          "OVARIAN CANCER": 0,
+          "FATIGUE": 1
+        }
+      },
+      {
+        "epoch_id": 15,
+        "active_arms": [
+          "PLATINUM-BASED CHEMOTHERAPY",
+          "HIGH-GRADE CANCER",
+          "TECHNOLOGIST"
+        ],
+        "admission_to_first_query_delay": {
+          "PLATINUM-BASED CHEMOTHERAPY": 0,
+          "HIGH-GRADE CANCER": 2,
+          "TECHNOLOGIST": 1
+        }
+      },
+      {
+        "epoch_id": 16,
+        "active_arms": [
+          "TNM SCORES",
+          "BLACK MALES",
+          "PREGNANCY"
+        ],
+        "admission_to_first_query_delay": {
+          "TNM SCORES": 1,
+          "BLACK MALES": 2,
+          "PREGNANCY": 0
+        }
+      },
+      {
+        "epoch_id": 17,
+        "active_arms": [
+          "SURVIVORSHIP CARE FOR HEALTHY LIVING",
+          "TESTING FOR NPC",
+          "FOLLOW-UP AND SURVEILLANCE"
+        ],
+        "admission_to_first_query_delay": {
+          "SURVIVORSHIP CARE FOR HEALTHY LIVING": 2,
+          "TESTING FOR NPC": 1,
+          "FOLLOW-UP AND SURVEILLANCE": 0
+        }
+      },
+      {
+        "epoch_id": 18,
+        "active_arms": [
+          "GERMLINE MUTATION",
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION",
+          "NEUROSURGEON"
+        ],
+        "admission_to_first_query_delay": {
+          "GERMLINE MUTATION": 1,
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION": 2,
+          "NEUROSURGEON": 0
+        }
+      },
+      {
+        "epoch_id": 19,
+        "active_arms": [
+          "BREAST CANCER SCREENING",
+          "STAGE 1A1 CERVICAL CANCER",
+          "PLATINUM-BASED CHEMOTHERAPY"
+        ],
+        "admission_to_first_query_delay": {
+          "BREAST CANCER SCREENING": 0,
+          "STAGE 1A1 CERVICAL CANCER": 1,
+          "PLATINUM-BASED CHEMOTHERAPY": null
+        }
+      },
+      {
+        "epoch_id": 20,
+        "active_arms": [
+          "TESTING",
+          "TREATMENT TEAM",
+          "BREASTFEEDING"
+        ],
+        "admission_to_first_query_delay": {
+          "TESTING": 1,
+          "TREATMENT TEAM": 0,
+          "BREASTFEEDING": 2
+        }
+      },
+      {
+        "epoch_id": 21,
+        "active_arms": [
+          "MRI",
+          "MULTIDISCIPLINARY CARE",
+          "LUMBAR PUNCTURE"
+        ],
+        "admission_to_first_query_delay": {
+          "MRI": 0,
+          "MULTIDISCIPLINARY CARE": 1,
+          "LUMBAR PUNCTURE": 2
+        }
+      },
+      {
+        "epoch_id": 22,
+        "active_arms": [
+          "PRIMARY CNS LYMPHOMA IN THE EYES",
+          "BLADDER CANCER",
+          "PET SCAN"
+        ],
+        "admission_to_first_query_delay": {
+          "PRIMARY CNS LYMPHOMA IN THE EYES": 2,
+          "BLADDER CANCER": 0,
+          "PET SCAN": 1
+        }
+      },
+      {
+        "epoch_id": 23,
+        "active_arms": [
+          "HEMATOLOGIST",
+          "DOCTOR",
+          "BONE MARROW ASPIRATE"
+        ],
+        "admission_to_first_query_delay": {
+          "HEMATOLOGIST": 2,
+          "DOCTOR": 0,
+          "BONE MARROW ASPIRATE": 1
+        }
+      },
+      {
+        "epoch_id": 24,
+        "active_arms": [
+          "ENDORECTAL ULTRASOUND",
+          "CANCER CARE TEAM",
+          "CARCINOMA"
+        ],
+        "admission_to_first_query_delay": {
+          "ENDORECTAL ULTRASOUND": 0,
+          "CANCER CARE TEAM": 2,
+          "CARCINOMA": 1
+        }
+      },
+      {
+        "epoch_id": 25,
+        "active_arms": [
+          "BASAL CELL SKIN CANCER",
+          "FATIGUE",
+          "CERVICAL DYSPLASIA"
+        ],
+        "admission_to_first_query_delay": {
+          "BASAL CELL SKIN CANCER": 0,
+          "FATIGUE": 2,
+          "CERVICAL DYSPLASIA": 1
+        }
+      },
+      {
+        "epoch_id": 26,
+        "active_arms": [
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION",
+          "DUCTAL CARCINOMA",
+          "RECTAL CANCER"
+        ],
+        "admission_to_first_query_delay": {
+          "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION": 2,
+          "DUCTAL CARCINOMA": 1,
+          "RECTAL CANCER": 0
+        }
+      },
+      {
+        "epoch_id": 27,
+        "active_arms": [
+          "PERFORMANCE STATUS ASSESSMENT",
+          "ADOLESCENT AND YOUNG ADULT",
+          "ONCOLOGY NURSE"
+        ],
+        "admission_to_first_query_delay": {
+          "PERFORMANCE STATUS ASSESSMENT": null,
+          "ADOLESCENT AND YOUNG ADULT": 0,
+          "ONCOLOGY NURSE": 1
+        }
+      }
+    ]
+  },
+  "query_diagnostics": {
+    "total_queries": 100,
+    "unique_queries": 100,
+    "query_unique_rate": 1.0,
+    "zero_gain_turns": 5,
+    "zero_gain_rate": 0.05,
+    "max_consecutive_zero_gain": 1,
+    "zero_graph_gain_turns": 5,
+    "zero_graph_gain_rate": 0.05,
+    "zero_relation_gain_turns": 10,
+    "zero_relation_gain_rate": 0.1,
+    "zero_sensitive_gain_turns": 11,
+    "zero_sensitive_gain_rate": 0.11,
+    "zero_meaningful_gain_turns": 10,
+    "zero_meaningful_gain_rate": 0.1,
+    "max_consecutive_meaningful_zero_gain": 2,
+    "repeated_arms": 5,
+    "repeated_arm_counts": {
+      "TESTING FOR BREAST CANCER": 2,
+      "HISTOLOGY": 2,
+      "FATIGUE": 2,
+      "EXTRAFASCIAL HYSTERECTOMY WITH LYMPH NODE EVALUATION": 2,
+      "STAGE 1A1 CERVICAL CANCER": 2
+    },
+    "nonempty_main_responses": 100,
+    "nonempty_main_response_rate": 1.0,
+    "query_generator_fallback_turns": 2,
+    "query_generator_fallback_rate": 0.02
+  },
+  "mode_diagnostics": {
+    "seed_turns": 1,
+    "post_seed_turns": 99,
+    "post_seed_explore_turns": 19,
+    "post_seed_exploit_turns": 80,
+    "post_seed_explore_ratio": 0.1919191919191919,
+    "post_seed_exploit_ratio": 0.8080808080808081,
+    "both_post_seed_modes_observed": true,
+    "decision_reason_counts": {
+      "epsilon_sample(0.0500)": 1,
+      "epsilon_sample(0.0744)": 1,
+      "epsilon_sample(0.0875)": 1,
+      "epsilon_sample(0.0893)": 1,
+      "epsilon_sample(0.1071)": 1,
+      "epsilon_sample(0.1138)": 1,
+      "epsilon_sample(0.1184)": 1,
+      "epsilon_sample(0.1284)": 1,
+      "epsilon_sample(0.1540)": 1,
+      "epsilon_sample(0.1739)": 1,
+      "epsilon_sample(0.1885)": 1,
+      "epsilon_sample(0.1963)": 1,
+      "epsilon_sample(0.2044)": 1,
+      "epsilon_sample(0.2261)": 1,
+      "epsilon_sample(0.2354)": 1,
+      "epsilon_sample(0.2552)": 1,
+      "epsilon_sample(0.2767)": 1,
+      "fewa(0.0500)": 9,
+      "fewa(0.0507)": 1,
+      "fewa(0.0517)": 1,
+      "fewa(0.0528)": 1,
+      "fewa(0.0539)": 1,
+      "fewa(0.0550)": 1,
+      "fewa(0.0561)": 1,
+      "fewa(0.0572)": 1,
+      "fewa(0.0584)": 1,
+      "fewa(0.0596)": 1,
+      "fewa(0.0608)": 1,
+      "fewa(0.0621)": 1,
+      "fewa(0.0633)": 1,
+      "fewa(0.0646)": 1,
+      "fewa(0.0659)": 1,
+      "fewa(0.0673)": 1,
+      "fewa(0.0686)": 1,
+      "fewa(0.0700)": 1,
+      "fewa(0.0715)": 1,
+      "fewa(0.0729)": 1,
+      "fewa(0.0759)": 1,
+      "fewa(0.0775)": 1,
+      "fewa(0.0791)": 1,
+      "fewa(0.0807)": 1,
+      "fewa(0.0823)": 1,
+      "fewa(0.0840)": 1,
+      "fewa(0.0857)": 1,
+      "fewa(0.0911)": 1,
+      "fewa(0.0929)": 1,
+      "fewa(0.0948)": 1,
+      "fewa(0.0968)": 1,
+      "fewa(0.0988)": 1,
+      "fewa(0.1008)": 1,
+      "fewa(0.1028)": 1,
+      "fewa(0.1049)": 1,
+      "fewa(0.1093)": 1,
+      "fewa(0.1115)": 1,
+      "fewa(0.1161)": 1,
+      "fewa(0.1209)": 1,
+      "fewa(0.1233)": 1,
+      "fewa(0.1258)": 1,
+      "fewa(0.1310)": 1,
+      "fewa(0.1337)": 1,
+      "fewa(0.1364)": 1,
+      "fewa(0.1392)": 1,
+      "fewa(0.1421)": 1,
+      "fewa(0.1450)": 1,
+      "fewa(0.1479)": 1,
+      "fewa(0.1509)": 1,
+      "fewa(0.1572)": 1,
+      "fewa(0.1604)": 1,
+      "fewa(0.1636)": 1,
+      "fewa(0.1670)": 1,
+      "fewa(0.1704)": 1,
+      "fewa(0.1774)": 1,
+      "fewa(0.1810)": 1,
+      "fewa(0.1847)": 1,
+      "fewa(0.1924)": 1,
+      "fewa(0.2003)": 1,
+      "fewa(0.2085)": 1,
+      "fewa(0.2128)": 1,
+      "fewa(0.2171)": 1,
+      "fewa(0.2216)": 1,
+      "fewa(0.2307)": 1,
+      "fewa(0.2402)": 1,
+      "fewa(0.2451)": 1,
+      "fewa(0.2501)": 1,
+      "fewa(0.2604)": 1,
+      "fewa(0.2658)": 1,
+      "fewa(0.2712)": 1,
+      "fewa(0.2824)": 1,
+      "fewa(0.2940)": 1,
+      "recent_htsn_below_threshold(0.0250)": 1,
+      "recent_htsn_below_threshold(0.1441)": 1,
+      "seed_turn": 1
+    },
+    "by_mode": {
+      "explore": {
+        "turns": 19,
+        "mean_htsn": 0.21518236684444994,
+        "mean_raw_batch_reward": 0.028562661228770117,
+        "mean_effective_fewa_reward": 0.0,
+        "mean_new_nodes": 12.526315789473685,
+        "mean_new_edges": 16.789473684210527
+      },
+      "exploit": {
+        "turns": 80,
+        "mean_htsn": 0.18652385674772004,
+        "mean_raw_batch_reward": 0.028539034214446257,
+        "mean_effective_fewa_reward": 0.027793053014123353,
+        "mean_new_nodes": 8.45,
+        "mean_new_edges": 17.675
+      }
+    }
+  },
+  "anchor_diagnostics": {
+    "eligible_exploit_turns": 80,
+    "query_anchor_adherent_turns": 80,
+    "query_anchor_adherence_rate": 1.0,
+    "response_anchor_text_hit_turns": 80,
+    "response_anchor_text_hit_rate": 1.0,
+    "response_anchor_node_hit_turns": 78,
+    "response_anchor_node_hit_rate": 0.975,
+    "response_anchor_adherent_turns": 75,
+    "response_anchor_adherence_rate": 0.9375,
+    "reward_attribution_warning_turns": 5,
+    "mean_raw_exploit_reward": 0.028539034214446257,
+    "mean_effective_fewa_reward": 0.027793053014123353,
+    "anchor_rejected_query_generations": 1
+  },
+  "formal_acceptance": {
+    "query_unique_rate": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "passed": true
+    },
+    "zero_gain_rate": {
+      "value": 0.05,
+      "threshold": 0.2,
+      "passed": true
+    },
+    "max_consecutive_zero_gain": {
+      "value": 1,
+      "threshold": 4,
+      "passed": true
+    },
+    "max_consecutive_meaningful_zero_gain": {
+      "value": 2,
+      "threshold": 4,
+      "passed": true
+    },
+    "anchor_query_adherence_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "both_post_seed_modes_observed": {
+      "value": 1,
+      "threshold": 1,
+      "passed": true
+    },
+    "nonempty_main_response_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "passed": true
+    },
+    "all_passed": true
+  },
+  "trajectory": {
+    "au_node_tsc_rank": 0.5553395682558098,
+    "au_node_tsc_raw": 0.6506128577236098,
+    "au_edge_tsc_rank": 0.32944184815669175,
+    "au_edge_tsc_raw": 0.3407600131681746,
+    "au_node_recall": 0.4677334465195246,
+    "au_edge_pair_recall": 0.32429743926460936,
+    "au_node_autc_rank": 0.6266959335089453
+  },
+  "final": {
+    "recovered_nodes": 973,
+    "recovered_edge_pairs": 1766,
+    "matched_nodes": 803,
+    "matched_directed_edge_pairs": 1668,
+    "node_precision": 0.8252826310380267,
+    "node_recall": 0.6816638370118846,
+    "edge_pair_precision": 0.9445073612684032,
+    "edge_pair_recall": 0.5476034143138543,
+    "undirected_edge_pair_precision": 0.9841772151898734,
+    "undirected_edge_pair_recall": 0.5425680390788555,
+    "node_tsc_rank": 0.772006392918611,
+    "node_tsc_raw": 0.8282432833758712,
+    "edge_tsc_rank": 0.5553478830580828,
+    "edge_tsc_raw": 0.5506369297706145,
+    "edge_tsc_noisy_or_rank": 0.5532369566052513,
+    "node_tsc_degree": 0.8660153524075367,
+    "node_tsc_burt_effective": 0.8756157733866158,
+    "node_tsc_collision_diversity": 0.7855839934137171,
+    "node_tsc_burt_balanced": 0.8716891144465401,
+    "degree_weighted_node_coverage": 0.8660153524075367,
+    "pagerank_weighted_node_coverage": 0.7795800642108652,
+    "node_autc_rank": 0.8259741374773247,
+    "spearman_bnrr_online_vs_truth": 0.6981819974749925,
+    "spearman_sensitivity_online_vs_truth": 0.6981819974749925,
+    "spearman_matched_nodes": 803,
+    "top5_sensitive_nodes_recovered": 5,
+    "top10_sensitive_nodes_recovered": 10,
+    "top20_sensitive_nodes_recovered": 20,
+    "top50_sensitive_nodes_recovered": 50
+  }
+}

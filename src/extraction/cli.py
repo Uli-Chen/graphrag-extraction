@@ -1,4 +1,4 @@
-"""CLI entry point for the medical GraphRAG extraction experiment."""
+"""CLI entry point for GraphRAG extraction experiments."""
 
 from __future__ import annotations
 
@@ -15,6 +15,16 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--run-id", help="Unique directory name under artifacts/runs/mematk")
     parser.add_argument("--turns", type=int, help="Number of GraphRAG query turns")
     parser.add_argument(
+        "--disable-api-thinking",
+        action="store_true",
+        help="Disable provider reasoning/thinking for GraphRAG answer generation",
+    )
+    parser.add_argument(
+        "--graphrag-query-retries",
+        type=int,
+        help="Retries after a failed or empty GraphRAG extraction response",
+    )
+    parser.add_argument(
         "--enable-graph-filter",
         action="store_true",
         help="Enable AGEA's optional LLM graph filter (disabled by default)",
@@ -29,6 +39,10 @@ def main() -> None:
         config.run_id = args.run_id
     if args.turns is not None:
         config.turns = args.turns
+    if args.disable_api_thinking:
+        config.disable_api_thinking = True
+    if args.graphrag_query_retries is not None:
+        config.graphrag_query_retries = args.graphrag_query_retries
     if args.enable_graph_filter:
         config.enable_graph_filter = True
 

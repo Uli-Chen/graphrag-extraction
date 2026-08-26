@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import networkx as nx
+import numpy as np
 from dotenv import load_dotenv
 
 AGEA_SRC_DIR = Path(__file__).resolve().parent.parent
@@ -130,6 +131,8 @@ def run_graphrag_query(
     retrieved_context_dir: str,
     llm_response_dir: str,
     query_method: str,
+    disable_api_thinking: bool = False,
+    query_retries: int = 2,
 ) -> Tuple[str, str, str, str]:
     log_path = os.path.join(retrieved_context_dir, f"retrieved_context_query_{turn_idx}.json")
     response_path = os.path.join(llm_response_dir, f"first_llm_response_query_{turn_idx}.txt")
@@ -137,11 +140,11 @@ def run_graphrag_query(
     env = os.environ.copy()
     env["GRAPHRAG_LOG_PATH"] = log_path
 
+    module_args = ["extraction.graphrag_query"] if disable_api_thinking else ["graphrag", "query"]
     command = [
         sys.executable,
         "-m",
-        "graphrag",
-        "query",
+        *module_args,
         "--root",
         os.path.abspath(graphrag_root),
         "--data",
@@ -155,6 +158,14 @@ def run_graphrag_query(
         "--query",
         query,
     ]
+    if disable_api_thinking:
+        command.append("--disable-api-thinking")
+
+    project_src = str(PROJECT_DIR / "src")
+    existing_pythonpath = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = os.pathsep.join(
+        part for part in (project_src, existing_pythonpath) if part
+    )
 
     print(f"[run] {' '.join(command)} -> log: {log_path}")
     # Python 3.10 cannot use -P/PYTHONSAFEPATH.  Running from the project root
@@ -162,15 +173,28 @@ def run_graphrag_query(
     # which blocks GraphRAG while importing ``regex``.  The interpreter's bin
     # directory is a neutral CWD, and all GraphRAG paths above are absolute.
     safe_cwd = str(Path(sys.executable).resolve().parent)
-    result = subprocess.run(
-        command,
-        capture_output=True,
-        text=True,
-        env=env,
-        cwd=safe_cwd,
-    )
-    stdout = result.stdout
-    stderr = result.stderr
+    max_attempts = query_retries + 1
+    for query_attempt in range(1, max_attempts + 1):
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            env=env,
+            cwd=safe_cwd,
+        )
+        stdout = result.stdout
+        stderr = result.stderr
+        if result.returncode == 0 and stdout.strip():
+            break
+        if query_attempt < max_attempts:
+            delay = min(2 ** (query_attempt - 1), 8)
+            failure = f"exit={result.returncode}" if result.returncode else "empty stdout"
+            print(
+                f"[retry] GraphRAG extraction turn={turn_idx} "
+                f"attempt={query_attempt}/{max_attempts} failed ({failure}); "
+                f"retrying in {delay}s"
+            )
+            time.sleep(delay)
 
     with open(response_path, "w", encoding="utf-8") as f:
         f.write(f"Query: {query}\n")
@@ -1049,7 +1073,13 @@ def adaptive_run(
     novelty_window: int,
     enable_graph_filter: bool,
     query_method: str,
+    disable_api_thinking: bool,
+    query_retries: int,
+    random_seed: int,
 ) -> None:
+    random.seed(random_seed)
+    np.random.seed(random_seed)
+
     graphrag_root, data_dir = setup_dataset_paths(dataset_name)
     # Backward compatibility for workspaces created before provider settings
     # were consolidated into the repository-level .env.
@@ -1119,6 +1149,8 @@ def adaptive_run(
                 paths["retrieved_context_dir"],
                 paths["llm_response_dir"],
                 query_method,
+                disable_api_thinking,
+                query_retries,
             )
 
             raw_nodes, raw_edges, filtered_nodes, filtered_edges, graph_filter_stats = parse_and_filter_llm_response(
@@ -1248,6 +1280,8 @@ def adaptive_run(
             paths["retrieved_context_dir"],
             paths["llm_response_dir"],
             query_method,
+            disable_api_thinking,
+            query_retries,
         )
 
         raw_nodes, raw_edges, filtered_nodes, filtered_edges, graph_filter_stats = parse_and_filter_llm_response(
@@ -1380,6 +1414,7 @@ def adaptive_run(
     analysis_report = {
         "dataset": dataset_name,
         "llm_model": get_llm_model_name(dataset_name),
+        "random_seed": random_seed,
         "final_stats": final_stats,
         "exploration_stats": exploration_stats,
         "leakage_analysis": leakage_analysis,
@@ -1445,8 +1480,16 @@ def main_cli() -> None:
     parser.add_argument("--graph-filter-model", type=str, default="gpt-4o-mini")
     parser.add_argument("--query-generator-model", type=str, default="gpt-4o-mini")
     parser.add_argument("--query-method", type=str, default=QUERY_METHOD, choices=["local", "global", "basic"])
+    parser.add_argument("--disable-api-thinking", action="store_true")
+    parser.add_argument("--query-retries", type=int, default=2)
+    parser.add_argument("--random-seed", type=int, default=42)
 
     args = parser.parse_args()
+
+    if args.query_retries < 0:
+        raise SystemExit("--query-retries must be non-negative")
+    if args.disable_api_thinking and args.query_method != "local":
+        raise SystemExit("--disable-api-thinking currently requires --query-method local")
 
     try:
         setup_dataset_paths(args.dataset)
@@ -1467,6 +1510,9 @@ def main_cli() -> None:
         f"novelty_window={args.novelty_window}"
     )
     print(f"🔍 GraphRAG query method: {args.query_method}")
+    print(f"🧠 GraphRAG API thinking: {'DISABLED' if args.disable_api_thinking else 'provider default'}")
+    print(f"🔁 GraphRAG extraction retries: {args.query_retries}")
+    print(f"🎲 Random seed: {args.random_seed}")
     print("🛠 Query generator: agentic")
     print(f"🛡 Graph filter agent: {'ENABLED' if not args.disable_graph_filter else 'DISABLED'}")
 
@@ -1489,6 +1535,9 @@ def main_cli() -> None:
         novelty_window=args.novelty_window,
         enable_graph_filter=(not args.disable_graph_filter),
         query_method=args.query_method,
+        disable_api_thinking=args.disable_api_thinking,
+        query_retries=args.query_retries,
+        random_seed=args.random_seed,
     )
 
 

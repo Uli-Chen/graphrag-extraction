@@ -1,4 +1,4 @@
-"""End-to-end topology-sensitive extraction and medical truth evaluation."""
+"""End-to-end topology-sensitive extraction and graph-truth evaluation."""
 
 from __future__ import annotations
 
@@ -16,7 +16,6 @@ from .backends.graphrag import AgeaGraphRagAdapter, append_extraction_command
 from .config import ExperimentConfig
 from .control.controllers import (
     AdaptiveModeController,
-    AgeaBnrrAnchorController,
     EpochFewaController,
     rotting_diagnostics,
 )
@@ -57,22 +56,18 @@ class MedicalExtractionPipeline:
             max_consecutive_failed_explore=config.max_consecutive_failed_explore,
             seed=config.random_seed,
         )
-        if config.anchor_sampling_policy == "agea_bnrr":
-            self.arm_controller = AgeaBnrrAnchorController(
-                candidate_k=config.agea_bnrr_candidate_k,
-                seed=config.random_seed,
-            )
-        else:
-            self.arm_controller = EpochFewaController(
-                delta=config.fewa_delta,
-                max_arms=config.fewa_max_arms,
-                seed=config.random_seed,
-            )
+        self.arm_controller = EpochFewaController(
+            delta=config.fewa_delta,
+            max_arms=config.fewa_max_arms,
+            seed=config.random_seed,
+        )
         self.adapter = AgeaGraphRagAdapter(
             graph_root=config.graph_root,
             data_dir=config.data_dir,
             run_dir=self.run_dir,
             query_method=config.query_method,
+            disable_api_thinking=config.disable_api_thinking,
+            graphrag_query_retries=config.graphrag_query_retries,
             enable_graph_filter=config.enable_graph_filter,
             graph_filter_model=config.graph_filter_model,
         )
@@ -82,16 +77,14 @@ class MedicalExtractionPipeline:
 
     def _available_arms(
         self,
-    ) -> tuple[list[str], dict[str, float], dict[str, float], dict[str, int]]:
+    ) -> tuple[list[str], dict[str, float]]:
         scores = compute_node_scores(self.graph)
         priors = {
             node: score.sensitivity
             for node, score in scores.items()
             if score.sensitivity > 0.0
         }
-        bnrr = {node: score.bnrr for node, score in scores.items() if score.bnrr > 0.0}
-        degrees = {node: score.degree for node, score in scores.items()}
-        return list(priors), priors, bnrr, degrees
+        return list(priors), priors
 
     def _seed_query_text(self) -> str:
         """Build the fixed first-turn query used by the formal protocol."""
@@ -99,7 +92,10 @@ class MedicalExtractionPipeline:
         return append_extraction_command(self.config.seed_query)
 
     def _query_text(
-        self, mode: str, turn: int, anchor: str | None
+        self,
+        mode: str,
+        turn: int,
+        anchor: str | None,
     ) -> tuple[str, dict[str, Any]]:
         anchor_required = bool(
             self.config.require_exploit_anchor_in_query
@@ -192,7 +188,7 @@ class MedicalExtractionPipeline:
         # and auditable while making the requested target/round explicit.
         if mode == "exploit" and anchor:
             domain_query = (
-                f"Perform focused medical relationship expansion round {anchor_round} "
+                f"Perform focused {self.config.dataset} relationship expansion round {anchor_round} "
                 f"for {anchor}. Retrieve only additional named entities and directly "
                 f"supported relationships absent from earlier turns; diversification "
                 f"fallback for turn {turn}."
@@ -239,13 +235,21 @@ class MedicalExtractionPipeline:
         )
 
     def run(self) -> dict[str, Any]:
+        """Run the experiment and always release adapter network resources."""
+
+        try:
+            return self._run()
+        finally:
+            self.adapter.close()
+
+    def _run(self) -> dict[str, Any]:
         _write_json(self.run_dir / "config.json", self.config.to_dict())
         htsn_history: list[float] = []
         mode_history: list[str] = []
         meaningful_gain_history: list[bool] = []
 
         for turn in range(1, self.config.turns + 1):
-            arms, priors, bnrr, degrees = self._available_arms()
+            arms, priors = self._available_arms()
             decision = self.mode_controller.choose(
                 turn,
                 arms,
@@ -264,25 +268,12 @@ class MedicalExtractionPipeline:
                 "eligible_arm_count": len(arms),
                 "active_arms": [],
             }
+            selection: dict[str, Any] = {}
             anchor: str | None = None
             if mode == "exploit":
-                if self.config.anchor_sampling_policy == "agea_bnrr":
-                    recently_discovered = {
-                        str(entity)
-                        for entry in self.query_history[-2:]
-                        for entity in entry.get("newly_discovered_entity_names", [])
-                    }
-                    anchor = self.arm_controller.select(
-                        arms,
-                        self.exploit_pulls + 1,
-                        bnrr,
-                        degrees=degrees,
-                        recently_discovered=recently_discovered,
-                    )
-                else:
-                    anchor = self.arm_controller.select(
-                        arms, self.exploit_pulls + 1, priors
-                    )
+                anchor = self.arm_controller.select(
+                    arms, self.exploit_pulls + 1, priors
+                )
                 selection = (
                     self.arm_controller.selection_history[-1]
                     if self.arm_controller.selection_history
@@ -317,7 +308,13 @@ class MedicalExtractionPipeline:
                 self.exploit_pulls += 1
 
             query, query_generation = self._query_text(mode, turn, anchor)
-            result = self.adapter.query(query, turn)
+            result = self.adapter.query(
+                query,
+                turn,
+                response_override_path=(
+                    self.config.shared_seed_response_path if turn == 1 else None
+                ),
+            )
             anchor_diagnostics = _response_anchor_diagnostics(
                 anchor=anchor,
                 response=result.response,
@@ -330,12 +327,12 @@ class MedicalExtractionPipeline:
                     f"Turn {turn} produced {candidate_atoms} candidate atoms, exceeding "
                     f"the preregistered reward_normalizer M={self.config.reward_normalizer}."
                 )
-            merge_batch(self.graph, result.batch)
-            evaluation = evaluate_recovery(self.graph, self.truth)
-
             # The proposal defines the FEWA reward as Z=Y_HA/M for a fixed,
             # preregistered maximum number of candidate atoms per query.
             raw_batch_reward = batch_score.y_ha / self.config.reward_normalizer
+            merge_batch(self.graph, result.batch)
+            evaluation = evaluate_recovery(self.graph, self.truth)
+
             effective_fewa_reward = _effective_fewa_reward(
                 anchor=anchor,
                 raw_batch_reward=raw_batch_reward,
@@ -406,6 +403,7 @@ class MedicalExtractionPipeline:
                         batch_score.new_node_weights
                     ),
                     "seeds_used": [anchor] if anchor else [],
+                    "seeds_with_rounds": [],
                 }
             )
             self._save_progress()
